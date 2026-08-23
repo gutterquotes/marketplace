@@ -1,0 +1,13 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#FFFFFF"/>
+  <rect x="68" y="66" width="1064" height="498" rx="28" fill="#F7F7F7"/>
+  <rect x="68" y="66" width="1064" height="498" rx="28" stroke="#E7E7E7" stroke-width="2"/>
+  <text x="116" y="185" fill="#090909" font-family="Inter, Arial, sans-serif" font-size="84" font-weight="850" letter-spacing="-5">GutterQuotes.com</text>
+  <text x="120" y="275" fill="#090909" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="850" letter-spacing="-3">One request. Multiple quotes.</text>
+  <text x="122" y="348" fill="#626262" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="500">Compare seamless gutter, gutter guard, cleaning, repair,</text>
+  <text x="122" y="390" fill="#626262" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="500">downspout, and yard drainage pros nationwide.</text>
+  <rect x="122" y="452" width="222" height="60" rx="30" fill="#FF4F00"/>
+  <text x="160" y="491" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="750">Get quotes</text>
+  <circle cx="972" cy="472" r="72" fill="#FF4F00"/>
+  <circle cx="972" cy="472" r="39" fill="#FFF4EE"/>
+</svg>

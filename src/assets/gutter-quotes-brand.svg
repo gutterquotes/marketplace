@@ -1,0 +1,14 @@
+<svg width="1500" height="900" viewBox="0 0 1500 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1500" height="900" fill="#FFFFFF"/>
+  <rect x="96" y="96" width="1308" height="708" rx="40" fill="#F7F7F7"/>
+  <rect x="96" y="96" width="1308" height="708" rx="40" stroke="#E7E7E7" stroke-width="2"/>
+  <path d="M228 550h860c58 0 105-47 105-105v-48H333c-58 0-105 47-105 105v48Z" fill="#090909"/>
+  <path d="M333 350h860v95H333c-58 0-105 47-105 105v-95c0-58 47-105 105-105Z" fill="#0C0C0C"/>
+  <circle cx="1180" cy="574" r="116" fill="#FF4F00"/>
+  <circle cx="1180" cy="574" r="66" fill="#FFF4EE"/>
+  <rect x="238" y="620" width="388" height="18" rx="9" fill="#E7E7E7"/>
+  <rect x="238" y="664" width="286" height="18" rx="9" fill="#E7E7E7"/>
+  <text x="232" y="284" fill="#090909" font-family="Inter, Arial, sans-serif" font-size="92" font-weight="850" letter-spacing="-6">One request.</text>
+  <text x="232" y="376" fill="#090909" font-family="Inter, Arial, sans-serif" font-size="92" font-weight="850" letter-spacing="-6">Multiple gutter quotes.</text>
+  <text x="238" y="744" fill="#626262" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="500">Free request. Local pros. No pressure.</text>
+</svg>
