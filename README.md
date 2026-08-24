@@ -61,6 +61,10 @@ yarn run dev
 
 Mirror the configuration in [docs/sharetribe-console-setup.md](docs/sharetribe-console-setup.md) before testing end-to-end flows.
 
+## Production Launch
+
+Deploy the production frontend using [docs/production-launch.md](docs/production-launch.md). The repo includes a Render Blueprint in `render.yaml`.
+
 ## MVP Roadmap
 
 1. Configure Sharetribe Console assets and test API application.

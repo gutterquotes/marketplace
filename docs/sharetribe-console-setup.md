@@ -70,10 +70,15 @@ Create or verify user fields matching `src/config/configUser.js`.
 | `userType` | enum | public | all users |
 | `companyName` | text | public | `provider` users |
 | `providerType` | enum | public | `provider` users |
-| `licenseAndInsurance` | boolean | public | `provider` users |
+| `licenseAndInsurance` | multi-enum | public | `provider` users |
 | `serviceStates` | text | public | `provider` users |
 | `serviceRadiusMiles` | long | public | `provider` users |
-| `homeZip` | text | protected | `customer` users |
+| `homeZip` | text | private | `customer` users |
+
+`licenseAndInsurance` options:
+
+- `licensed` / Licensed
+- `insured` / Insured
 
 ## Seed Data
 
