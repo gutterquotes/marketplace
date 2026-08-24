@@ -8,19 +8,27 @@ import { LandingPageComponent } from './LandingPage';
 const { waitFor } = testingLibrary;
 
 describe('LandingPage', () => {
-  it('renders the Fallback page on error', async () => {
+  it('renders the launch Fallback page on error', async () => {
     const errorMessage = 'LandingPage failed';
     let e = new Error(errorMessage);
     e.type = 'error';
     e.name = 'Test';
 
-    const { getByText } = render(
+    const { getByRole, getByText } = render(
       <LandingPageComponent pageAssetsData={null} inProgress={false} error={e} />
     );
 
     await waitFor(() => {
-      expect(getByText('Oops, something went wrong!')).toBeInTheDocument();
-      expect(getByText(errorMessage)).toBeInTheDocument();
+      expect(getByText('One request. Multiple gutter quotes.')).toBeInTheDocument();
+      expect(getByText('Seamless gutter installation')).toBeInTheDocument();
+      expect(getByRole('link', { name: 'Get free quotes' })).toHaveAttribute(
+        'href',
+        '/signup/homeowner'
+      );
+      expect(getByRole('link', { name: 'Join as a contractor' })).toHaveAttribute(
+        'href',
+        '/signup/installer'
+      );
     });
   });
 
