@@ -68,12 +68,12 @@ Create or verify user fields matching `src/config/configUser.js`.
 | Key | Type | Scope | Applies to |
 |---|---|---|---|
 | `userType` | enum | public | all users |
-| `companyName` | text | public | installers |
-| `providerType` | enum | public | installers |
-| `licenseAndInsurance` | boolean | public | installers |
-| `serviceStates` | text | public | installers |
-| `serviceRadiusMiles` | long | public | installers |
-| `homeZip` | text | protected | homeowners |
+| `companyName` | text | public | `provider` users |
+| `providerType` | enum | public | `provider` users |
+| `licenseAndInsurance` | boolean | public | `provider` users |
+| `serviceStates` | text | public | `provider` users |
+| `serviceRadiusMiles` | long | public | `provider` users |
+| `homeZip` | text | protected | `customer` users |
 
 ## Seed Data
 

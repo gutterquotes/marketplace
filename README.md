@@ -55,7 +55,7 @@ yarn run dev
 - Listing type is `post-request`, using Sharetribe's `default-negotiation` process for launch.
 - Search is constrained to valid listing types.
 - Nationwide default location suggestions are configured.
-- User fields distinguish `homeowner` and `installer` accounts.
+- User fields distinguish Sharetribe `customer` and `provider` account IDs, labelled as homeowners and gutter professionals.
 
 ## Sharetribe Console Setup
 

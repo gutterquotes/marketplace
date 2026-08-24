@@ -23,11 +23,11 @@ describe('LandingPage', () => {
       expect(getByText('Seamless gutter installation')).toBeInTheDocument();
       expect(getByRole('link', { name: 'Get free quotes' })).toHaveAttribute(
         'href',
-        '/signup/homeowner'
+        '/signup/customer'
       );
       expect(getByRole('link', { name: 'Join as a contractor' })).toHaveAttribute(
         'href',
-        '/signup/installer'
+        '/signup/provider'
       );
     });
   });

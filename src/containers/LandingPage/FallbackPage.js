@@ -29,14 +29,14 @@ const FallbackPage = () => {
           <div className={css.actions}>
             <NamedLink
               name="SignupForUserTypePage"
-              params={{ userType: 'homeowner' }}
+              params={{ userType: 'customer' }}
               className={css.primaryAction}
             >
               Get free quotes
             </NamedLink>
             <NamedLink
               name="SignupForUserTypePage"
-              params={{ userType: 'installer' }}
+              params={{ userType: 'provider' }}
               className={css.secondaryAction}
             >
               Join as a contractor

@@ -41,8 +41,8 @@ export const userFields = [
     scope: 'public',
     schemaType: 'enum',
     enumOptions: [
-      { option: 'homeowner', label: 'Homeowner' },
-      { option: 'installer', label: 'Gutter professional' },
+      { option: 'customer', label: 'Homeowner' },
+      { option: 'provider', label: 'Gutter professional' },
     ],
     showConfig: {
       label: 'Account type',
@@ -55,7 +55,7 @@ export const userFields = [
     },
     userTypeConfig: {
       limitToUserTypeIds: false,
-      userTypeIds: ['homeowner', 'installer'],
+      userTypeIds: ['customer', 'provider'],
     },
   },
   {
@@ -73,7 +73,7 @@ export const userFields = [
     },
     userTypeConfig: {
       limitToUserTypeIds: true,
-      userTypeIds: ['installer'],
+      userTypeIds: ['provider'],
     },
   },
   {
@@ -95,7 +95,7 @@ export const userFields = [
     },
     userTypeConfig: {
       limitToUserTypeIds: true,
-      userTypeIds: ['installer'],
+      userTypeIds: ['provider'],
     },
   },
   {
@@ -112,7 +112,7 @@ export const userFields = [
     },
     userTypeConfig: {
       limitToUserTypeIds: true,
-      userTypeIds: ['installer'],
+      userTypeIds: ['provider'],
     },
   },
   {
@@ -130,7 +130,7 @@ export const userFields = [
     },
     userTypeConfig: {
       limitToUserTypeIds: true,
-      userTypeIds: ['installer'],
+      userTypeIds: ['provider'],
     },
   },
   {
@@ -151,7 +151,7 @@ export const userFields = [
     },
     userTypeConfig: {
       limitToUserTypeIds: true,
-      userTypeIds: ['installer'],
+      userTypeIds: ['provider'],
     },
   },
   {
@@ -169,7 +169,7 @@ export const userFields = [
     },
     userTypeConfig: {
       limitToUserTypeIds: true,
-      userTypeIds: ['homeowner'],
+      userTypeIds: ['customer'],
     },
   },
 ];
@@ -191,11 +191,11 @@ export const userFields = [
 
 export const userTypes = [
   {
-    userType: 'homeowner',
+    userType: 'customer',
     label: 'Homeowner',
   },
   {
-    userType: 'installer',
+    userType: 'provider',
     label: 'Gutter professional',
   },
 ];
