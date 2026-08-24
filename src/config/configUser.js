@@ -101,14 +101,19 @@ export const userFields = [
   {
     key: 'licenseAndInsurance',
     scope: 'public',
-    schemaType: 'boolean',
+    schemaType: 'multi-enum',
+    enumOptions: [
+      { option: 'licensed', label: 'Licensed' },
+      { option: 'insured', label: 'Insured' },
+    ],
     showConfig: {
-      label: 'License and insurance available',
+      label: 'License and insurance',
     },
     saveConfig: {
-      label: 'I can provide license and insurance documentation',
+      label: 'License and insurance',
       displayInSignUp: true,
       isRequired: false,
+      placeholderMessage: 'Select all that apply',
     },
     userTypeConfig: {
       limitToUserTypeIds: true,
@@ -156,7 +161,7 @@ export const userFields = [
   },
   {
     key: 'homeZip',
-    scope: 'protected',
+    scope: 'private',
     schemaType: 'text',
     showConfig: {
       label: 'Home ZIP code',
