@@ -1,0 +1,365 @@
+.root {
+  --gqAccent: #ff4f00;
+  --gqAccentDark: #d84200;
+  --gqInk: #111413;
+  --gqEvergreen: #10382f;
+  --gqMuted: #5d6764;
+  --gqLine: #dfe7e3;
+  --gqMist: #f3f8f5;
+  --gqWarm: #fff6f0;
+
+  min-height: calc(100vh - 64px);
+  color: var(--gqInk);
+  background:
+    linear-gradient(180deg, rgba(243, 248, 245, 0.92), #fff 42%),
+    linear-gradient(120deg, #e8f4ff 0%, #fff6f0 58%, #f3f8f5 100%);
+  font-family: Inter, Arial, sans-serif;
+}
+
+.hero,
+.flow {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(330px, 430px);
+  gap: 56px;
+  align-items: center;
+  padding: 54px 0 44px;
+}
+
+.logo {
+  display: block;
+  width: 220px;
+  height: auto;
+  margin-bottom: 34px;
+}
+
+.kicker {
+  margin: 0 0 14px;
+  color: var(--gqAccent);
+  font-size: 12px;
+  font-weight: 880;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.heroCopy h1,
+.formPanel h2,
+.sidePanel h2 {
+  margin: 0;
+  color: var(--gqInk);
+  font-weight: 880;
+  letter-spacing: 0;
+}
+
+.heroCopy h1 {
+  max-width: 760px;
+  font-size: 62px;
+  line-height: 0.96;
+}
+
+.lead {
+  max-width: 680px;
+  margin: 22px 0 0;
+  color: var(--gqMuted);
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.matchPanel,
+.formPanel,
+.sidePanel {
+  border: 1px solid var(--gqLine);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(16, 56, 47, 0.12);
+}
+
+.matchPanel {
+  padding: 26px;
+}
+
+.panelTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.panelTop span {
+  color: var(--gqMuted);
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.panelTop strong {
+  display: flex;
+  width: 88px;
+  height: 88px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--gqAccent);
+  color: #fff;
+  font-size: 26px;
+  font-weight: 880;
+}
+
+.matchPanel p,
+.sidePanel p,
+.resultCard p {
+  margin: 0;
+  color: var(--gqMuted);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.signalGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 24px;
+}
+
+.signalGrid span {
+  border: 1px solid var(--gqLine);
+  border-radius: 8px;
+  background: var(--gqMist);
+  padding: 11px 12px;
+  color: var(--gqEvergreen);
+  font-size: 13px;
+  font-weight: 820;
+}
+
+.flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(310px, 390px);
+  gap: 24px;
+  align-items: start;
+  padding: 0 0 74px;
+}
+
+.formPanel,
+.sidePanel {
+  padding: 30px;
+}
+
+.stepHeader {
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.stepHeader > span {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--gqEvergreen);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 880;
+}
+
+.formPanel h2,
+.sidePanel h2 {
+  font-size: 34px;
+  line-height: 1.05;
+}
+
+.optionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.optionButton {
+  min-height: 56px;
+  border: 1px solid var(--gqLine);
+  border-radius: 8px;
+  background: var(--gqMist);
+  color: var(--gqInk);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 820;
+  line-height: 1.2;
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.optionButton:first-child {
+  border-color: #ffc0a3;
+  background: var(--gqWarm);
+}
+
+.optionButton:hover {
+  border-color: var(--gqAccent);
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.twoColumn label,
+.messageField {
+  display: grid;
+  gap: 8px;
+}
+
+.twoColumn span,
+.messageField span {
+  color: var(--gqMuted);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.twoColumn input,
+.twoColumn select,
+.messageField textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--gqLine);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--gqInk);
+  font-size: 16px;
+  font-weight: 760;
+  padding: 0 14px;
+}
+
+.twoColumn input,
+.twoColumn select {
+  height: 52px;
+}
+
+.messageField {
+  margin-top: 22px;
+}
+
+.messageField textarea {
+  min-height: 116px;
+  padding-top: 14px;
+  resize: vertical;
+}
+
+.primaryAction {
+  display: inline-flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 22px;
+  border-radius: 8px;
+  background: var(--gqAccent);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 880;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 14px 28px rgba(255, 79, 0, 0.2);
+}
+
+.primaryAction:hover {
+  background: var(--gqAccentDark);
+  color: #fff;
+}
+
+.sidePanel ul {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidePanel li {
+  border: 1px solid var(--gqLine);
+  border-radius: 8px;
+  background: var(--gqMist);
+  padding: 13px 14px;
+  color: var(--gqEvergreen);
+  font-size: 14px;
+  font-weight: 820;
+}
+
+.resultCard {
+  margin-top: 24px;
+  border: 1px solid #ffd2bd;
+  border-radius: 8px;
+  background: var(--gqWarm);
+  padding: 18px;
+}
+
+.resultCard strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--gqInk);
+  font-size: 22px;
+  font-weight: 880;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .flow {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    gap: 32px;
+    padding-top: 36px;
+  }
+
+  .heroCopy h1 {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero,
+  .flow {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .logo {
+    width: 188px;
+  }
+
+  .heroCopy h1 {
+    font-size: 36px;
+  }
+
+  .lead {
+    font-size: 17px;
+  }
+
+  .signalGrid,
+  .optionGrid,
+  .twoColumn {
+    grid-template-columns: 1fr;
+  }
+
+  .matchPanel,
+  .formPanel,
+  .sidePanel {
+    padding: 22px;
+  }
+
+  .formPanel h2,
+  .sidePanel h2 {
+    font-size: 28px;
+  }
+}

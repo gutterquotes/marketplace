@@ -31,7 +31,7 @@ describe('LandingPage', () => {
       expect(getByText('Seamless gutter installation')).toBeInTheDocument();
       expect(getByRole('link', { name: 'Find gutter pros' })).toHaveAttribute(
         'href',
-        '/signup/customer'
+        '/quote'
       );
       expect(getByRole('link', { name: 'Join as a pro' })).toHaveAttribute(
         'href',

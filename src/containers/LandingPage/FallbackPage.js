@@ -81,8 +81,7 @@ const FallbackPage = () => {
                 <input defaultValue="28211" aria-label="ZIP code" inputMode="numeric" />
               </label>
               <NamedLink
-                name="SignupForUserTypePage"
-                params={{ userType: 'customer' }}
+                name="QuoteStartPage"
                 className={css.searchButton}
               >
                 Find gutter pros
@@ -198,8 +197,7 @@ const FallbackPage = () => {
           </p>
         </div>
         <NamedLink
-          name="SignupForUserTypePage"
-          params={{ userType: 'customer' }}
+          name="QuoteStartPage"
           className={css.primaryAction}
         >
           Start a free request
