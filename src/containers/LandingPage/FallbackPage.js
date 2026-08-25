@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { NamedLink } from '../../components';
+import logoImage from '../../assets/gutter-quotes-logo.png';
 
 import css from './FallbackPage.module.css';
 
@@ -20,7 +21,8 @@ const FallbackPage = () => {
     <main className={css.root}>
       <section className={css.hero}>
         <div className={css.heroContent}>
-          <p className={css.kicker}>Nationwide gutter quote marketplace</p>
+          <img src={logoImage} alt="Gutter Quotes" className={css.heroLogo} />
+          <p className={css.kicker}>Free quote request · local gutter pros</p>
           <h1>One request. Multiple gutter quotes.</h1>
           <p className={css.lead}>
             Tell us what your home needs and compare responses from gutter professionals without

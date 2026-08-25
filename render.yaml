@@ -15,6 +15,8 @@ services:
         value: production
       - key: REACT_APP_MARKETPLACE_NAME
         value: Gutter Quotes
+      - key: REACT_APP_GQ_FORCE_LOCAL_PREVIEW
+        value: "true"
       - key: REACT_APP_MARKETPLACE_ROOT_URL
         sync: false
       - key: REACT_APP_SHARETRIBE_SDK_CLIENT_ID

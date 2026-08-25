@@ -45,6 +45,13 @@
   font-weight: 850;
 }
 
+.heroLogo {
+  display: block;
+  width: 212px;
+  height: auto;
+  margin: 0 0 30px;
+}
+
 .kicker {
   margin: 0 0 14px;
   color: var(--gqMuted);

@@ -229,6 +229,26 @@ const getVariantURL = (socialSharingImage, variantName) => {
 };
 
 const mergeBranding = (brandingConfig, defaultBranding) => {
+  if (process.env.REACT_APP_GQ_FORCE_LOCAL_PREVIEW === 'true') {
+    const marketplaceColor = defaultBranding.marketplaceColor;
+    const colorPrimaryButton = defaultBranding.marketplaceColor;
+
+    return {
+      marketplaceColor,
+      marketplaceColorDark: hexToCssHsl(marketplaceColor, -10),
+      marketplaceColorLight: hexToCssHsl(marketplaceColor, 10),
+      colorPrimaryButton,
+      colorPrimaryButtonDark: hexToCssHsl(colorPrimaryButton, -10),
+      colorPrimaryButtonLight: hexToCssHsl(colorPrimaryButton, 10),
+      logoSettings: defaultBranding.logoSettings,
+      logoImageDesktop: defaultBranding.logoImageDesktopURL,
+      logoImageMobile: defaultBranding.logoImageMobileURL,
+      brandImage: defaultBranding.brandImageURL,
+      facebookImage: defaultBranding.facebookImageURL,
+      twitterImage: defaultBranding.twitterImageURL,
+    };
+  }
+
   const {
     marketplaceColors,
     logo,

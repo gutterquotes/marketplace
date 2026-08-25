@@ -20,6 +20,11 @@ const PageBuilder = loadable(() =>
 
 export const LandingPageComponent = props => {
   const { pageAssetsData, inProgress, error } = props;
+  const forceLocalPreview = process.env.REACT_APP_GQ_FORCE_LOCAL_PREVIEW === 'true';
+
+  if (forceLocalPreview) {
+    return <FallbackPage error={error} />;
+  }
 
   return (
     <PageBuilder
