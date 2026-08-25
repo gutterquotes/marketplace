@@ -8,7 +8,15 @@ import { LandingPageComponent } from './LandingPage';
 const { waitFor } = testingLibrary;
 
 describe('LandingPage', () => {
+  const originalForceLocalPreview = process.env.REACT_APP_GQ_FORCE_LOCAL_PREVIEW;
+
+  afterEach(() => {
+    process.env.REACT_APP_GQ_FORCE_LOCAL_PREVIEW = originalForceLocalPreview;
+  });
+
   it('renders the launch Fallback page on error', async () => {
+    process.env.REACT_APP_GQ_FORCE_LOCAL_PREVIEW = 'true';
+
     const errorMessage = 'LandingPage failed';
     let e = new Error(errorMessage);
     e.type = 'error';
@@ -19,13 +27,15 @@ describe('LandingPage', () => {
     );
 
     await waitFor(() => {
-      expect(getByText('One request. Multiple gutter quotes.')).toBeInTheDocument();
-      expect(getByText('Seamless gutter installation')).toBeInTheDocument();
+      expect(
+        getByText('The future of gutter services starts with one trusted request.')
+      ).toBeInTheDocument();
+      expect(getByText('Seamless gutters')).toBeInTheDocument();
       expect(getByRole('link', { name: 'Get free quotes' })).toHaveAttribute(
         'href',
         '/signup/customer'
       );
-      expect(getByRole('link', { name: 'Join as a contractor' })).toHaveAttribute(
+      expect(getByRole('link', { name: 'Join as a pro' })).toHaveAttribute(
         'href',
         '/signup/provider'
       );
@@ -33,6 +43,8 @@ describe('LandingPage', () => {
   });
 
   it('renders given pageAssetsData', async () => {
+    process.env.REACT_APP_GQ_FORCE_LOCAL_PREVIEW = 'false';
+
     const data = {
       sections: [
         {
