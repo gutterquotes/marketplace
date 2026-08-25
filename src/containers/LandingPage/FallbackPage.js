@@ -5,121 +5,147 @@ import logoImage from '../../assets/gutter-quotes-logo.png';
 
 import css from './FallbackPage.module.css';
 
-const services = [
-  {
-    title: 'Seamless gutters',
-    text: 'Compare installers for new aluminum, copper, steel, and custom-fit systems.',
-  },
-  {
-    title: 'Gutter guards',
-    text: 'Find guard options that match your roofline, tree coverage, and budget.',
-  },
-  {
-    title: 'Repairs and replacement',
-    text: 'Fix leaks, sagging runs, storm damage, fascia issues, and failed sections.',
-  },
-  {
-    title: 'Cleaning and maintenance',
-    text: 'Book seasonal cleanouts, downspout clearing, and drainage tune-ups.',
-  },
-  {
-    title: 'Downspouts and drainage',
-    text: 'Route water away from foundations with extensions, drains, and smarter flow.',
-  },
-  {
-    title: 'Commercial gutters',
-    text: 'Source qualified pros for multifamily, retail, office, and light commercial work.',
-  },
+const popularProjects = [
+  { title: 'Seamless gutter installation', score: '4.9', detail: 'Matched by roofline, material, and ZIP' },
+  { title: 'Gutter guards', score: '4.8', detail: 'Compare guard types, warranties, and install timelines' },
+  { title: 'Gutter repair', score: '4.7', detail: 'Leaks, sagging runs, fascia issues, and storm damage' },
+  { title: 'Gutter cleaning', score: '4.8', detail: 'Fast seasonal service with downspout clearing' },
+  { title: 'Downspout drainage', score: '4.6', detail: 'Move water away from siding, soil, and foundations' },
+  { title: 'Commercial gutters', score: '4.7', detail: 'Multifamily, retail, office, and light commercial work' },
+];
+
+const intelligenceSignals = [
+  'Project scope',
+  'Home type',
+  'Roofline complexity',
+  'Material preference',
+  'Timeline',
+  'Service area',
 ];
 
 const steps = [
   {
-    label: 'Tell us about the home',
-    text: 'Share your ZIP code, project type, timeline, photos, and a few details that matter.',
+    label: 'Search the job',
+    text: 'Choose a gutter service and ZIP code. The platform starts narrowing the right kind of pro immediately.',
   },
   {
-    label: 'Get matched with gutter pros',
-    text: 'Your request reaches local contractors who actually handle that service area and job type.',
+    label: 'Answer smart questions',
+    text: 'A guided request captures photos, height, material, urgency, and drainage concerns without wasting your time.',
   },
   {
-    label: 'Compare with confidence',
-    text: 'Review responses, ask follow-up questions, and choose the best fit without pressure.',
+    label: 'Compare better matches',
+    text: 'Review interested pros, ask follow-ups, and move forward with the company that fits the home and budget.',
   },
 ];
 
-const stats = ['Free to request', 'Verified local pros', 'Installation, guards, repair'];
+const guides = [
+  'How much do seamless gutters cost?',
+  'Are gutter guards worth it?',
+  'Repair or replace damaged gutters?',
+  'How to spot poor drainage early',
+];
 
 const FallbackPage = () => {
   return (
     <main className={css.root}>
       <section className={css.hero}>
-        <div className={css.heroInner}>
-          <div className={css.heroContent}>
-            <img src={logoImage} alt="Gutter Quotes" className={css.heroLogo} />
-            <p className={css.kicker}>The smarter way to hire gutter pros</p>
-            <h1>The future of gutter services starts with one trusted request.</h1>
+        <div className={css.topbar}>
+          <img src={logoImage} alt="Gutter Quotes" className={css.logo} />
+          <nav className={css.nav} aria-label="Main navigation">
+            <NamedLink name="SearchPage">Find pros</NamedLink>
+            <a href="#projects">Projects</a>
+            <a href="#how">How it works</a>
+            <NamedLink name="SignupForUserTypePage" params={{ userType: 'provider' }}>
+              Join as a pro
+            </NamedLink>
+          </nav>
+        </div>
+
+        <div className={css.heroGrid}>
+          <div className={css.heroCopy}>
+            <p className={css.kicker}>Next generation gutter services</p>
+            <h1>The smartest way to find trusted gutter pros.</h1>
             <p className={css.lead}>
-              Compare local experts for gutter installation, guards, repairs, cleaning, and
-              drainage work. Gutter Quotes helps homeowners move from problem to price without
-              calling every company in town.
+              Gutter Quotes is a focused home service platform for gutter installation, guards,
+              repair, cleaning, and drainage. Search once, get guided, and compare pros built for
+              the exact work your home needs.
             </p>
-            <div className={css.actions}>
+
+            <div className={css.searchConsole} aria-label="Start a gutter project request">
+              <label>
+                <span>What do you need?</span>
+                <input defaultValue="Gutter installation" aria-label="Service needed" />
+              </label>
+              <label>
+                <span>ZIP code</span>
+                <input defaultValue="28211" aria-label="ZIP code" inputMode="numeric" />
+              </label>
               <NamedLink
                 name="SignupForUserTypePage"
                 params={{ userType: 'customer' }}
-                className={css.primaryAction}
+                className={css.searchButton}
               >
-                Get free quotes
-              </NamedLink>
-              <NamedLink
-                name="SignupForUserTypePage"
-                params={{ userType: 'provider' }}
-                className={css.secondaryAction}
-              >
-                Join as a pro
+                Find gutter pros
               </NamedLink>
             </div>
-            <ul className={css.proof}>
-              {stats.map(stat => (
-                <li key={stat}>{stat}</li>
-              ))}
-            </ul>
+
+            <div className={css.trustRow}>
+              <span>Free request</span>
+              <span>Local specialists</span>
+              <span>No obligation</span>
+            </div>
           </div>
-          <aside className={css.quotePanel} aria-label="Example gutter quote request">
-            <div className={css.panelTop}>
-              <span>Project request</span>
-              <strong>Ready for pros</strong>
+
+          <aside className={css.matchCard} aria-label="Gutter Quotes matching preview">
+            <div className={css.cardTop}>
+              <span>Match engine</span>
+              <strong>Live preview</strong>
             </div>
-            <h2>Install seamless gutters and guards before storm season</h2>
-            <div className={css.requestMeta}>
-              <span>Single-family home</span>
-              <span>Two stories</span>
-              <span>Photos attached</span>
+            <div className={css.matchMeter}>
+              <span>96%</span>
+              <p>fit score for seamless gutters and guards</p>
             </div>
-            <div className={css.matchBox}>
-              <span className={css.matchScore}>4</span>
-              <p>qualified local pros can review this request today.</p>
+            <div className={css.signalGrid}>
+              {intelligenceSignals.map(signal => (
+                <span key={signal}>{signal}</span>
+              ))}
             </div>
-            <NamedLink name="SearchPage" className={css.cardAction}>
-              Browse gutter pros
-            </NamedLink>
+            <div className={css.proPreview}>
+              <strong>4 qualified pros</strong>
+              <p>can review this request today based on service area, trade focus, and project type.</p>
+            </div>
           </aside>
         </div>
       </section>
 
-      <section className={css.section}>
-        <div className={css.sectionHeading}>
-          <p className={css.kicker}>Built for homeowners</p>
-          <h2>Stop guessing who to call. Start with the right gutter specialist.</h2>
+      <section id="projects" className={css.projectsSection}>
+        <div className={css.sectionIntro}>
+          <p className={css.kicker}>Popular gutter projects</p>
+          <h2>Everything Angi makes broad, Gutter Quotes makes focused.</h2>
           <p>
-            Gutter work is too important for a generic directory. We focus the entire experience on
-            protecting the roofline, foundation, siding, landscaping, and long-term value of the
-            home.
+            Homeowners do not need a giant directory for a specific exterior water problem. They
+            need the right gutter company, the right questions, and a clear path to a quote.
           </p>
+        </div>
+        <div className={css.projectGrid}>
+          {popularProjects.map(project => (
+            <NamedLink key={project.title} name="SearchPage" className={css.projectCard}>
+              <span className={css.rating}>{project.score}</span>
+              <h3>{project.title}</h3>
+              <p>{project.detail}</p>
+            </NamedLink>
+          ))}
+        </div>
+      </section>
+
+      <section id="how" className={css.howSection}>
+        <div className={css.sectionIntro}>
+          <p className={css.kicker}>How it works</p>
+          <h2>A faster quote flow designed around gutter work.</h2>
         </div>
         <div className={css.stepGrid}>
           {steps.map((step, index) => (
-            <div key={step.label} className={css.stepItem}>
+            <div key={step.label} className={css.stepCard}>
               <span>{index + 1}</span>
               <h3>{step.label}</h3>
               <p>{step.text}</p>
@@ -128,47 +154,47 @@ const FallbackPage = () => {
         </div>
       </section>
 
-      <section className={css.serviceSection}>
-        <div className={css.sectionHeading}>
-          <p className={css.kicker}>Every gutter need</p>
-          <h2>One platform for installation, protection, repair, and maintenance.</h2>
+      <section className={css.platformSection}>
+        <div className={css.platformPanel}>
+          <p className={css.kicker}>For homeowners</p>
+          <h2>From problem to shortlist without the phone-tag marathon.</h2>
+          <p>
+            Compare interested pros, understand what matters for your roofline, and make the next
+            step with more confidence than a generic search result can give you.
+          </p>
         </div>
-        <div className={css.serviceGrid}>
-          {services.map(service => (
-            <div key={service.title} className={css.serviceItem}>
-              <h3>{service.title}</h3>
-              <p>{service.text}</p>
-            </div>
-          ))}
+        <div className={css.platformPanelDark}>
+          <p className={css.kicker}>For gutter companies</p>
+          <h2>Better-fit homeowners, fewer wasted conversations.</h2>
+          <p>
+            Build a focused profile and receive requests that match your service area, job type,
+            install capacity, and specialties.
+          </p>
         </div>
       </section>
 
-      <section className={css.splitSection}>
-        <div>
-          <p className={css.kicker}>For homeowners</p>
-          <h2>Clear choices, better questions, fewer surprises.</h2>
-          <p>
-            See who is interested, compare fit, and move the conversation forward with the details
-            contractors need to price real work. No endless search tabs. No blind phone list.
-          </p>
+      <section className={css.guidesSection}>
+        <div className={css.sectionIntro}>
+          <p className={css.kicker}>Research and plan</p>
+          <h2>Cost guidance and decision support before anyone sells.</h2>
         </div>
-        <div>
-          <p className={css.kicker}>For gutter companies</p>
-          <h2>Meet homeowners who are already planning the project.</h2>
-          <p>
-            Build a focused profile, receive relevant requests, and spend less time filtering out
-            jobs that are outside your service area, trade, or install capacity.
-          </p>
+        <div className={css.guideGrid}>
+          {guides.map(guide => (
+            <article key={guide} className={css.guideCard}>
+              <span>Guide</span>
+              <h3>{guide}</h3>
+              <p>Clear answers for planning the job, comparing options, and asking better questions.</p>
+            </article>
+          ))}
         </div>
       </section>
 
       <section className={css.finalCta}>
         <div>
           <p className={css.kicker}>Gutter Quotes nationwide</p>
-          <h2>The home service platform gutters deserved from the beginning.</h2>
+          <h2>The category-defining platform for gutter services.</h2>
           <p>
-            A dedicated marketplace can make gutter projects faster to start, easier to compare,
-            and better for the homeowners and pros doing the work.
+            Built to become the trusted place homeowners start and gutter pros grow.
           </p>
         </div>
         <NamedLink

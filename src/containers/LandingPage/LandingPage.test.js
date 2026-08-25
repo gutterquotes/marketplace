@@ -27,11 +27,9 @@ describe('LandingPage', () => {
     );
 
     await waitFor(() => {
-      expect(
-        getByText('The future of gutter services starts with one trusted request.')
-      ).toBeInTheDocument();
-      expect(getByText('Seamless gutters')).toBeInTheDocument();
-      expect(getByRole('link', { name: 'Get free quotes' })).toHaveAttribute(
+      expect(getByText('The smartest way to find trusted gutter pros.')).toBeInTheDocument();
+      expect(getByText('Seamless gutter installation')).toBeInTheDocument();
+      expect(getByRole('link', { name: 'Find gutter pros' })).toHaveAttribute(
         'href',
         '/signup/customer'
       );
