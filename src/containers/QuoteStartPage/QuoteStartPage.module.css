@@ -201,8 +201,14 @@
   background: var(--gqWarm);
 }
 
-.optionButton:hover {
+.optionButton:hover,
+.optionButtonActive {
   border-color: var(--gqAccent);
+}
+
+.optionButtonActive {
+  background: var(--gqWarm);
+  box-shadow: inset 0 0 0 1px var(--gqAccent);
 }
 
 .twoColumn {
@@ -254,6 +260,79 @@
   min-height: 116px;
   padding-top: 14px;
   resize: vertical;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.detailButton {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid var(--gqLine);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--gqInk);
+  cursor: pointer;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.detailButton span,
+.detailButton strong {
+  line-height: 1.15;
+}
+
+.detailButton span {
+  font-size: 13px;
+  font-weight: 820;
+}
+
+.detailButton strong {
+  color: var(--gqAccent);
+  font-size: 13px;
+  font-weight: 880;
+}
+
+.detailButton:hover,
+.detailButtonActive {
+  border-color: var(--gqAccent);
+}
+
+.detailButtonActive {
+  background: var(--gqWarm);
+}
+
+.briefPanel {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+  border: 1px solid #bddbd3;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #f3f8f5 0%, #fff 100%);
+  padding: 18px;
+}
+
+.briefPanel h3 {
+  margin: 0;
+  color: var(--gqInk);
+  font-size: 22px;
+  font-weight: 880;
+  letter-spacing: 0;
+  line-height: 1.16;
+}
+
+.briefPanel p:not(.kicker) {
+  margin: 0;
+  color: var(--gqMuted);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .primaryAction {
@@ -312,6 +391,35 @@
   font-weight: 880;
 }
 
+.visibilityPanel {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+  border: 1px solid #bddbd3;
+  border-radius: 8px;
+  background: #fff;
+  padding: 18px;
+}
+
+.visibilityPanel strong,
+.visibilityPanel span {
+  display: block;
+}
+
+.visibilityPanel strong {
+  color: var(--gqInk);
+  font-size: 16px;
+  font-weight: 880;
+  line-height: 1.2;
+}
+
+.visibilityPanel span {
+  color: var(--gqMuted);
+  font-size: 13px;
+  font-weight: 760;
+  line-height: 1.25;
+}
+
 @media (max-width: 900px) {
   .hero,
   .flow {
@@ -348,7 +456,8 @@
 
   .signalGrid,
   .optionGrid,
-  .twoColumn {
+  .twoColumn,
+  .detailGrid {
     grid-template-columns: 1fr;
   }
 
