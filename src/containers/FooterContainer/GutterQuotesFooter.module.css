@@ -1,0 +1,147 @@
+.root {
+  --gqAccent: #ff4f00;
+  --gqInk: #111413;
+  --gqEvergreen: #10382f;
+  --gqMuted: #5d6764;
+  --gqLine: #dfe7e3;
+  --gqMist: #f3f8f5;
+
+  border-top: 1px solid var(--gqLine);
+  background: #fff;
+  color: var(--gqInk);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.55fr);
+  gap: 48px;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 46px 0 34px;
+}
+
+.brand p {
+  max-width: 420px;
+  margin: 18px 0 0;
+  color: var(--gqMuted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo {
+  display: block;
+  width: 212px;
+  height: auto;
+}
+
+.marketLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.marketLinks a {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  border: 1px solid var(--gqLine);
+  border-radius: 999px;
+  background: var(--gqMist);
+  color: var(--gqEvergreen);
+  font-size: 13px;
+  font-weight: 820;
+  line-height: 1;
+  padding: 0 12px;
+  text-decoration: none;
+}
+
+.marketLinks a:hover {
+  border-color: #ffc0a3;
+  color: var(--gqAccent);
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.navGroup h2 {
+  margin: 0 0 14px;
+  color: var(--gqInk);
+  font-size: 13px;
+  font-weight: 880;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.navGroup ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navGroup a {
+  color: var(--gqMuted);
+  font-size: 14px;
+  font-weight: 720;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.navGroup a:hover {
+  color: var(--gqAccent);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  border-top: 1px solid var(--gqLine);
+  padding: 18px 0 24px;
+  color: var(--gqMuted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 540px) {
+  .inner,
+  .bottom {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .inner {
+    padding-top: 34px;
+  }
+
+  .logo {
+    width: 186px;
+  }
+
+  .nav {
+    grid-template-columns: 1fr;
+  }
+}

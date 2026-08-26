@@ -152,7 +152,8 @@
 }
 
 .searchButton,
-.primaryAction {
+.primaryAction,
+.secondaryAction {
   display: inline-flex;
   min-height: 50px;
   align-items: center;
@@ -165,6 +166,13 @@
   line-height: 1;
   text-decoration: none;
   box-shadow: 0 14px 28px rgba(255, 79, 0, 0.2);
+}
+
+.secondaryAction {
+  border: 1px solid var(--gqLine);
+  background: #fff;
+  color: var(--gqEvergreen);
+  box-shadow: none;
 }
 
 .searchButton {
@@ -181,6 +189,11 @@
 .primaryAction:hover {
   background: var(--gqAccentDark);
   color: #fff;
+}
+
+.secondaryAction:hover {
+  border-color: #ffc0a3;
+  color: var(--gqAccent);
 }
 
 .trustRow {
@@ -471,11 +484,16 @@
 }
 
 .finalCta {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  display: flex;
+  flex-wrap: wrap;
   gap: 34px;
   align-items: center;
+  justify-content: space-between;
   border-top: 1px solid var(--gqLine);
+}
+
+.finalCta div {
+  flex: 1 1 520px;
 }
 
 .finalCta p {

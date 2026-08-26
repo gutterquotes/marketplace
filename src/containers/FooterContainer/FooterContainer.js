@@ -2,6 +2,8 @@ import React from 'react';
 import { useConfiguration } from '../../context/configurationContext';
 import loadable from '@loadable/component';
 
+import GutterQuotesFooter from './GutterQuotesFooter';
+
 const SectionBuilder = loadable(
   () => import(/* webpackChunkName: "SectionBuilder" */ '../PageBuilder/PageBuilder'),
   {
@@ -12,9 +14,9 @@ const SectionBuilder = loadable(
 const FooterComponent = () => {
   const { footer = {}, topbar } = useConfiguration();
 
-  // If footer asset is not set, let's not render Footer at all.
+  // If Console footer content is not set yet, keep launch-critical navigation visible.
   if (Object.keys(footer).length === 0) {
-    return null;
+    return <GutterQuotesFooter />;
   }
 
   // The footer asset does not specify sectionId or sectionType. However, the SectionBuilder

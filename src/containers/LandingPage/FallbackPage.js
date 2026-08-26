@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { NamedLink } from '../../components';
+import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
 import logoImage from '../../assets/gutter-quotes-logo.png';
 
 import css from './FallbackPage.module.css';
@@ -55,6 +56,7 @@ const FallbackPage = () => {
             <NamedLink name="SearchPage">Find pros</NamedLink>
             <a href="#projects">Projects</a>
             <a href="#how">How it works</a>
+            <NamedLink name="LocationsPage">Service areas</NamedLink>
             <NamedLink name="SignupForUserTypePage" params={{ userType: 'provider' }}>
               Join as a pro
             </NamedLink>
@@ -202,7 +204,11 @@ const FallbackPage = () => {
         >
           Start a free request
         </NamedLink>
+        <NamedLink name="LocationsPage" className={css.secondaryAction}>
+          Explore service areas
+        </NamedLink>
       </section>
+      <GutterQuotesFooter />
     </main>
   );
 };
