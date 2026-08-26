@@ -5,14 +5,33 @@ const PageBuilder = loadable(() =>
   import(/* webpackChunkName: "PageBuilder" */ '../PageBuilder/PageBuilder')
 );
 
-// NOTE: You could add the actual Privacy Policy here as a fallback
-//       instead of showing this error message.
 const fallbackPrivacyPolicy = `
-# An error occurred
-The web app couldn\'t reach the backend to fetch the Privacy Policy page.
+# Privacy Policy
 
-## Possible actions
-Please refresh the page and, if that doesn't help, contact the marketplace administrators.
+Last updated: August 2026
+
+This Privacy Policy describes how Gutter Quotes may collect, use, and protect information. It is placeholder launch copy and should be reviewed by qualified counsel before production launch.
+
+## Information we may collect
+Gutter Quotes may collect account information, contact details, homeowner request details, contractor profile information, service areas, messages, photos, payment-related metadata, device information, analytics data, and support communications.
+
+## How information may be used
+We may use information to operate the marketplace, match homeowner requests with relevant contractors, support account creation, manage lead access, improve the service, prevent abuse, send service messages, and comply with legal obligations.
+
+## Public and private request details
+Public request previews should show limited project information such as service type, general location, timeline, and property type. Homeowner names, direct contact details, exact addresses, full notes, and photos should only be shared through appropriate account, verification, and access steps.
+
+## Contractors and homeowner information
+Contractors who access homeowner information may only use it for the specific request and related gutter service communication. Selling, scraping, reusing, or redistributing homeowner data is not permitted.
+
+## Service providers
+Gutter Quotes may rely on vendors for hosting, marketplace infrastructure, payments, analytics, email, support, security, and related operations.
+
+## Choices and requests
+Users may be able to update account details, change communication preferences, or request help with privacy questions through marketplace support channels.
+
+## Updates
+This policy may be updated as the marketplace, lead-access model, verification rules, and production tooling evolve.
 `;
 
 // Create fallback content (array of sections) in page asset format:
@@ -38,11 +57,11 @@ export const fallbackSections = {
   meta: {
     pageTitle: {
       fieldType: 'metaTitle',
-      content: 'Privacy policy page',
+      content: 'Privacy Policy | Gutter Quotes',
     },
     pageDescription: {
       fieldType: 'metaDescription',
-      content: 'Privacy policy fetch failed',
+      content: 'Privacy Policy for Gutter Quotes homeowners and gutter contractors.',
     },
   },
 };

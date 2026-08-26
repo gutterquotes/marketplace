@@ -29,23 +29,18 @@ import { ASSET_NAME } from './TermsOfServicePage.duck';
 
 // This "content-only" component can be used in modals etc.
 const TermsOfServiceContent = props => {
-  const { inProgress, error, data, featuredListings } = props;
+  const { featuredListings } = props;
 
   // We don't want to add h1 heading twice to the HTML (SEO issue).
   // Modal's header is mapped as h2
-  const hasContent = data => typeof data?.content === 'string';
-  const exposeContentAsChildren = data => {
-    return hasContent(data) ? { children: data.content } : {};
+  const hasContent = field => typeof field?.content === 'string';
+  const exposeContentAsChildren = field => {
+    return hasContent(field) ? { children: field.content } : {};
   };
-
-  if (!hasContent && inProgress) {
-    return null;
-  }
 
   const CustomHeading1 = props => <H1 as="h2" {...props} />;
 
-  const hasData = error === null && data;
-  const sectionsData = hasData ? data : fallbackSections;
+  const sectionsData = fallbackSections;
 
   return (
     <SectionBuilder
@@ -63,11 +58,11 @@ const TermsOfServiceContent = props => {
 
 // Presentational component for TermsOfServicePage
 const TermsOfServicePageComponent = props => {
-  const { pageAssetsData, inProgress, error } = props;
+  const { inProgress, error } = props;
 
   return (
     <PageBuilder
-      pageAssetsData={pageAssetsData?.[camelize(ASSET_NAME)]?.data}
+      pageAssetsData={fallbackSections}
       inProgress={inProgress}
       error={error}
       fallbackPage={<FallbackPage />}

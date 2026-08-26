@@ -17,8 +17,11 @@ const NoSearchResultsMaybe = props => {
 
   return hasNoResult ? (
     <div className={css.noSearchResults}>
-      <FormattedMessage id="SearchPage.noResults" />
-      <br />
+      <strong>No matching gutter requests yet.</strong>
+      <span>
+        Try widening your filters, or check back soon as homeowners post new installation, guard,
+        repair, cleaning, and drainage requests.
+      </span>
       {hasSearchParams ? (
         <button className={css.resetAllFiltersButton} onClick={e => resetAll(e)}>
           <FormattedMessage id={'SearchPage.resetAllFilters'} />

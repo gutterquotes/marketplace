@@ -14,6 +14,7 @@ const pageDataLoadingAPI = getPageDataLoadingAPI();
 
 const AuthenticationPage = loadable(() => import(/* webpackChunkName: "AuthenticationPage" */ '../containers/AuthenticationPage/AuthenticationPage'));
 const CheckoutPage = loadable(() => import(/* webpackChunkName: "CheckoutPage" */ '../containers/CheckoutPage/CheckoutPage'));
+const CityLandingPage = loadable(() => import(/* webpackChunkName: "CityLandingPage" */ '../containers/CityLandingPage/CityLandingPage'));
 const CMSPage = loadable(() => import(/* webpackChunkName: "CMSPage" */ '../containers/CMSPage/CMSPage'));
 const ContactDetailsPage = loadable(() => import(/* webpackChunkName: "ContactDetailsPage" */ '../containers/ContactDetailsPage/ContactDetailsPage'));
 const EditListingPage = loadable(() => import(/* webpackChunkName: "EditListingPage" */ '../containers/EditListingPage/EditListingPage'));
@@ -37,6 +38,7 @@ const RequestQuotePage = loadable(() => import(/* webpackChunkName: "RequestQuot
 const SearchPageWithMap = loadable(() => import(/* webpackChunkName: "SearchPageWithMap" */ /* webpackPrefetch: true */  '../containers/SearchPage/SearchPageWithMap'));
 const SearchPageWithGrid = loadable(() => import(/* webpackChunkName: "SearchPageWithGrid" */ /* webpackPrefetch: true */  '../containers/SearchPage/SearchPageWithGrid'));
 const StripePayoutPage = loadable(() => import(/* webpackChunkName: "StripePayoutPage" */ '../containers/StripePayoutPage/StripePayoutPage'));
+const StandardPage = loadable(() => import(/* webpackChunkName: "StandardPage" */ '../containers/StandardPage/StandardPage'));
 const TermsOfServicePage = loadable(() => import(/* webpackChunkName: "TermsOfServicePage" */ '../containers/TermsOfServicePage/TermsOfServicePage'));
 const TransactionPage = loadable(() => import(/* webpackChunkName: "TransactionPage" */ '../containers/TransactionPage/TransactionPage'));
 const NoAccessPage = loadable(() => import(/* webpackChunkName: "NoAccessPage" */ '../containers/NoAccessPage/NoAccessPage'));
@@ -87,6 +89,51 @@ const routeConfiguration = (layoutConfig, accessControlConfig) => {
       path: '/quote',
       name: 'QuoteStartPage',
       component: QuoteStartPage,
+    },
+    {
+      path: '/about',
+      name: 'AboutPage',
+      component: props => <StandardPage {...props} params={{ pageId: 'about' }} />,
+    },
+    {
+      path: '/contact',
+      name: 'ContactPage',
+      component: props => <StandardPage {...props} params={{ pageId: 'contact' }} />,
+    },
+    {
+      path: '/trust-and-safety',
+      name: 'TrustSafetyPage',
+      component: props => <StandardPage {...props} params={{ pageId: 'trust-safety' }} />,
+    },
+    {
+      path: '/cookie-policy',
+      name: 'CookiePolicyPage',
+      component: props => <StandardPage {...props} params={{ pageId: 'cookie-policy' }} />,
+    },
+    {
+      path: '/lead-access-policy',
+      name: 'LeadPolicyPage',
+      component: props => <StandardPage {...props} params={{ pageId: 'lead-policy' }} />,
+    },
+    {
+      path: '/refund-policy',
+      name: 'RefundPolicyPage',
+      component: props => <StandardPage {...props} params={{ pageId: 'refund-policy' }} />,
+    },
+    {
+      path: '/accessibility',
+      name: 'AccessibilityPage',
+      component: props => <StandardPage {...props} params={{ pageId: 'accessibility' }} />,
+    },
+    {
+      path: '/locations',
+      name: 'LocationsPage',
+      component: CityLandingPage,
+    },
+    {
+      path: '/locations/:citySlug',
+      name: 'CityLandingPage',
+      component: CityLandingPage,
     },
     {
       path: '/p/:pageId',

@@ -1,12 +1,28 @@
 @import '../../../styles/customMediaQueries.css';
 
 .noSearchResults {
-  composes: h4 from global;
+  border: 1px solid #dfe7e3;
+  border-radius: 8px;
+  background: #f3f8f5;
+  margin: 18px 0;
+  padding: 22px;
 
-  /* Reserves 48px of vertical space */
-  line-height: 24px;
-  margin-top: 18px;
-  margin-bottom: 18px;
+  & strong {
+    display: block;
+    color: #111413;
+    font-size: 20px;
+    font-weight: var(--fontWeightBold);
+    line-height: 1.2;
+  }
+
+  & span {
+    display: block;
+    max-width: 620px;
+    margin-top: 8px;
+    color: #5d6764;
+    font-size: 15px;
+    line-height: 1.45;
+  }
 
   @media (--viewportMedium) {
     margin-top: 8px;

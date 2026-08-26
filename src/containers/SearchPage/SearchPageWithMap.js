@@ -34,6 +34,7 @@ import SearchFiltersMobile from './SearchFiltersMobile/SearchFiltersMobile';
 import SortBy from './SortBy/SortBy';
 import SearchResultsPanel from './SearchResultsPanel/SearchResultsPanel';
 import NoSearchResultsMaybe from './NoSearchResultsMaybe/NoSearchResultsMaybe';
+import RequestMarketplaceIntro from './RequestMarketplaceIntro';
 import SearchPageAccessWrapper from './SearchPageAccessWrapper';
 import SearchErrors from './SearchErrors';
 
@@ -324,6 +325,7 @@ export class SearchPageComponent extends Component {
         <TopbarContainer rootClassName={topbarClasses} currentSearchParams={validQueryParams} />
         <div id="main-content" className={css.container} role="main">
           <div className={css.searchResultContainer}>
+            <RequestMarketplaceIntro totalItems={totalItems} searchInProgress={searchInProgress} />
             <SearchFiltersMobile
               className={css.searchFiltersMobileMap}
               urlQueryParams={validQueryParams}
