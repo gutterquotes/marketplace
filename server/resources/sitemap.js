@@ -44,13 +44,63 @@ const dev = process.env.REACT_APP_ENV === 'development';
 //
 // Note 3: You can add relevant searches here
 //         E.g. searchHats: { url: '/s?pub_category=hats' },
+const southeastCitySlugs = [
+  'atlanta-ga',
+  'savannah-ga',
+  'augusta-ga',
+  'charlotte-nc',
+  'raleigh-nc',
+  'durham-nc',
+  'greensboro-nc',
+  'wilmington-nc',
+  'charleston-sc',
+  'columbia-sc',
+  'greenville-sc',
+  'myrtle-beach-sc',
+  'nashville-tn',
+  'knoxville-tn',
+  'chattanooga-tn',
+  'memphis-tn',
+  'birmingham-al',
+  'huntsville-al',
+  'mobile-al',
+  'montgomery-al',
+  'jacksonville-fl',
+  'orlando-fl',
+  'tampa-fl',
+  'st-petersburg-fl',
+  'miami-fl',
+  'fort-lauderdale-fl',
+  'west-palm-beach-fl',
+  'tallahassee-fl',
+  'pensacola-fl',
+  'new-orleans-la',
+  'baton-rouge-la',
+  'jackson-ms',
+];
+
 const defaultPublicPaths = {
   landingPage: { url: '/' },
+  about: { url: '/about' },
+  contact: { url: '/contact' },
+  trustAndSafety: { url: '/trust-and-safety' },
   termsOfService: { url: '/terms-of-service' },
   privacyPolicy: { url: '/privacy-policy' },
+  cookiePolicy: { url: '/cookie-policy' },
+  leadAccessPolicy: { url: '/lead-access-policy' },
+  refundPolicy: { url: '/refund-policy' },
+  accessibility: { url: '/accessibility' },
+  locations: { url: '/locations' },
   signup: { url: '/signup' },
   login: { url: '/login' },
   search: { url: '/s' },
+  ...southeastCitySlugs.reduce(
+    (paths, slug) => ({
+      ...paths,
+      [`city-${slug}`]: { url: `/locations/${slug}` },
+    }),
+    {}
+  ),
 };
 
 // Time-to-live (ttl) is set to one day aka 86400 seconds
