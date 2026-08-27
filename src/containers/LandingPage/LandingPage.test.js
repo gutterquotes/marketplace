@@ -35,7 +35,7 @@ describe('LandingPage', () => {
       );
       expect(getByRole('link', { name: 'Join as a pro' })).toHaveAttribute(
         'href',
-        '/signup/provider'
+        '/pros'
       );
     });
   });

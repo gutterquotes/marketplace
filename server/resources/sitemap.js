@@ -83,6 +83,8 @@ const defaultPublicPaths = {
   landingPage: { url: '/' },
   about: { url: '/about' },
   contact: { url: '/contact' },
+  gutterPros: { url: '/pros' },
+  gutterProsAlias: { url: '/gutter-pros' },
   trustAndSafety: { url: '/trust-and-safety' },
   termsOfService: { url: '/terms-of-service' },
   privacyPolicy: { url: '/privacy-policy' },

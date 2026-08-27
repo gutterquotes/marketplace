@@ -57,7 +57,7 @@ const FallbackPage = () => {
             <a href="#projects">Projects</a>
             <a href="#how">How it works</a>
             <NamedLink name="LocationsPage">Service areas</NamedLink>
-            <NamedLink name="SignupForUserTypePage" params={{ userType: 'provider' }}>
+            <NamedLink name="GutterProPage">
               Join as a pro
             </NamedLink>
           </nav>

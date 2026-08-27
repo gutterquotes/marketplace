@@ -18,10 +18,10 @@ const footerGroups = [
   {
     title: 'Gutter pros',
     links: [
+      { label: 'For gutter pros', name: 'GutterProPage' },
       { label: 'Contractor signup', name: 'SignupForUserTypePage', params: { userType: 'provider' } },
       { label: 'Contractor request board', name: 'SearchPage' },
       { label: 'Lead access policy', name: 'LeadPolicyPage' },
-      { label: 'Contact onboarding', name: 'ContactPage' },
     ],
   },
   {

@@ -18,7 +18,7 @@ const RequestMarketplaceIntro = props => {
           requests that match your service area, crew capacity, and specialties.
         </p>
         <div className={css.requestActions}>
-          <NamedLink name="SignupForUserTypePage" params={{ userType: 'provider' }}>
+          <NamedLink name="GutterProPage">
             Join as a gutter pro
           </NamedLink>
           <NamedLink name="QuoteStartPage">Post a homeowner request</NamedLink>
