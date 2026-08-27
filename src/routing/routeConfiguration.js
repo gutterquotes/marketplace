@@ -35,6 +35,7 @@ const ProfilePage = loadable(() => import(/* webpackChunkName: "ProfilePage" */ 
 const ProfileSettingsPage = loadable(() => import(/* webpackChunkName: "ProfileSettingsPage" */ '../containers/ProfileSettingsPage/ProfileSettingsPage'));
 const QuoteStartPage = loadable(() => import(/* webpackChunkName: "QuoteStartPage" */ '../containers/QuoteStartPage/QuoteStartPage'));
 const GutterProPage = loadable(() => import(/* webpackChunkName: "GutterProPage" */ '../containers/GutterProPage/GutterProPage'));
+const GutterLeadPage = loadable(() => import(/* webpackChunkName: "GutterLeadPage" */ '../containers/GutterLeadPage/GutterLeadPage'));
 const RequestQuotePage = loadable(() => import(/* webpackChunkName: "RequestQuotePage" */ '../containers/RequestQuotePage/RequestQuotePage'));
 const SearchPageWithMap = loadable(() => import(/* webpackChunkName: "SearchPageWithMap" */ /* webpackPrefetch: true */  '../containers/SearchPage/SearchPageWithMap'));
 const SearchPageWithGrid = loadable(() => import(/* webpackChunkName: "SearchPageWithGrid" */ /* webpackPrefetch: true */  '../containers/SearchPage/SearchPageWithGrid'));
@@ -95,6 +96,16 @@ const routeConfiguration = (layoutConfig, accessControlConfig) => {
       path: '/pros',
       name: 'GutterProPage',
       component: GutterProPage,
+    },
+    {
+      path: '/pros/gutter-leads',
+      name: 'GutterLeadPage',
+      component: GutterLeadPage,
+    },
+    {
+      path: '/gutter-leads',
+      name: 'GutterLeadsPage',
+      component: GutterLeadPage,
     },
     {
       path: '/gutter-pros',

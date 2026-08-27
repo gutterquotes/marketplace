@@ -56,6 +56,7 @@ const GutterProPage = props => {
           <div className={css.heroTop}>
             <img src={logoImage} alt="Gutter Quotes" className={css.logo} />
             <nav className={css.nav} aria-label="Gutter pro navigation">
+              <NamedLink name="GutterLeadPage">Gutter leads</NamedLink>
               <a href="#how">How it works</a>
               <a href="#lead-types">Lead types</a>
               <a href="#signup">Get started</a>
@@ -79,8 +80,8 @@ const GutterProPage = props => {
                 >
                   Join as a gutter pro
                 </NamedLink>
-                <NamedLink name="SearchPage" className={css.secondaryAction}>
-                  View request board
+                <NamedLink name="GutterLeadPage" className={css.secondaryAction}>
+                  Explore gutter leads
                 </NamedLink>
               </div>
             </div>

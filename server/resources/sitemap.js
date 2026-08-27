@@ -85,6 +85,8 @@ const defaultPublicPaths = {
   contact: { url: '/contact' },
   gutterPros: { url: '/pros' },
   gutterProsAlias: { url: '/gutter-pros' },
+  gutterLeads: { url: '/pros/gutter-leads' },
+  gutterLeadsAlias: { url: '/gutter-leads' },
   trustAndSafety: { url: '/trust-and-safety' },
   termsOfService: { url: '/terms-of-service' },
   privacyPolicy: { url: '/privacy-policy' },

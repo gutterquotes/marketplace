@@ -36,6 +36,9 @@ describe('GutterProPage', () => {
       'href',
       '/signup/provider'
     );
-    expect(screen.getByRole('link', { name: 'View request board' })).toHaveAttribute('href', '/s');
+    expect(screen.getByRole('link', { name: 'Explore gutter leads' })).toHaveAttribute(
+      'href',
+      '/pros/gutter-leads'
+    );
   });
 });
