@@ -1,7 +1,8 @@
 import React, { useMemo, useState } from 'react';
 
-import { NamedLink, Page, TopbarSimplified } from '../../components';
+import { Page, TopbarSimplified } from '../../components';
 import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
+import { GUTTER_QUOTE_LISTING_TYPE, saveGutterQuoteDraft } from '../../util/gutterQuoteDraft';
 import logoImage from '../../assets/gutter-quotes-logo.png';
 
 import css from './QuoteStartPage.module.css';
@@ -10,36 +11,42 @@ const projectTypes = [
   {
     label: 'Seamless gutter installation',
     publicSummary: 'New seamless gutter installation',
+    serviceNeeded: 'installation',
     proSignal: 'Installation crew, material options, measurements, and warranty fit',
     defaultNotes: 'I want to compare options for seamless gutters and gutter guards.',
   },
   {
     label: 'Gutter guards',
     publicSummary: 'Gutter guard installation',
+    serviceNeeded: 'guards',
     proSignal: 'Guard type, roof pitch, tree coverage, and existing gutter condition',
     defaultNotes: 'I want to compare gutter guard options and understand what works for my home.',
   },
   {
     label: 'Gutter repair',
     publicSummary: 'Gutter repair request',
+    serviceNeeded: 'repair',
     proSignal: 'Leak location, sagging runs, fascia condition, and urgency',
     defaultNotes: 'I have gutter issues and want a pro to inspect repair or replacement options.',
   },
   {
     label: 'Gutter cleaning',
     publicSummary: 'Gutter cleaning request',
+    serviceNeeded: 'cleaning',
     proSignal: 'Home height, debris level, downspout clearing, and seasonal availability',
     defaultNotes: 'I need gutter cleaning and downspout clearing.',
   },
   {
     label: 'Downspouts and drainage',
     publicSummary: 'Downspout and drainage improvement',
+    serviceNeeded: 'drainage',
     proSignal: 'Water discharge point, soil slope, foundation concerns, and extensions',
     defaultNotes: 'I want to move water away from the home and improve drainage.',
   },
   {
     label: 'Not sure yet',
     publicSummary: 'Gutter assessment request',
+    serviceNeeded: 'installation',
     proSignal: 'Diagnostic visit, photos, roofline, and homeowner goals',
     defaultNotes: 'I am not sure what I need yet and want guidance from a gutter pro.',
   },
@@ -55,6 +62,20 @@ const propertyTypes = [
 const homeHeights = ['One story', 'Two stories', 'Three stories or taller'];
 
 const timelines = ['This week', 'This month', 'Planning ahead', 'Emergency repair'];
+
+const timelineToValue = {
+  'This week': 'week',
+  'This month': 'month',
+  'Planning ahead': 'planning',
+  'Emergency repair': 'emergency',
+};
+
+const propertyTypeToValue = {
+  'Single-family home': 'single-family',
+  Townhome: 'townhome',
+  'Multifamily property': 'multi-family',
+  'Commercial building': 'commercial',
+};
 
 const detailBoosts = [
   { key: 'photos', label: 'Photos ready', points: 7 },
@@ -112,6 +133,45 @@ const QuoteStartPage = props => {
   const handleProjectSelect = project => {
     setSelectedProject(project);
     setNotes(project.defaultNotes);
+  };
+
+  const title = `${selectedProject.publicSummary} near ${zipCode || 'my area'}`;
+  const draftDescription = [
+    publicPreview,
+    '',
+    notes,
+    '',
+    `Property: ${propertyType}. Height: ${homeHeight}. Timeline: ${timeline}.`,
+    selectedDetails.length > 0
+      ? `Helpful details: ${selectedDetails
+          .map(key => detailBoosts.find(detail => detail.key === key)?.label)
+          .filter(Boolean)
+          .join(', ')}.`
+      : null,
+  ]
+    .filter(Boolean)
+    .join('\n');
+
+  const saveDraft = () => {
+    saveGutterQuoteDraft({
+      title,
+      description: draftDescription,
+      listingType: GUTTER_QUOTE_LISTING_TYPE,
+      publicData: {
+        serviceNeeded: selectedProject.serviceNeeded,
+        projectZip: zipCode,
+        homeType: propertyTypeToValue[propertyType],
+        timeline: timelineToValue[timeline],
+        projectDetails: notes,
+        requestReadinessScore: readinessScore,
+        publicPreview,
+      },
+      privateData: {
+        projectNotes: notes,
+        homeHeight,
+        selectedDetails,
+      },
+    });
   };
 
   return (
@@ -267,13 +327,13 @@ const QuoteStartPage = props => {
               </p>
             </div>
 
-            <NamedLink
-              name="SignupForUserTypePage"
-              params={{ userType: 'customer' }}
+            <a
+              href={`/l/new?listingType=${GUTTER_QUOTE_LISTING_TYPE}`}
+              onClick={saveDraft}
               className={css.primaryAction}
             >
               Continue free request
-            </NamedLink>
+            </a>
           </div>
 
           <aside className={css.sidePanel}>

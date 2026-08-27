@@ -16,6 +16,11 @@ import {
   pickCategoryFields,
 } from '../../../../util/fieldHelpers';
 import { isBookingProcessAlias } from '../../../../transactions/transaction';
+import {
+  clearGutterQuoteDraft,
+  GUTTER_QUOTE_LISTING_TYPE,
+  readGutterQuoteDraft,
+} from '../../../../util/gutterQuoteDraft';
 
 // Import shared components
 import { H3, ListingLink } from '../../../../components';
@@ -240,9 +245,11 @@ const getInitialValues = (
   categoryKey
 ) => {
   const { description, title, publicData, privateData } = props?.listing?.attributes || {};
+  const quoteDraft =
+    props?.params?.type === LISTING_PAGE_PARAM_TYPE_NEW ? readGutterQuoteDraft() : null;
   // If details panel is accessed via URL like my.domain.com/l/draft/00000000-0000-0000-0000-000000000000/new/details?listingType=sell-bicycles,
   // we'll pick the preselected listing type from the URL.
-  const preselectedListingType = props.locationSearch?.listingType;
+  const preselectedListingType = props.locationSearch?.listingType || quoteDraft?.listingType;
   // If listing type has already been set, use it.
   // Otherwise, check if there's a preselected listing type in the URL.
   const listingType = publicData?.listingType || preselectedListingType;
@@ -250,8 +257,8 @@ const getInitialValues = (
   const nestedCategories = pickCategoryFields(publicData, categoryKey, 1, listingCategories);
   // Initial values for the form
   return {
-    title,
-    description,
+    title: title || quoteDraft?.title,
+    description: description || quoteDraft?.description,
     ...nestedCategories,
     // Transaction type info: listingType, transactionProcessAlias, unitType
     ...getTransactionInfo({ listingTypes, existingListingTypeInfo, preselectedListingType }),
@@ -262,6 +269,15 @@ const getInitialValues = (
       nestedCategories,
       listingFields
     ),
+    ...(quoteDraft?.listingType === GUTTER_QUOTE_LISTING_TYPE
+      ? {
+          pub_serviceNeeded: quoteDraft.publicData?.serviceNeeded,
+          pub_projectZip: quoteDraft.publicData?.projectZip,
+          pub_homeType: quoteDraft.publicData?.homeType,
+          pub_timeline: quoteDraft.publicData?.timeline,
+          pub_projectDetails: quoteDraft.publicData?.projectDetails,
+        }
+      : {}),
     ...initialValuesForListingFields(
       privateData,
       'private',
@@ -317,6 +333,8 @@ const EditListingDetailsPanel = props => {
   const listingFields = config.listing.listingFields;
   const listingCategories = config.categoryConfiguration.categories;
   const categoryKey = config.categoryConfiguration.key;
+  const quoteDraft =
+    pathParams?.type === LISTING_PAGE_PARAM_TYPE_NEW ? readGutterQuoteDraft() : null;
 
   const { hasExistingListingType, existingListingTypeInfo } = hasSetListingType(publicData);
   const hasValidExistingListingType =
@@ -327,9 +345,10 @@ const EditListingDetailsPanel = props => {
       return listinTypesMatch && unitTypesMatch;
     });
 
+  const preselectedListingType = locationSearch?.listingType || quoteDraft?.listingType;
   const validPreselectedListingType =
-    pathParams?.type === LISTING_PAGE_PARAM_TYPE_NEW && !!locationSearch?.listingType
-      ? listingTypes.find(conf => conf.listingType === locationSearch.listingType)
+    pathParams?.type === LISTING_PAGE_PARAM_TYPE_NEW && !!preselectedListingType
+      ? listingTypes.find(conf => conf.listingType === preselectedListingType)
       : null;
 
   // Call onListingTypeChange with validPreselectedListingType id-string on initialization.
@@ -415,6 +434,22 @@ const EditListingDetailsPanel = props => {
               nestedCategories,
               listingFields
             );
+            const draftPublicData =
+              quoteDraft?.listingType === GUTTER_QUOTE_LISTING_TYPE
+                ? {
+                    requestReadinessScore: quoteDraft.publicData?.requestReadinessScore,
+                    publicPreview: quoteDraft.publicData?.publicPreview,
+                  }
+                : {};
+            const draftPrivateData =
+              quoteDraft?.listingType === GUTTER_QUOTE_LISTING_TYPE
+                ? {
+                    projectNotes: quoteDraft.privateData?.projectNotes,
+                    homeHeight: quoteDraft.privateData?.homeHeight,
+                    selectedDetails: quoteDraft.privateData?.selectedDetails,
+                    quoteDraftSavedAt: quoteDraft.savedAt,
+                  }
+                : {};
             // New values for listing attributes
             const updateValues = {
               title: title.trim(),
@@ -424,13 +459,20 @@ const EditListingDetailsPanel = props => {
                 transactionProcessAlias,
                 unitType,
                 ...cleanedNestedCategories,
+                ...draftPublicData,
                 ...publicListingFields,
               },
-              privateData: privateListingFields,
+              privateData: {
+                ...draftPrivateData,
+                ...privateListingFields,
+              },
               ...setNoAvailabilityForUnbookableListings(transactionProcessAlias),
             };
 
             onSubmit(updateValues);
+            if (quoteDraft?.listingType === GUTTER_QUOTE_LISTING_TYPE) {
+              clearGutterQuoteDraft();
+            }
           }}
           selectableListingTypes={listingTypes.map(conf =>
             getTransactionInfo({

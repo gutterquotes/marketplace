@@ -42,5 +42,17 @@ describe('QuoteStartPage', () => {
       )
     ).toBeInTheDocument();
     expect(screen.getByText('Private until lead access')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('link', { name: 'Continue free request' }));
+    const savedDraft = JSON.parse(window.localStorage.getItem('gutterQuotes.requestDraft.v1'));
+    expect(savedDraft).toMatchObject({
+      title: 'Gutter repair request near 30301',
+      listingType: 'post-request',
+      publicData: {
+        serviceNeeded: 'repair',
+        projectZip: '30301',
+        timeline: 'emergency',
+      },
+    });
   });
 });
