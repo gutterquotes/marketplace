@@ -122,10 +122,11 @@ const FallbackPage = () => {
       <section id="projects" className={css.projectsSection}>
         <div className={css.sectionIntro}>
           <p className={css.kicker}>Popular gutter projects</p>
-          <h2>Everything Angi makes broad, Gutter Quotes makes focused.</h2>
+          <h2>Find the right gutter solution before water becomes a bigger problem.</h2>
           <p>
-            Homeowners do not need a giant directory for a specific exterior water problem. They
-            need the right gutter company, the right questions, and a clear path to a quote.
+            Gutter Quotes helps you compare local specialists for installation, guards, repair,
+            cleaning, and drainage so you can protect your roofline, siding, and foundation with
+            more confidence.
           </p>
         </div>
         <div className={css.projectGrid}>

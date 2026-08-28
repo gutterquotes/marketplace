@@ -29,6 +29,9 @@ describe('LandingPage', () => {
     await waitFor(() => {
       expect(getByText('The smartest way to find trusted gutter pros.')).toBeInTheDocument();
       expect(getByText('Seamless gutter installation')).toBeInTheDocument();
+      expect(
+        getByText('Find the right gutter solution before water becomes a bigger problem.')
+      ).toBeInTheDocument();
       expect(getByRole('link', { name: 'Find gutter pros' })).toHaveAttribute(
         'href',
         '/quote'
