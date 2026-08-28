@@ -13,6 +13,7 @@ const footerGroups = [
       { label: 'Browse active requests', name: 'SearchPage' },
       { label: 'Service areas', name: 'LocationsPage' },
       { label: 'Seamless gutters', name: 'ServiceLandingPage', params: { serviceSlug: 'seamless-gutter-installation' } },
+      { label: 'Gutter installation cost', name: 'SeoLandingPage', params: { seoSlug: 'gutter-installation-cost' } },
     ],
   },
   {
@@ -20,6 +21,7 @@ const footerGroups = [
     links: [
       { label: 'For gutter pros', name: 'GutterProPage' },
       { label: 'Gutter leads', name: 'GutterLeadPage' },
+      { label: 'Buy gutter leads', name: 'SeoLandingPage', params: { seoSlug: 'buy-gutter-leads' } },
       { label: 'Contractor signup', name: 'SignupForUserTypePage', params: { userType: 'provider' } },
       { label: 'Contractor request board', name: 'SearchPage' },
     ],
@@ -31,6 +33,7 @@ const footerGroups = [
       { label: 'Contact', name: 'ContactPage' },
       { label: 'Accessibility', name: 'AccessibilityPage' },
       { label: 'Gutter guards', name: 'ServiceLandingPage', params: { serviceSlug: 'gutter-guards' } },
+      { label: 'Are gutter guards worth it', name: 'SeoLandingPage', params: { seoSlug: 'are-gutter-guards-worth-it' } },
     ],
   },
   {

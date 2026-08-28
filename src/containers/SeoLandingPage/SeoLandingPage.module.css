@@ -1,0 +1,192 @@
+.root {
+  color: #111413;
+  background: #ffffff;
+}
+
+.hero,
+.contentGrid,
+.guideSection,
+.linkSection {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 72px 0 56px;
+}
+
+.logoLink {
+  display: inline-flex;
+  margin-bottom: 40px;
+}
+
+.logo {
+  width: 210px;
+  height: auto;
+}
+
+.kicker {
+  margin: 0 0 14px;
+  color: #ff4f00;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 860px;
+  margin: 0;
+  font-size: clamp(44px, 6vw, 84px);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.lead {
+  max-width: 760px;
+  margin: 26px 0 0;
+  color: #4f5653;
+  font-size: 22px;
+  line-height: 1.45;
+}
+
+.actions,
+.finalActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.primaryAction {
+  background: #ff4f00;
+  color: #ffffff;
+}
+
+.secondaryAction {
+  border: 1px solid #d5d5d5;
+  color: #111413;
+  background: #ffffff;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  padding: 20px 0 48px;
+}
+
+.contentGrid article,
+.guideSection,
+.linkSection {
+  border: 1px solid #e7e7e7;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.contentGrid article {
+  padding: 28px;
+}
+
+.contentGrid h2,
+.guideSection h2,
+.linkSection h2 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.contentGrid p:not(.kicker),
+.guideSection li {
+  color: #555d59;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.guideSection,
+.linkSection {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
+  gap: 32px;
+  padding: 32px;
+  margin-bottom: 18px;
+}
+
+.guideSection ul,
+.linkSection ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guideSection li {
+  padding: 14px 0;
+  border-bottom: 1px solid #ededed;
+}
+
+.guideSection li:last-child {
+  border-bottom: 0;
+}
+
+.linkSection a {
+  display: block;
+  padding: 14px 0;
+  border-bottom: 1px solid #ededed;
+  color: #111413;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.linkSection li:last-child a {
+  border-bottom: 0;
+}
+
+@media (max-width: 820px) {
+  .hero,
+  .contentGrid,
+  .guideSection,
+  .linkSection {
+    width: min(100% - 28px, 1120px);
+  }
+
+  .hero {
+    padding-top: 42px;
+  }
+
+  .hero h1 {
+    font-size: 44px;
+  }
+
+  .lead {
+    font-size: 19px;
+  }
+
+  .contentGrid,
+  .guideSection,
+  .linkSection {
+    grid-template-columns: 1fr;
+  }
+
+  .contentGrid {
+    gap: 12px;
+  }
+
+  .guideSection,
+  .linkSection {
+    padding: 24px;
+  }
+}

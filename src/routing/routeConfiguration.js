@@ -40,6 +40,7 @@ const RequestQuotePage = loadable(() => import(/* webpackChunkName: "RequestQuot
 const SearchPageWithMap = loadable(() => import(/* webpackChunkName: "SearchPageWithMap" */ /* webpackPrefetch: true */  '../containers/SearchPage/SearchPageWithMap'));
 const SearchPageWithGrid = loadable(() => import(/* webpackChunkName: "SearchPageWithGrid" */ /* webpackPrefetch: true */  '../containers/SearchPage/SearchPageWithGrid'));
 const ServiceLandingPage = loadable(() => import(/* webpackChunkName: "ServiceLandingPage" */ '../containers/ServiceLandingPage/ServiceLandingPage'));
+const SeoLandingPage = loadable(() => import(/* webpackChunkName: "SeoLandingPage" */ '../containers/SeoLandingPage/SeoLandingPage'));
 const StripePayoutPage = loadable(() => import(/* webpackChunkName: "StripePayoutPage" */ '../containers/StripePayoutPage/StripePayoutPage'));
 const StandardPage = loadable(() => import(/* webpackChunkName: "StandardPage" */ '../containers/StandardPage/StandardPage'));
 const TermsOfServicePage = loadable(() => import(/* webpackChunkName: "TermsOfServicePage" */ '../containers/TermsOfServicePage/TermsOfServicePage'));
@@ -167,6 +168,11 @@ const routeConfiguration = (layoutConfig, accessControlConfig) => {
       path: '/services/:serviceSlug/:citySlug',
       name: 'ServiceCityLandingPage',
       component: ServiceLandingPage,
+    },
+    {
+      path: '/guides/:seoSlug',
+      name: 'SeoLandingPage',
+      component: SeoLandingPage,
     },
     {
       path: '/p/:pageId',

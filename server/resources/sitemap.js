@@ -90,6 +90,51 @@ const gutterServiceSlugs = [
   'commercial-gutters',
 ];
 
+const seoGuideSlugs = [
+  'gutter-installation-cost',
+  'seamless-gutter-cost',
+  'gutter-replacement-cost',
+  'gutter-guard-cost',
+  'gutter-repair-cost',
+  'gutter-cleaning-cost',
+  'underground-downspout-drain-cost',
+  'gutter-installers-near-me',
+  'gutter-companies-near-me',
+  'gutter-repair-near-me',
+  'gutter-cleaning-near-me',
+  'gutter-guard-installers-near-me',
+  'seamless-gutter-contractors-near-me',
+  'gutters-overflowing',
+  'gutters-leaking',
+  'gutters-pulling-away-from-house',
+  'sagging-gutters',
+  'water-pooling-near-foundation',
+  'basement-water-from-gutters',
+  'downspout-drainage-problems',
+  'rainwater-not-draining-away-from-house',
+  'seamless-gutters-vs-regular-gutters',
+  'gutter-guards-vs-gutter-cleaning',
+  'are-gutter-guards-worth-it',
+  'best-gutter-guards',
+  'leaffilter-alternatives',
+  'aluminum-vs-vinyl-gutters',
+  '5-inch-vs-6-inch-gutters',
+  'aluminum-gutters',
+  'copper-gutters',
+  'vinyl-gutters',
+  'k-style-gutters',
+  'half-round-gutters',
+  '6-inch-gutters',
+  'box-gutters',
+  'gutter-leads',
+  'gutter-installation-leads',
+  'gutter-guard-leads',
+  'exclusive-gutter-leads',
+  'buy-gutter-leads',
+  'pay-per-lead-gutter-marketing',
+  'gutter-contractor-marketing',
+];
+
 const defaultPublicPaths = {
   landingPage: { url: '/' },
   about: { url: '/about' },
@@ -113,6 +158,13 @@ const defaultPublicPaths = {
     (paths, slug) => ({
       ...paths,
       [`service-${slug}`]: { url: `/services/${slug}` },
+    }),
+    {}
+  ),
+  ...seoGuideSlugs.reduce(
+    (paths, slug) => ({
+      ...paths,
+      [`guide-${slug}`]: { url: `/guides/${slug}` },
     }),
     {}
   ),
