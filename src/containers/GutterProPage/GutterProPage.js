@@ -37,7 +37,7 @@ const steps = [
 const proofPoints = [
   { value: 'Gutter-only', label: 'no generic home service noise' },
   { value: 'AI-ready', label: 'project briefs from structured intake' },
-  { value: 'Reverse', label: 'homeowners request, pros compete' },
+  { value: 'Request-led', label: 'homeowners ask, pros respond' },
   { value: 'Nationwide', label: 'built to expand city by city' },
 ];
 
@@ -69,8 +69,8 @@ const GutterProPage = props => {
               <h1>Grow your gutter company with quote-ready homeowner requests.</h1>
               <p className={css.lead}>
                 Stop fighting inside a giant general contractor directory. Gutter Quotes is the
-                focused reverse marketplace where homeowners post gutter projects and qualified
-                pros choose the leads that fit.
+                focused lead platform where homeowners post gutter projects and qualified pros
+                choose the requests that fit.
               </p>
               <div className={css.actions}>
                 <NamedLink

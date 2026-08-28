@@ -12,9 +12,9 @@ export const standardPages = {
           'Gutter projects protect roofs, siding, landscaping, and foundations, but homeowners are often left calling companies one by one. We are building a focused marketplace where homeowners can post a clear request and gutter pros can respond when the job fits their service area and expertise.',
       },
       {
-        title: 'Built for a reverse marketplace',
+        title: 'Post one request and compare qualified gutter pros',
         text:
-          'Homeowners create requests. Contractors browse opportunities. Details stay limited until the right account and access steps are complete. That model keeps the experience more focused than a generic directory.',
+          'Homeowners share what they need once. Contractors can review relevant project opportunities and respond when the job fits their service area and expertise. Personal details stay limited until the right account and access steps are complete.',
       },
       {
         title: 'Our goal',
@@ -100,7 +100,7 @@ export const standardPages = {
     eyebrow: 'Marketplace rules',
     hero: 'How homeowner request access should work for contractors.',
     description:
-      'Lead access policy for the Gutter Quotes reverse marketplace model.',
+      'Lead access policy for homeowner gutter requests on Gutter Quotes.',
     sections: [
       {
         title: 'Public previews',

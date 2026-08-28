@@ -337,7 +337,7 @@ const QuoteStartPage = props => {
           </div>
 
           <aside className={css.sidePanel}>
-            <p className={css.kicker}>Reverse marketplace model</p>
+            <p className={css.kicker}>Quote-ready request</p>
             <h2>Post once. Let qualified gutter pros compete for the work.</h2>
             <ul>
               {[

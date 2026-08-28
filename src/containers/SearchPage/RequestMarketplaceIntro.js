@@ -34,8 +34,8 @@ const RequestMarketplaceIntro = props => {
           <span>gutter service types</span>
         </div>
         <div>
-          <strong>Reverse</strong>
-          <span>providers submit quotes</span>
+          <strong>Quote-ready</strong>
+          <span>pros respond to requests</span>
         </div>
       </aside>
     </section>
