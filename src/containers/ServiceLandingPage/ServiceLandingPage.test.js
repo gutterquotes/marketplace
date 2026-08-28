@@ -2,8 +2,10 @@ import React from 'react';
 import '@testing-library/jest-dom';
 
 import { renderWithProviders as render, testingLibrary } from '../../util/testHelpers';
+import { findCityBySlug } from '../CityLandingPage/cityData';
 
-import ServiceLandingPage from './ServiceLandingPage';
+import ServiceLandingPage, { createServiceSchema } from './ServiceLandingPage';
+import { findServiceBySlug } from './serviceData';
 
 const { screen } = testingLibrary;
 
@@ -50,5 +52,29 @@ describe('ServiceLandingPage', () => {
       'href',
       '/pros'
     );
+  });
+
+  it('adds service and local area structured data', () => {
+    render(
+      <ServiceLandingPage
+        params={{ serviceSlug: 'gutter-repair', citySlug: 'charlotte-nc' }}
+        scrollingDisabled={false}
+      />
+    );
+
+    const service = findServiceBySlug('gutter-repair');
+    const city = findCityBySlug('charlotte-nc');
+    const [serviceSchema] = createServiceSchema({
+      service,
+      city,
+      headline: 'Gutter Repair Charlotte NC',
+      description: 'Compare local gutter repair pros in Charlotte, NC.',
+      marketplaceRootURL: 'https://gutterquotes.com',
+    });
+
+    expect(serviceSchema.name).toBe('Gutter Repair Charlotte NC');
+    expect(serviceSchema.serviceType).toBe('Gutter Repair');
+    expect(serviceSchema.areaServed.address.addressLocality).toBe('Charlotte');
+    expect(serviceSchema.areaServed.address.addressRegion).toBe('NC');
   });
 });

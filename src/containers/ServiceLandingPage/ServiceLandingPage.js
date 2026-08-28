@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { NamedLink, NamedRedirect, Page, TopbarSimplified } from '../../components';
+import { useConfiguration } from '../../context/configurationContext';
 import { findCityBySlug, southeastCities } from '../CityLandingPage/cityData';
 import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
 import logoImage from '../../assets/gutter-quotes-logo.png';
@@ -16,8 +17,106 @@ const getDescription = (service, city) =>
     ? `Compare local pros for ${service.phrase.toLowerCase()} in ${city.city}, ${city.stateAbbr}. Start one free gutter request and get matched with specialists who serve ${city.region}.`
     : `Compare local pros for ${service.phrase.toLowerCase()}. Start one free gutter request and find specialists for ${service.homeownerNeed}.`;
 
+const getStateAreas = () => {
+  const stateMap = southeastCities.reduce((states, city) => {
+    return states.includes(city.stateAbbr) ? states : [...states, city.stateAbbr];
+  }, []);
+
+  return stateMap.map(state => ({
+    '@type': 'AdministrativeArea',
+    name: state,
+    address: {
+      '@type': 'PostalAddress',
+      addressRegion: state,
+      addressCountry: 'US',
+    },
+  }));
+};
+
+export const createServiceSchema = ({ service, city, headline, description, marketplaceRootURL }) => {
+  const rootURL = marketplaceRootURL || 'https://gutterquotes.com';
+  const pagePath = city ? `/services/${service.slug}/${city.slug}` : `/services/${service.slug}`;
+  const pageURL = `${rootURL}${pagePath}`;
+  const cityArea = city
+    ? {
+        '@type': 'City',
+        name: `${city.city}, ${city.stateAbbr}`,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: city.city,
+          addressRegion: city.stateAbbr,
+          addressCountry: 'US',
+        },
+      }
+    : null;
+
+  return [
+    {
+      '@type': 'Service',
+      '@id': `${pageURL}#service`,
+      name: headline,
+      description,
+      serviceType: service.phrase,
+      category: 'Gutter services',
+      url: pageURL,
+      provider: {
+        '@id': `${rootURL}#organization`,
+        name: 'Gutter Quotes',
+      },
+      areaServed: cityArea || getStateAreas(),
+      audience: [
+        {
+          '@type': 'Audience',
+          audienceType: 'Homeowners comparing gutter quotes',
+        },
+        {
+          '@type': 'Audience',
+          audienceType: 'Gutter contractors looking for local leads',
+        },
+      ],
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+        url: `${rootURL}/quote`,
+        description: 'Homeowners can start a free gutter request and compare interested local pros.',
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${pageURL}#breadcrumbs`,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Gutter Quotes',
+          item: rootURL,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: service.phrase,
+          item: `${rootURL}/services/${service.slug}`,
+        },
+        ...(city
+          ? [
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: `${service.phrase} ${city.city} ${city.stateAbbr}`,
+                item: pageURL,
+              },
+            ]
+          : []),
+      ],
+    },
+  ];
+};
+
 const ServiceLandingPage = props => {
   const { params = {}, scrollingDisabled } = props;
+  const config = useConfiguration();
   const service = findServiceBySlug(params.serviceSlug);
   const city = params.citySlug ? findCityBySlug(params.citySlug) : null;
 
@@ -30,11 +129,19 @@ const ServiceLandingPage = props => {
   const localLabel = city ? `${city.city}, ${city.stateAbbr}` : 'your area';
   const relatedCities = southeastCities.filter(item => item.slug !== city?.slug).slice(0, 8);
   const relatedServices = gutterServices.filter(item => item.slug !== service.slug);
+  const schema = createServiceSchema({
+    service,
+    city,
+    headline,
+    description,
+    marketplaceRootURL: config.marketplaceRootURL,
+  });
 
   return (
     <Page
       title={`${headline} | Gutter Quotes`}
       description={description}
+      schema={schema}
       scrollingDisabled={scrollingDisabled}
     >
       <TopbarSimplified />
