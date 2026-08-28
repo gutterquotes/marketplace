@@ -86,6 +86,9 @@ const CityLandingPage = props => {
               <NamedLink name="SearchPage" className={css.secondaryAction}>
                 Browse active requests
               </NamedLink>
+              <NamedLink name="GutterProPage" className={css.secondaryAction}>
+                Get gutter leads
+              </NamedLink>
             </div>
           </div>
           <aside className={css.localPanel}>

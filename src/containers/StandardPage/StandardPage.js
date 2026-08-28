@@ -33,11 +33,7 @@ const StandardPage = props => {
             <NamedLink name="QuoteStartPage" className={css.primaryAction}>
               Start a quote request
             </NamedLink>
-            <NamedLink
-              name="SignupForUserTypePage"
-              params={{ userType: 'provider' }}
-              className={css.secondaryAction}
-            >
+            <NamedLink name="GutterProPage" className={css.secondaryAction}>
               Join as a pro
             </NamedLink>
           </aside>

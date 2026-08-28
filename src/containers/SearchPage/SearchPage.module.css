@@ -199,9 +199,7 @@
   margin: 0 0 22px;
   border: 1px solid #dfe7e3;
   border-radius: 8px;
-  background:
-    linear-gradient(120deg, rgba(16, 56, 47, 0.98) 0%, rgba(16, 56, 47, 0.9) 58%, rgba(255, 79, 0, 0.18) 100%),
-    #10382f;
+  background: #ff4f00;
   padding: 22px;
   color: #fff;
 
@@ -261,18 +259,18 @@
 }
 
 .requestActions a:first-child {
-  background: #ff4f00;
-  color: #fff;
+  background: #fff;
+  color: #ff4f00;
 }
 
 .requestActions a:first-child:hover {
-  background: #d84200;
-  color: #fff;
+  background: #fff6f0;
+  color: #d84200;
 }
 
 .requestActions a:last-child {
   border: 1px solid rgba(255, 255, 255, 0.36);
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   color: #fff;
 }
 
@@ -289,7 +287,7 @@
 .requestMetrics div {
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
   padding: 14px;
 }
 

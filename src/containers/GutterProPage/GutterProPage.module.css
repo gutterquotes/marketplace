@@ -262,7 +262,7 @@
   height: 34px;
   margin-bottom: 24px;
   border-radius: 8px;
-  background: var(--deep);
+  background: var(--brand);
   color: #fff;
   font-weight: 800;
 }
@@ -308,7 +308,7 @@
   gap: 54px;
   margin-bottom: 72px;
   border-radius: 8px;
-  background: var(--ink);
+  background: var(--brand);
   color: #fff;
 }
 
@@ -317,7 +317,11 @@
 }
 
 .signupPanel p {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.signupPanel .kicker {
+  color: #fff;
 }
 
 .formCard {

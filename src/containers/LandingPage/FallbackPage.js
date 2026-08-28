@@ -205,8 +205,8 @@ const FallbackPage = () => {
         >
           Start a free request
         </NamedLink>
-        <NamedLink name="LocationsPage" className={css.secondaryAction}>
-          Explore service areas
+        <NamedLink name="GutterProPage" className={css.secondaryAction}>
+          Get gutter leads
         </NamedLink>
       </section>
       <GutterQuotesFooter />

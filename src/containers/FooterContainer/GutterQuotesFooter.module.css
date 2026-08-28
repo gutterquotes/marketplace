@@ -1,10 +1,10 @@
 .root {
   --gqAccent: #ff4f00;
   --gqInk: #111413;
-  --gqEvergreen: #10382f;
-  --gqMuted: #5d6764;
-  --gqLine: #dfe7e3;
-  --gqMist: #f3f8f5;
+  --gqEvergreen: #111413;
+  --gqMuted: #626262;
+  --gqLine: #e7e7e7;
+  --gqMist: #f7f7f7;
 
   border-top: 1px solid var(--gqLine);
   background: #fff;

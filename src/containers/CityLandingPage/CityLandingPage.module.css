@@ -2,10 +2,10 @@
   --gqAccent: #ff4f00;
   --gqAccentDark: #d84200;
   --gqInk: #111413;
-  --gqEvergreen: #10382f;
-  --gqMuted: #5d6764;
-  --gqLine: #dfe7e3;
-  --gqMist: #f3f8f5;
+  --gqEvergreen: #111413;
+  --gqMuted: #626262;
+  --gqLine: #e7e7e7;
+  --gqMist: #f7f7f7;
   --gqWarm: #fff6f0;
 
   color: var(--gqInk);
@@ -107,8 +107,8 @@
 }
 
 .secondaryAction:hover {
-  border-color: var(--gqInk);
-  color: var(--gqInk);
+  border-color: var(--gqAccent);
+  color: var(--gqAccent);
 }
 
 .localPanel {

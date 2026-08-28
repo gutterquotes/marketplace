@@ -2,13 +2,13 @@
   --gqAccent: #ff4f00;
   --gqAccentDark: #d84200;
   --gqInk: #111413;
-  --gqEvergreen: #10382f;
-  --gqLeaf: #1f6b58;
-  --gqMuted: #5d6764;
-  --gqLine: #dfe7e3;
-  --gqMist: #f3f8f5;
+  --gqEvergreen: #111413;
+  --gqLeaf: #626262;
+  --gqMuted: #626262;
+  --gqLine: #e7e7e7;
+  --gqMist: #f7f7f7;
   --gqWarm: #fff6f0;
-  --gqSky: #e8f4ff;
+  --gqSky: #fff6f0;
 
   color: var(--gqInk);
   background: #fff;
@@ -17,8 +17,8 @@
 
 .hero {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(243, 248, 245, 0.96) 100%),
-    linear-gradient(120deg, #e8f4ff 0%, #fff6f0 48%, #f3f8f5 100%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 246, 240, 0.78) 100%),
+    #fff;
   border-bottom: 1px solid var(--gqLine);
 }
 
@@ -122,7 +122,7 @@
   border-radius: 8px;
   background: #fff;
   padding: 10px;
-  box-shadow: 0 24px 70px rgba(16, 56, 47, 0.13);
+  box-shadow: 0 22px 54px rgba(17, 20, 19, 0.08);
 }
 
 .searchConsole label {
@@ -215,11 +215,11 @@
 }
 
 .matchCard {
-  border: 1px solid rgba(16, 56, 47, 0.18);
+  border: 1px solid var(--gqLine);
   border-radius: 8px;
   background: #fff;
   padding: 26px;
-  box-shadow: 0 28px 78px rgba(16, 56, 47, 0.16);
+  box-shadow: 0 24px 56px rgba(17, 20, 19, 0.08);
 }
 
 .cardTop {
@@ -378,7 +378,7 @@
 
 .projectCard:hover {
   border-color: #ffc0a3;
-  box-shadow: 0 18px 42px rgba(16, 56, 47, 0.1);
+  box-shadow: 0 18px 42px rgba(17, 20, 19, 0.08);
   transform: translateY(-2px);
 }
 
@@ -389,7 +389,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: var(--gqEvergreen);
+  background: var(--gqAccent);
   color: #fff;
   font-size: 13px;
   font-weight: 880;
@@ -414,12 +414,12 @@
 .howSection,
 .guidesSection {
   border-top: 1px solid var(--gqLine);
-  background: linear-gradient(180deg, #fff 0%, #f9fcfa 100%);
+  background: #fff;
 }
 
 .stepCard {
   min-height: 248px;
-  background: var(--gqMist);
+  background: #fff;
 }
 
 .stepCard > span {
@@ -448,11 +448,12 @@
 }
 
 .platformPanel {
-  background: var(--gqSky);
+  border: 1px solid var(--gqLine);
+  background: #fff;
 }
 
 .platformPanelDark {
-  background: var(--gqInk);
+  background: var(--gqAccent);
 }
 
 .platformPanelDark h2,
@@ -468,7 +469,7 @@
 
 .guideCard {
   min-height: 180px;
-  background: linear-gradient(180deg, #fff 0%, #fff8f4 100%);
+  background: #fff;
 }
 
 .guideCard span {
