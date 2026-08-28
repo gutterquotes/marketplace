@@ -205,6 +205,8 @@
 
 .section,
 .splitSection,
+.rulesSection,
+.marketPanel,
 .signupPanel {
   max-width: 1180px;
   margin: 0 auto;
@@ -218,6 +220,8 @@
 
 .sectionIntro h2,
 .splitSection h2,
+.rulesSection h2,
+.marketPanel h2,
 .signupPanel h2 {
   margin: 10px 0 14px;
   color: var(--deep);
@@ -228,6 +232,8 @@
 
 .sectionIntro p,
 .splitSection p,
+.rulesSection p,
+.marketPanel p,
 .signupPanel p {
   color: var(--muted);
   font-size: 18px;
@@ -236,6 +242,8 @@
 
 .sectionIntro .kicker,
 .splitSection .kicker,
+.rulesSection .kicker,
+.marketPanel .kicker,
 .signupPanel .kicker {
   color: var(--brand);
 }
@@ -280,6 +288,37 @@
   line-height: 1.5;
 }
 
+.rulesSection {
+  padding-top: 24px;
+}
+
+.ruleGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ruleGrid article {
+  min-height: 220px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  padding: 24px;
+}
+
+.ruleGrid h3 {
+  margin: 0 0 10px;
+  color: var(--deep);
+  font-size: 22px;
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.ruleGrid p {
+  margin: 0;
+  font-size: 15px;
+}
+
 .splitSection {
   display: grid;
   grid-template-columns: minmax(0, 0.86fr) minmax(340px, 1fr);
@@ -298,6 +337,32 @@
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
+  color: var(--deep);
+  font-weight: 800;
+}
+
+.marketPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(340px, 1fr);
+  gap: 46px;
+  align-items: center;
+  margin-bottom: 24px;
+  border: 1px solid #ffd2bd;
+  border-radius: 8px;
+  background: var(--brandSoft);
+}
+
+.marketSignals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.marketSignals span {
+  border: 1px solid #ffd2bd;
+  border-radius: 8px;
+  background: #fff;
+  padding: 16px;
   color: var(--deep);
   font-weight: 800;
 }
@@ -365,6 +430,7 @@
   .heroTop,
   .heroGrid,
   .splitSection,
+  .marketPanel,
   .signupPanel {
     grid-template-columns: 1fr;
   }
@@ -383,7 +449,8 @@
   }
 
   .proofBand,
-  .stepGrid {
+  .stepGrid,
+  .ruleGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -413,18 +480,24 @@
 
   .proofBand,
   .stepGrid,
+  .ruleGrid,
+  .marketSignals,
   .leadTypeGrid {
     grid-template-columns: 1fr;
   }
 
   .section,
   .splitSection,
+  .rulesSection,
+  .marketPanel,
   .signupPanel {
     padding: 58px 20px;
   }
 
   .sectionIntro h2,
   .splitSection h2,
+  .rulesSection h2,
+  .marketPanel h2,
   .signupPanel h2 {
     font-size: 32px;
   }

@@ -17,11 +17,20 @@ const NoSearchResultsMaybe = props => {
 
   return hasNoResult ? (
     <div className={css.noSearchResults}>
-      <strong>No matching gutter requests yet.</strong>
+      <strong>This market is opening for gutter requests.</strong>
       <span>
-        Try widening your filters, or check back soon as homeowners post new installation, guard,
-        repair, cleaning, and drainage requests.
+        We are onboarding homeowners and gutter pros city by city. Start a request to bring local
+        pros into your ZIP, or join as a contractor to be ready when new installation, guard,
+        repair, cleaning, and drainage jobs arrive.
       </span>
+      <div className={css.actionRow}>
+        <NamedLink className={css.primaryLink} name="QuoteStartPage">
+          Start a homeowner request
+        </NamedLink>
+        <NamedLink className={css.secondaryLink} name="GutterProPage">
+          Join as a gutter pro
+        </NamedLink>
+      </div>
       {hasSearchParams ? (
         <button className={css.resetAllFiltersButton} onClick={e => resetAll(e)}>
           <FormattedMessage id={'SearchPage.resetAllFilters'} />

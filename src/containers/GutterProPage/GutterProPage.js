@@ -41,6 +41,23 @@ const proofPoints = [
   { value: 'Nationwide', label: 'built to expand city by city' },
 ];
 
+const leadRules = [
+  {
+    title: 'Preview before you buy',
+    text: 'See the service type, ZIP area, property type, timeline, and project summary before deciding whether a lead fits.',
+  },
+  {
+    title: 'Private details unlock after access',
+    text: 'Homeowner contact info, exact address, full notes, photos, and direct messaging stay protected until the lead access step.',
+  },
+  {
+    title: 'Built for disciplined spend',
+    text: 'Use fit signals to avoid broad-directory noise and focus on jobs that match your crew, territory, and revenue goals.',
+  },
+];
+
+const marketSignals = ['Installation demand', 'Guard interest', 'Repair urgency', 'Cleaning routes', 'Drainage work', 'Commercial jobs'];
+
 const GutterProPage = props => {
   const { scrollingDisabled } = props;
 
@@ -70,7 +87,8 @@ const GutterProPage = props => {
               <p className={css.lead}>
                 Stop fighting inside a giant general contractor directory. Gutter Quotes is the
                 focused lead platform where homeowners post gutter projects and qualified pros
-                choose the requests that fit.
+                choose the requests that fit. Join early to help define your territory before the
+                market gets crowded.
               </p>
               <div className={css.actions}>
                 <NamedLink
@@ -89,7 +107,7 @@ const GutterProPage = props => {
             <aside className={css.leadConsole} aria-label="Gutter lead preview">
               <div className={css.consoleHeader}>
                 <span>Lead preview</span>
-                <strong>92% fit</strong>
+                <strong>Example</strong>
               </div>
               <h2>Gutter guard installation near 30301</h2>
               <dl>
@@ -104,6 +122,10 @@ const GutterProPage = props => {
                 <div>
                   <dt>Best for</dt>
                   <dd>Guard installers serving Metro Atlanta this month</dd>
+                </div>
+                <div>
+                  <dt>Access model</dt>
+                  <dd>Browse public preview, unlock private details only when the lead fits</dd>
                 </div>
               </dl>
             </aside>
@@ -139,6 +161,25 @@ const GutterProPage = props => {
           </div>
         </section>
 
+        <section className={css.rulesSection}>
+          <div className={css.sectionIntro}>
+            <p className={css.kicker}>Lead marketplace mechanics</p>
+            <h2>Designed so contractors can evaluate fit before spending.</h2>
+            <p>
+              The marketplace should feel transparent from day one. Homeowners share enough
+              project context to attract the right specialists, while sensitive details stay gated.
+            </p>
+          </div>
+          <div className={css.ruleGrid}>
+            {leadRules.map(rule => (
+              <article key={rule.title}>
+                <h3>{rule.title}</h3>
+                <p>{rule.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section id="lead-types" className={css.splitSection}>
           <div>
             <p className={css.kicker}>Lead types</p>
@@ -152,6 +193,22 @@ const GutterProPage = props => {
           <div className={css.leadTypeGrid}>
             {leadTypes.map(type => (
               <span key={type}>{type}</span>
+            ))}
+          </div>
+        </section>
+
+        <section className={css.marketPanel}>
+          <div>
+            <p className={css.kicker}>Founding contractor advantage</p>
+            <h2>Help open your local market before competitors pile in.</h2>
+            <p>
+              Early pros can define service areas, watch demand patterns, and prepare fast response
+              workflows for the highest-intent gutter categories.
+            </p>
+          </div>
+          <div className={css.marketSignals}>
+            {marketSignals.map(signal => (
+              <span key={signal}>{signal}</span>
             ))}
           </div>
         </section>

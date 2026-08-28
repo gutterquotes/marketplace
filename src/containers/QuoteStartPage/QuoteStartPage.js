@@ -92,6 +92,26 @@ const matchSignals = [
   'Response speed',
 ];
 
+const trustCues = ['Free for homeowners', 'No obligation', 'Contact details stay private first'];
+
+const exampleRequests = [
+  {
+    title: 'Seamless gutter install',
+    location: 'Charlotte, NC',
+    details: 'Two-story home, this month, interested in guards',
+  },
+  {
+    title: 'Overflowing gutter repair',
+    location: 'Atlanta, GA',
+    details: 'Heavy rain overflow near front porch and downspout',
+  },
+  {
+    title: 'Underground downspout drain',
+    location: 'Raleigh, NC',
+    details: 'Move water farther from foundation and low side yard',
+  },
+];
+
 const QuoteStartPage = props => {
   const { scrollingDisabled } = props;
   const [selectedProject, setSelectedProject] = useState(projectTypes[0]);
@@ -188,9 +208,15 @@ const QuoteStartPage = props => {
             <p className={css.kicker}>Smart gutter quote intake</p>
             <h1>Tell us what your home needs. We will guide the rest.</h1>
             <p className={css.lead}>
-              A better request gets better responses. Start with the basics, add the details pros
-              need, and move toward a shortlist without calling around.
+              Start a free, no-obligation gutter request in about two minutes. We turn your notes
+              into a clear project brief so interested local gutter pros can understand the job
+              before they respond.
             </p>
+            <div className={css.trustRow}>
+              {trustCues.map(cue => (
+                <span key={cue}>{cue}</span>
+              ))}
+            </div>
           </div>
 
           <aside className={css.matchPanel} aria-label="Quote match preview">
@@ -334,6 +360,10 @@ const QuoteStartPage = props => {
             >
               Continue free request
             </a>
+            <p className={css.microcopy}>
+              Next: create your account, add photos if you have them, and publish the request when
+              you are ready.
+            </p>
           </div>
 
           <aside className={css.sidePanel}>
@@ -356,8 +386,21 @@ const QuoteStartPage = props => {
               ))}
             </div>
             <div className={css.resultCard}>
-              <strong>4 local pros</strong>
-              <p>can review a complete request like this today.</p>
+              <strong>Now onboarding local pros</strong>
+              <p>
+                If your ZIP is early in the network, your request helps open the market and gives
+                nearby gutter companies a reason to join.
+              </p>
+            </div>
+            <div className={css.examplePanel}>
+              <strong>Example homeowner requests</strong>
+              {exampleRequests.map(request => (
+                <article key={`${request.title}-${request.location}`}>
+                  <span>{request.location}</span>
+                  <h3>{request.title}</h3>
+                  <p>{request.details}</p>
+                </article>
+              ))}
             </div>
           </aside>
         </section>

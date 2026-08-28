@@ -1,9 +1,9 @@
 @import '../../../styles/customMediaQueries.css';
 
 .noSearchResults {
-  border: 1px solid #dfe7e3;
+  border: 1px solid #ffd2bd;
   border-radius: 8px;
-  background: #f3f8f5;
+  background: #fff6f0;
   margin: 18px 0;
   padding: 22px;
 
@@ -28,6 +28,37 @@
     margin-top: 8px;
     margin-bottom: 8px;
   }
+}
+
+.actionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.primaryLink,
+.secondaryLink {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.primaryLink {
+  background: #ff4f00;
+  color: #fff;
+}
+
+.secondaryLink {
+  border: 1px solid #ffd2bd;
+  background: #fff;
+  color: #111413;
 }
 
 .createListingLink,

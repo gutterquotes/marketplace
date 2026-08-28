@@ -11,7 +11,7 @@ const leadSignals = [
   'ZIP code',
   'Timeline',
   'Property type',
-  'Lead access status',
+  'Preview status',
   'AI project brief',
 ];
 
@@ -26,10 +26,10 @@ const steps = [
   },
   {
     title: 'You review limited public details',
-    text: 'Pros can see enough to understand fit before private homeowner contact information is unlocked.',
+    text: 'Pros see enough to understand fit while homeowner name, phone, exact address, full notes, and photos stay protected.',
   },
   {
-    title: 'You buy the lead and move quickly',
+    title: 'You unlock the lead and move quickly',
     text: 'When the project fits your crew, service area, and calendar, you can take action while intent is still fresh.',
   },
 ];
@@ -82,7 +82,7 @@ const GutterLeadPage = props => {
               <p className={css.lead}>
                 Reach homeowners who are actively requesting gutter installation, guards,
                 replacement, repair, cleaning, and drainage quotes. Gutter Quotes turns broad
-                demand into structured local opportunities your team can act on fast.
+                demand into structured local opportunities your team can evaluate before unlocking.
               </p>
               <div className={css.actions}>
                 <NamedLink
@@ -100,8 +100,8 @@ const GutterLeadPage = props => {
 
             <aside className={css.leadCard} aria-label="Example gutter lead">
               <div className={css.cardHeader}>
-                <span>New homeowner request</span>
-                <strong>Ready now</strong>
+                <span>Example homeowner request</span>
+                <strong>Preview</strong>
               </div>
               <h2>Seamless gutter replacement near 28211</h2>
               <div className={css.signalGrid}>
@@ -110,8 +110,11 @@ const GutterLeadPage = props => {
                 ))}
               </div>
               <div className={css.deliveryPanel}>
-                <strong>Best-fit pro alert</strong>
-                <p>Two-story home, replacement timeline under 30 days, gutter guards considered.</p>
+                <strong>Unlock private details when it fits</strong>
+                <p>
+                  Public preview shows ZIP, service, timeline, and home type. Contact details stay
+                  gated until lead access.
+                </p>
               </div>
             </aside>
           </div>
@@ -131,8 +134,9 @@ const GutterLeadPage = props => {
             <p className={css.kicker}>How gutter leads work</p>
             <h2>Built for contractors who care about speed, fit, and ROI.</h2>
             <p>
-              Generic lead platforms make gutters compete with every other home service category.
-              This page is built around the work your crews actually sell, schedule, and install.
+              Generic lead platforms make gutter contractors compete inside every home service
+              category. Gutter Quotes is built around the work your crews actually sell, schedule,
+              and install.
             </p>
           </div>
           <div className={css.stepGrid}>
@@ -168,7 +172,7 @@ const GutterLeadPage = props => {
             <h2>Start with your trade, ZIP, and service radius.</h2>
             <p>
               Create a contractor account now. As the marketplace opens market by market, your
-              profile can be ready to receive and buy matching homeowner requests.
+              profile can be ready to review and unlock matching homeowner requests.
             </p>
           </div>
           <form className={css.formCard}>

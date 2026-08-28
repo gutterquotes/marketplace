@@ -40,6 +40,10 @@ describe('LandingPage', () => {
         'href',
         '/pros'
       );
+      expect(getByText('Are Gutter Guards Worth It').closest('a')).toHaveAttribute(
+        'href',
+        '/guides/are-gutter-guards-worth-it'
+      );
     });
   });
 

@@ -26,24 +26,31 @@ const intelligenceSignals = [
 
 const steps = [
   {
-    label: 'Search the job',
-    text: 'Choose a gutter service and ZIP code. The platform starts narrowing the right kind of pro immediately.',
+    label: 'Start a free request',
+    text: 'Choose a gutter service, ZIP code, timeline, and home details in a guided flow built specifically for gutter work.',
   },
   {
-    label: 'Answer smart questions',
-    text: 'A guided request captures photos, height, material, urgency, and drainage concerns without wasting your time.',
+    label: 'Protect private details',
+    text: 'Your public request preview shows limited project context. Contact info, address, full notes, and photos stay private until the next step.',
   },
   {
-    label: 'Compare better matches',
-    text: 'Review interested pros, ask follow-ups, and move forward with the company that fits the home and budget.',
+    label: 'Compare better-fit pros',
+    text: 'Interested gutter specialists can review the project fit and respond with sharper questions, faster timing, and stronger quotes.',
   },
 ];
 
 const guides = [
-  'How much do seamless gutters cost?',
-  'Are gutter guards worth it?',
-  'Repair or replace damaged gutters?',
-  'How to spot poor drainage early',
+  { title: 'Gutter Installation Cost', slug: 'gutter-installation-cost' },
+  { title: 'Are Gutter Guards Worth It', slug: 'are-gutter-guards-worth-it' },
+  { title: 'Gutters Overflowing', slug: 'gutters-overflowing' },
+  { title: 'Buy Gutter Leads', slug: 'buy-gutter-leads' },
+];
+
+const launchTrust = [
+  'Free request for homeowners',
+  'Focused only on gutters and drainage',
+  'Private contact details',
+  'Built for local gutter specialists',
 ];
 
 const FallbackPage = () => {
@@ -68,9 +75,9 @@ const FallbackPage = () => {
             <p className={css.kicker}>Next generation gutter services</p>
             <h1>The smartest way to find trusted gutter pros.</h1>
             <p className={css.lead}>
-              Gutter Quotes is a focused home service platform for gutter installation, guards,
-              repair, cleaning, and drainage. Search once, get guided, and compare pros built for
-              the exact work your home needs.
+              Start one free request for gutter installation, guards, repair, cleaning, or
+              drainage. We help you organize the right details so local gutter specialists can
+              understand the job and compete for your business.
             </p>
 
             <div className={css.searchConsole} aria-label="Start a gutter project request">
@@ -91,9 +98,9 @@ const FallbackPage = () => {
             </div>
 
             <div className={css.trustRow}>
-              <span>Free request</span>
-              <span>Local specialists</span>
-              <span>No obligation</span>
+              {launchTrust.map(item => (
+                <span key={item}>{item}</span>
+              ))}
             </div>
           </div>
 
@@ -112,8 +119,11 @@ const FallbackPage = () => {
               ))}
             </div>
             <div className={css.proPreview}>
-              <strong>4 qualified pros</strong>
-              <p>can review this request today based on service area, trade focus, and project type.</p>
+              <strong>Launching market by market</strong>
+              <p>
+                Homeowner requests help attract the right gutter pros, and early contractors can
+                claim territory before demand gets crowded.
+              </p>
             </div>
           </aside>
         </div>
@@ -131,7 +141,7 @@ const FallbackPage = () => {
         </div>
         <div className={css.projectGrid}>
           {popularProjects.map(project => (
-            <NamedLink key={project.title} name="SearchPage" className={css.projectCard}>
+            <NamedLink key={project.title} name="QuoteStartPage" className={css.projectCard}>
               <span className={css.rating}>{project.score}</span>
               <h3>{project.title}</h3>
               <p>{project.detail}</p>
@@ -159,7 +169,7 @@ const FallbackPage = () => {
       <section className={css.platformSection}>
         <div className={css.platformPanel}>
           <p className={css.kicker}>For homeowners</p>
-          <h2>From problem to shortlist without the phone-tag marathon.</h2>
+          <h2>From gutter problem to quote-ready request without the phone-tag marathon.</h2>
           <p>
             Compare interested pros, understand what matters for your roofline, and make the next
             step with more confidence than a generic search result can give you.
@@ -167,10 +177,10 @@ const FallbackPage = () => {
         </div>
         <div className={css.platformPanelDark}>
           <p className={css.kicker}>For gutter companies</p>
-          <h2>Better-fit homeowners, fewer wasted conversations.</h2>
+          <h2>High-intent homeowner gutter leads in the areas you serve.</h2>
           <p>
-            Build a focused profile and receive requests that match your service area, job type,
-            install capacity, and specialties.
+            Browse limited request previews, unlock the jobs worth pursuing, and grow inside a
+            marketplace built around your trade instead of every home service category.
           </p>
         </div>
       </section>
@@ -182,11 +192,16 @@ const FallbackPage = () => {
         </div>
         <div className={css.guideGrid}>
           {guides.map(guide => (
-            <article key={guide} className={css.guideCard}>
+            <NamedLink
+              key={guide.slug}
+              name="SeoLandingPage"
+              params={{ seoSlug: guide.slug }}
+              className={css.guideCard}
+            >
               <span>Guide</span>
-              <h3>{guide}</h3>
+              <h3>{guide.title}</h3>
               <p>Clear answers for planning the job, comparing options, and asking better questions.</p>
-            </article>
+            </NamedLink>
           ))}
         </div>
       </section>
