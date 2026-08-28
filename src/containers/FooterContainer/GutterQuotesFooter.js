@@ -12,7 +12,7 @@ const footerGroups = [
       { label: 'Start a quote request', name: 'QuoteStartPage' },
       { label: 'Browse active requests', name: 'SearchPage' },
       { label: 'Service areas', name: 'LocationsPage' },
-      { label: 'Trust and safety', name: 'TrustSafetyPage' },
+      { label: 'Seamless gutters', name: 'ServiceLandingPage', params: { serviceSlug: 'seamless-gutter-installation' } },
     ],
   },
   {
@@ -30,7 +30,7 @@ const footerGroups = [
       { label: 'About', name: 'AboutPage' },
       { label: 'Contact', name: 'ContactPage' },
       { label: 'Accessibility', name: 'AccessibilityPage' },
-      { label: 'Atlanta gutters', name: 'CityLandingPage', params: { citySlug: 'atlanta-ga' } },
+      { label: 'Gutter guards', name: 'ServiceLandingPage', params: { serviceSlug: 'gutter-guards' } },
     ],
   },
   {

@@ -4,6 +4,7 @@ import { NamedLink, NamedRedirect, Page, TopbarSimplified } from '../../componen
 import logoImage from '../../assets/gutter-quotes-logo.png';
 
 import { findCityBySlug, southeastCities } from './cityData';
+import { gutterServices } from '../ServiceLandingPage/serviceData';
 import css from './CityLandingPage.module.css';
 
 const services = [
@@ -120,6 +121,25 @@ const CityLandingPage = props => {
               </article>
             ))}
           </div>
+        </section>
+
+        <section className={css.serviceLinks}>
+          <div>
+            <p className={css.kicker}>Search by service</p>
+            <h2>Popular gutter searches in {city.city}.</h2>
+          </div>
+          <ul>
+            {gutterServices.map(service => (
+              <li key={service.slug}>
+                <NamedLink
+                  name="ServiceCityLandingPage"
+                  params={{ serviceSlug: service.slug, citySlug: city.slug }}
+                >
+                  {service.phrase} {city.city} {city.stateAbbr}
+                </NamedLink>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section className={css.cityLinks}>

@@ -39,6 +39,7 @@ const GutterLeadPage = loadable(() => import(/* webpackChunkName: "GutterLeadPag
 const RequestQuotePage = loadable(() => import(/* webpackChunkName: "RequestQuotePage" */ '../containers/RequestQuotePage/RequestQuotePage'));
 const SearchPageWithMap = loadable(() => import(/* webpackChunkName: "SearchPageWithMap" */ /* webpackPrefetch: true */  '../containers/SearchPage/SearchPageWithMap'));
 const SearchPageWithGrid = loadable(() => import(/* webpackChunkName: "SearchPageWithGrid" */ /* webpackPrefetch: true */  '../containers/SearchPage/SearchPageWithGrid'));
+const ServiceLandingPage = loadable(() => import(/* webpackChunkName: "ServiceLandingPage" */ '../containers/ServiceLandingPage/ServiceLandingPage'));
 const StripePayoutPage = loadable(() => import(/* webpackChunkName: "StripePayoutPage" */ '../containers/StripePayoutPage/StripePayoutPage'));
 const StandardPage = loadable(() => import(/* webpackChunkName: "StandardPage" */ '../containers/StandardPage/StandardPage'));
 const TermsOfServicePage = loadable(() => import(/* webpackChunkName: "TermsOfServicePage" */ '../containers/TermsOfServicePage/TermsOfServicePage'));
@@ -156,6 +157,16 @@ const routeConfiguration = (layoutConfig, accessControlConfig) => {
       path: '/locations/:citySlug',
       name: 'CityLandingPage',
       component: CityLandingPage,
+    },
+    {
+      path: '/services/:serviceSlug',
+      name: 'ServiceLandingPage',
+      component: ServiceLandingPage,
+    },
+    {
+      path: '/services/:serviceSlug/:citySlug',
+      name: 'ServiceCityLandingPage',
+      component: ServiceLandingPage,
     },
     {
       path: '/p/:pageId',

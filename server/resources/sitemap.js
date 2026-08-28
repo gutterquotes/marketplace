@@ -79,6 +79,17 @@ const southeastCitySlugs = [
   'jackson-ms',
 ];
 
+const gutterServiceSlugs = [
+  'seamless-gutter-installation',
+  'gutter-replacement',
+  'gutter-guards',
+  'gutter-repair',
+  'gutter-cleaning',
+  'underground-downspout-drain',
+  'yard-drainage',
+  'commercial-gutters',
+];
+
 const defaultPublicPaths = {
   landingPage: { url: '/' },
   about: { url: '/about' },
@@ -98,6 +109,28 @@ const defaultPublicPaths = {
   signup: { url: '/signup' },
   login: { url: '/login' },
   search: { url: '/s' },
+  ...gutterServiceSlugs.reduce(
+    (paths, slug) => ({
+      ...paths,
+      [`service-${slug}`]: { url: `/services/${slug}` },
+    }),
+    {}
+  ),
+  ...gutterServiceSlugs.reduce(
+    (paths, serviceSlug) => ({
+      ...paths,
+      ...southeastCitySlugs.reduce(
+        (cityPaths, citySlug) => ({
+          ...cityPaths,
+          [`service-${serviceSlug}-${citySlug}`]: {
+            url: `/services/${serviceSlug}/${citySlug}`,
+          },
+        }),
+        {}
+      ),
+    }),
+    {}
+  ),
   ...southeastCitySlugs.reduce(
     (paths, slug) => ({
       ...paths,
