@@ -201,6 +201,6 @@ export const userTypes = [
   },
   {
     userType: 'provider',
-    label: 'Gutter professional',
+    label: 'Gutter Pro',
   },
 ];

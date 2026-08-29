@@ -10,6 +10,11 @@ import { FieldSelect } from '../../components';
 
 import css from './AuthenticationPage.module.css';
 
+const marketplaceUserTypeLabels = {
+  customer: 'Homeowner',
+  provider: 'Gutter Pro',
+};
+
 // Hidden input field
 const FieldHidden = props => {
   const { name } = props;
@@ -52,9 +57,10 @@ const FieldSelectUserType = props => {
         </option>
         {userTypes.map(config => {
           const type = config.userType;
+          const label = marketplaceUserTypeLabels[type] || config.label;
           return (
             <option key={type} value={type}>
-              {config.label}
+              {label}
             </option>
           );
         })}

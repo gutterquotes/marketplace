@@ -1262,10 +1262,16 @@ const restructureTransactionFields = transactionField => {
 // Restructure hosted user config //
 ///////////////////////////////////////
 
+const marketplaceUserTypeLabels = {
+  customer: 'Homeowner',
+  provider: 'Gutter Pro',
+};
+
 const restructureUserTypes = (hostedUserTypes = []) => {
   return hostedUserTypes.map(userType => {
     const { id, ...rest } = userType;
-    return { userType: id, ...rest };
+    const marketplaceLabel = marketplaceUserTypeLabels[id];
+    return { userType: id, ...rest, ...(marketplaceLabel ? { label: marketplaceLabel } : {}) };
   });
 };
 

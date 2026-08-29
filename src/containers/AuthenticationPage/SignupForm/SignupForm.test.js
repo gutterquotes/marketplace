@@ -30,6 +30,17 @@ const userTypes = [
   },
 ];
 
+const marketplaceUserTypes = [
+  {
+    userType: 'customer',
+    label: 'Customer',
+  },
+  {
+    userType: 'provider',
+    label: 'Provider',
+  },
+];
+
 const userFields = [
   {
     key: 'enumField1',
@@ -110,6 +121,23 @@ describe('SignupForm', () => {
   //   );
   //   expect(tree.asFragment()).toMatchSnapshot();
   // });
+
+  it('uses marketplace-specific labels for the customer and provider user types', () => {
+    render(
+      <SignupForm
+        intl={fakeIntl}
+        termsAndConditions={termsAndConditions}
+        userTypes={marketplaceUserTypes}
+        userFields={[]}
+        onSubmit={noop}
+      />
+    );
+
+    expect(screen.getByRole('option', { name: 'Homeowner' })).toBeInTheDocument();
+    expect(screen.getByRole('option', { name: 'Gutter Pro' })).toBeInTheDocument();
+    expect(screen.queryByRole('option', { name: 'Customer' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('option', { name: 'Provider' })).not.toBeInTheDocument();
+  });
 
   it('enables Sign up button when required fields are filled', async () => {
     const user = userEvent.setup();
