@@ -207,6 +207,7 @@
 .splitSection,
 .rulesSection,
 .marketPanel,
+.pricingSection,
 .signupPanel {
   max-width: 1180px;
   margin: 0 auto;
@@ -222,6 +223,7 @@
 .splitSection h2,
 .rulesSection h2,
 .marketPanel h2,
+.pricingSection h2,
 .signupPanel h2 {
   margin: 10px 0 14px;
   color: var(--deep);
@@ -234,6 +236,7 @@
 .splitSection p,
 .rulesSection p,
 .marketPanel p,
+.pricingSection p,
 .signupPanel p {
   color: var(--muted);
   font-size: 18px;
@@ -244,6 +247,7 @@
 .splitSection .kicker,
 .rulesSection .kicker,
 .marketPanel .kicker,
+.pricingSection .kicker,
 .signupPanel .kicker {
   color: var(--brand);
 }
@@ -367,6 +371,75 @@
   font-weight: 800;
 }
 
+.pricingSection {
+  padding-top: 40px;
+}
+
+.priceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.priceCard {
+  display: grid;
+  gap: 22px;
+  align-content: start;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 28px;
+}
+
+.priceCard span {
+  display: block;
+  color: var(--brand);
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.priceCard strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--deep);
+  font-size: 42px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.priceCard p {
+  margin: 10px 0 0;
+  font-size: 15px;
+}
+
+.priceCard ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.priceCard li {
+  color: var(--deep);
+  font-size: 15px;
+  font-weight: 760;
+  line-height: 1.45;
+}
+
+.priceCard li::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--brand);
+  vertical-align: 2px;
+}
+
 .signupPanel {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 360px;
@@ -422,6 +495,10 @@
   box-shadow: none;
 }
 
+.formCard .secondaryAction {
+  text-align: center;
+}
+
 @media (max-width: 980px) {
   .hero {
     min-height: auto;
@@ -431,6 +508,7 @@
   .heroGrid,
   .splitSection,
   .marketPanel,
+  .priceGrid,
   .signupPanel {
     grid-template-columns: 1fr;
   }
@@ -490,6 +568,7 @@
   .splitSection,
   .rulesSection,
   .marketPanel,
+  .pricingSection,
   .signupPanel {
     padding: 58px 20px;
   }
@@ -498,6 +577,7 @@
   .splitSection h2,
   .rulesSection h2,
   .marketPanel h2,
+  .pricingSection h2,
   .signupPanel h2 {
     font-size: 32px;
   }

@@ -58,6 +58,31 @@ const leadRules = [
 
 const marketSignals = ['Installation demand', 'Guard interest', 'Repair urgency', 'Cleaning routes', 'Drainage work', 'Commercial jobs'];
 
+const launchPlans = [
+  {
+    name: 'Founding Pro',
+    price: '$399/mo',
+    note: 'Best for one crew or owner-operator teams',
+    features: [
+      'Early access in your preferred service area',
+      'Profile review and territory setup',
+      'Priority notice for matching homeowner requests',
+      'Manual lead review with the Gutter Quotes team',
+    ],
+  },
+  {
+    name: 'Market Partner',
+    price: '$799/mo',
+    note: 'Best for growing gutter companies',
+    features: [
+      'Multi-ZIP service area planning',
+      'Installation, guard, repair, and cleaning categories',
+      'Weekly pipeline check-in during launch',
+      'Priority placement in local rollout markets',
+    ],
+  },
+];
+
 const GutterProPage = props => {
   const { scrollingDisabled } = props;
 
@@ -212,13 +237,52 @@ const GutterProPage = props => {
           </div>
         </section>
 
+        <section className={css.pricingSection} aria-label="Founding pro launch pricing">
+          <div className={css.sectionIntro}>
+            <p className={css.kicker}>Revenue launch offer</p>
+            <h2>Reserve early access before your market gets crowded.</h2>
+            <p>
+              We are opening markets with a small group of serious gutter companies first. Founding
+              pros get direct onboarding, priority lead alerts, and a cleaner way to pursue
+              homeowner gutter projects without buying the same shared lead as everyone else.
+            </p>
+          </div>
+          <div className={css.priceGrid}>
+            {launchPlans.map(plan => (
+              <article key={plan.name} className={css.priceCard}>
+                <div>
+                  <span>{plan.name}</span>
+                  <strong>{plan.price}</strong>
+                  <p>{plan.note}</p>
+                </div>
+                <ul>
+                  {plan.features.map(feature => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+                <a
+                  className={css.primaryAction}
+                  href={`mailto:mills@gutterquotes.com?subject=${encodeURIComponent(
+                    `${plan.name} interest`
+                  )}&body=${encodeURIComponent(
+                    'I want to reserve early access for my gutter company. Company name, service area, and phone:'
+                  )}`}
+                >
+                  Reserve founding access
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section id="signup" className={css.signupPanel}>
           <div>
             <p className={css.kicker}>Launch partner offer</p>
-            <h2>Be early in your market before homeowner demand gets crowded.</h2>
+            <h2>Start the paid pilot conversation today.</h2>
             <p>
-              Create your pro account, define your service area, and get ready to buy the first
-              homeowner requests that match your gutter business.
+              Create your pro account, then email us your company name, service area, and best
+              phone number. We will help you choose a launch market and invoice the founding pro
+              pilot manually while the automated lead marketplace ramps up.
             </p>
           </div>
           <div className={css.formCard}>
@@ -241,6 +305,12 @@ const GutterProPage = props => {
             >
               Start contractor signup
             </NamedLink>
+            <a
+              href="mailto:mills@gutterquotes.com?subject=Founding%20Pro%20Pilot&body=I%20want%20to%20join%20the%20Gutter%20Quotes%20Founding%20Pro%20Pilot.%20Company%20name%2C%20service%20area%2C%20and%20phone%3A"
+              className={css.secondaryAction}
+            >
+              Email founding pro team
+            </a>
           </div>
         </section>
       </main>

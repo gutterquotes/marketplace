@@ -334,6 +334,23 @@
   color: #fff;
 }
 
+.offerList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.offerList span {
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 8px;
+  padding: 12px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 850;
+  line-height: 1.25;
+}
+
 .formCard {
   display: grid;
   gap: 14px;
@@ -365,6 +382,10 @@
 
 .formCard .primaryAction {
   box-shadow: none;
+}
+
+.formCard .secondaryAction {
+  text-align: center;
 }
 
 @media (max-width: 980px) {
@@ -424,7 +445,8 @@
   .metrics,
   .stepGrid,
   .serviceGrid,
-  .signalGrid {
+  .signalGrid,
+  .offerList {
     grid-template-columns: 1fr;
   }
 
