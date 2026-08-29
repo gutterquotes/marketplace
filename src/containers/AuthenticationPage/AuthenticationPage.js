@@ -347,12 +347,12 @@ export const AuthenticationPageComponent = props => {
         footer={<FooterContainer />}
       >
         <ResponsiveBackgroundImageContainer
+          rootClassName={css.authBackground}
           className={css.root}
           childrenWrapperClassName={css.contentContainer}
           as="section"
-          image={config.branding.brandImage}
+          image={null}
           sizes="100%"
-          useOverlay
         >
           {showAuthenticationForm ? (
             <div className={css.content}>

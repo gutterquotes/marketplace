@@ -7,6 +7,12 @@
   flex-grow: 1;
 }
 
+.authBackground {
+  width: 100%;
+  position: relative;
+  background: #fff;
+}
+
 .contentContainer {
   composes: marketplaceModalRootStyles from global;
   min-height: calc(100vh - 60px);
