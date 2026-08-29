@@ -85,10 +85,9 @@ const GutterProPage = props => {
               <p className={css.kicker}>Gutter Quotes for pros</p>
               <h1>Grow your gutter company with quote-ready homeowner requests.</h1>
               <p className={css.lead}>
-                Stop fighting inside a giant general contractor directory. Gutter Quotes is the
-                focused lead platform where homeowners post gutter projects and qualified pros
-                choose the requests that fit. Join early to help define your territory before the
-                market gets crowded.
+                Stop fighting over shared leads. Get exclusive, high-intent homeowner gutter leads
+                in your service area from people actively asking for installation, guards, repair,
+                replacement, cleaning, and drainage quotes.
               </p>
               <div className={css.actions}>
                 <NamedLink
