@@ -41,6 +41,17 @@ const packages = [
   },
 ];
 
+const payAsYouGoPlan = {
+  name: 'Pay as you go',
+  price: '$75 per lead',
+  note: 'Best for contractors who want to test lead quality before buying a package.',
+  features: [
+    'No package commitment',
+    'Buy qualified leads one at a time',
+    'Upgrade to a package when volume makes sense',
+  ],
+};
+
 const rules = [
   {
     title: 'Package credit model',
@@ -102,6 +113,9 @@ const GutterLeadPackagesPage = props => {
                 <a className={css.primaryAction} href={packageMailto('Growth Lead Bank')}>
                   Discuss a package
                 </a>
+                <a className={css.secondaryAction} href={packageMailto('Pay as you go')}>
+                  Start at $75/lead
+                </a>
                 <NamedLink name="GutterLeadPage" className={css.secondaryAction}>
                   See how leads work
                 </NamedLink>
@@ -135,6 +149,22 @@ const GutterLeadPackagesPage = props => {
             </p>
           </div>
 
+          <article className={css.payGoCard}>
+            <div>
+              <p className={css.kicker}>{payAsYouGoPlan.name}</p>
+              <h3>{payAsYouGoPlan.price}</h3>
+              <p>{payAsYouGoPlan.note}</p>
+            </div>
+            <ul>
+              {payAsYouGoPlan.features.map(feature => (
+                <li key={feature}>{feature}</li>
+              ))}
+            </ul>
+            <a className={css.primaryAction} href={packageMailto(payAsYouGoPlan.name)}>
+              Request pay as you go
+            </a>
+          </article>
+
           <div className={css.packageGrid}>
             {packages.map(plan => (
               <article key={plan.name} className={css.packageCard}>
@@ -167,6 +197,24 @@ const GutterLeadPackagesPage = props => {
               <p>{rule.text}</p>
             </article>
           ))}
+        </section>
+
+        <section className={css.integrationPanel}>
+          <div>
+            <p className={css.kicker}>Jobber delivery</p>
+            <h2>Lead delivery into the CRM gutter companies already use.</h2>
+            <p>
+              The next major platform advantage is sending qualified Gutter Quotes opportunities
+              directly into a contractor&apos;s Jobber account, so the lead becomes part of their
+              normal sales workflow instead of another inbox to monitor.
+            </p>
+          </div>
+          <div className={css.integrationSteps}>
+            <span>Private beta with first Jobber client</span>
+            <span>OAuth connection through the contractor account</span>
+            <span>Create customer, request, or lead record in Jobber</span>
+            <span>Track delivery status inside Gutter Quotes</span>
+          </div>
         </section>
 
         <section id="custom" className={css.customPanel}>

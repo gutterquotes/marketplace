@@ -32,6 +32,8 @@ describe('GutterLeadPackagesPage', () => {
     ).toBeInTheDocument();
     expect(screen.getByText('Starter Lead Bank')).toBeInTheDocument();
     expect(screen.getByText('Territory Partner')).toBeInTheDocument();
+    expect(screen.getByText('$75 per lead')).toBeInTheDocument();
+    expect(screen.getByText('Lead delivery into the CRM gutter companies already use.')).toBeInTheDocument();
     expect(screen.getAllByText('Private pro pricing')).toHaveLength(2);
     expect(screen.getByRole('link', { name: 'See how leads work' })).toHaveAttribute(
       'href',

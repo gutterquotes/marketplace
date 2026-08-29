@@ -169,7 +169,8 @@
 
 .packageSection,
 .rulesSection,
-.customPanel {
+.customPanel,
+.integrationPanel {
   max-width: 1180px;
   margin: 0 auto;
   padding: 80px 6vw;
@@ -181,7 +182,8 @@
 }
 
 .sectionIntro h2,
-.customPanel h2 {
+.customPanel h2,
+.integrationPanel h2 {
   margin: 10px 0 14px;
   color: var(--deep);
   font-size: 42px;
@@ -190,10 +192,64 @@
 }
 
 .sectionIntro p,
-.customPanel p {
+.customPanel p,
+.integrationPanel p {
   color: var(--muted);
   font-size: 18px;
   line-height: 1.55;
+}
+
+.payGoCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.72fr) auto;
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 18px;
+  padding: 24px;
+  border: 1px solid #ffd2bd;
+  border-radius: 8px;
+  background: var(--brandSoft);
+}
+
+.payGoCard h3 {
+  margin: 8px 0 8px;
+  color: var(--deep);
+  font-size: 38px;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.payGoCard p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.payGoCard ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.payGoCard li {
+  color: var(--deep);
+  font-size: 14px;
+  font-weight: 760;
+  line-height: 1.4;
+}
+
+.payGoCard li::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--brand);
+  vertical-align: 2px;
 }
 
 .packageGrid {
@@ -327,6 +383,32 @@
   background: var(--brandSoft);
 }
 
+.integrationPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1fr);
+  gap: 54px;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.integrationSteps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.integrationSteps span {
+  min-height: 92px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--deep);
+  font-size: 15px;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
 .customCard {
   display: grid;
   gap: 14px;
@@ -360,7 +442,9 @@
 
   .heroTop,
   .heroGrid,
-  .customPanel {
+  .customPanel,
+  .integrationPanel,
+  .payGoCard {
     grid-template-columns: 1fr;
   }
 
@@ -402,18 +486,21 @@
   }
 
   .packageGrid,
-  .signalGrid {
+  .signalGrid,
+  .integrationSteps {
     grid-template-columns: 1fr;
   }
 
   .packageSection,
   .rulesSection,
-  .customPanel {
+  .customPanel,
+  .integrationPanel {
     padding: 58px 20px;
   }
 
   .sectionIntro h2,
-  .customPanel h2 {
+  .customPanel h2,
+  .integrationPanel h2 {
     font-size: 32px;
   }
 }
