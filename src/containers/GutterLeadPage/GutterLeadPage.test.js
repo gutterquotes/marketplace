@@ -40,5 +40,9 @@ describe('GutterLeadPage', () => {
       'href',
       '/s'
     );
+    expect(screen.getByRole('link', { name: 'See client results' })).toHaveAttribute(
+      'href',
+      '/pros/case-studies/valuefilter'
+    );
   });
 });

@@ -78,6 +78,7 @@ const GutterLeadPage = props => {
             <nav className={css.nav} aria-label="Gutter lead navigation">
               <NamedLink name="GutterProPage">For pros</NamedLink>
               <NamedLink name="GutterLeadPackagesPage">Lead packages</NamedLink>
+              <NamedLink name="ValueFilterCaseStudyPage">Case study</NamedLink>
               <a href="#how">How leads work</a>
               <a href="#lead-form">Get leads</a>
             </nav>
@@ -105,6 +106,9 @@ const GutterLeadPage = props => {
                 </NamedLink>
                 <NamedLink name="GutterLeadPackagesPage" className={css.secondaryAction}>
                   View lead packages
+                </NamedLink>
+                <NamedLink name="ValueFilterCaseStudyPage" className={css.secondaryAction}>
+                  See client results
                 </NamedLink>
               </div>
             </div>

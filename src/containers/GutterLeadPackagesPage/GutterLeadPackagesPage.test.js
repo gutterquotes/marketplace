@@ -35,9 +35,14 @@ describe('GutterLeadPackagesPage', () => {
     expect(screen.getByText('$75 per lead')).toBeInTheDocument();
     expect(screen.getByText('Lead delivery into the CRM gutter companies already use.')).toBeInTheDocument();
     expect(screen.getAllByText('Private pro pricing')).toHaveLength(2);
+    expect(screen.getByText('Client proof')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'See how leads work' })).toHaveAttribute(
       'href',
       '/pros/gutter-leads'
+    );
+    expect(screen.getByRole('link', { name: 'Read client case study' })).toHaveAttribute(
+      'href',
+      '/pros/case-studies/valuefilter'
     );
   });
 });

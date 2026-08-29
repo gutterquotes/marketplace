@@ -37,6 +37,7 @@ const QuoteStartPage = loadable(() => import(/* webpackChunkName: "QuoteStartPag
 const GutterProPage = loadable(() => import(/* webpackChunkName: "GutterProPage" */ '../containers/GutterProPage/GutterProPage'));
 const GutterLeadPage = loadable(() => import(/* webpackChunkName: "GutterLeadPage" */ '../containers/GutterLeadPage/GutterLeadPage'));
 const GutterLeadPackagesPage = loadable(() => import(/* webpackChunkName: "GutterLeadPackagesPage" */ '../containers/GutterLeadPackagesPage/GutterLeadPackagesPage'));
+const ValueFilterCaseStudyPage = loadable(() => import(/* webpackChunkName: "ValueFilterCaseStudyPage" */ '../containers/ValueFilterCaseStudyPage/ValueFilterCaseStudyPage'));
 const RequestQuotePage = loadable(() => import(/* webpackChunkName: "RequestQuotePage" */ '../containers/RequestQuotePage/RequestQuotePage'));
 const SearchPageWithMap = loadable(() => import(/* webpackChunkName: "SearchPageWithMap" */ /* webpackPrefetch: true */  '../containers/SearchPage/SearchPageWithMap'));
 const SearchPageWithGrid = loadable(() => import(/* webpackChunkName: "SearchPageWithGrid" */ /* webpackPrefetch: true */  '../containers/SearchPage/SearchPageWithGrid'));
@@ -109,6 +110,11 @@ const routeConfiguration = (layoutConfig, accessControlConfig) => {
       path: '/pros/lead-packages',
       name: 'GutterLeadPackagesPage',
       component: GutterLeadPackagesPage,
+    },
+    {
+      path: '/pros/case-studies/valuefilter',
+      name: 'ValueFilterCaseStudyPage',
+      component: ValueFilterCaseStudyPage,
     },
     {
       path: '/gutter-leads',

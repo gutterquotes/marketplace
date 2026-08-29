@@ -95,6 +95,7 @@ const GutterLeadPackagesPage = props => {
             <nav className={css.nav} aria-label="Gutter pro package navigation">
               <NamedLink name="GutterProPage">For pros</NamedLink>
               <NamedLink name="GutterLeadPage">Gutter leads</NamedLink>
+              <NamedLink name="ValueFilterCaseStudyPage">Case study</NamedLink>
               <a href="#packages">Packages</a>
               <a href="#custom">Custom</a>
             </nav>
@@ -119,6 +120,9 @@ const GutterLeadPackagesPage = props => {
                 <NamedLink name="GutterLeadPage" className={css.secondaryAction}>
                   See how leads work
                 </NamedLink>
+                <NamedLink name="ValueFilterCaseStudyPage" className={css.secondaryAction}>
+                  Read client case study
+                </NamedLink>
               </div>
             </div>
 
@@ -137,6 +141,20 @@ const GutterLeadPackagesPage = props => {
               </div>
             </aside>
           </div>
+        </section>
+
+        <section className={css.caseStudyPanel}>
+          <div>
+            <p className={css.kicker}>Client proof</p>
+            <h2>ValueFilter is tracking toward $300k+ monthly revenue from Gutter Quotes leads.</h2>
+            <p>
+              See how our first gutter client moved from $100k+ in month-one revenue to a larger
+              repeatable lead engine through focused market demand and fast sales follow-up.
+            </p>
+          </div>
+          <NamedLink name="ValueFilterCaseStudyPage" className={css.secondaryAction}>
+            Read the case study
+          </NamedLink>
         </section>
 
         <section id="packages" className={css.packageSection}>

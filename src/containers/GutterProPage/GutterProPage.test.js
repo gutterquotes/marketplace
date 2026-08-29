@@ -40,5 +40,9 @@ describe('GutterProPage', () => {
       'href',
       '/pros/gutter-leads'
     );
+    expect(screen.getByRole('link', { name: 'See ValueFilter results' })).toHaveAttribute(
+      'href',
+      '/pros/case-studies/valuefilter'
+    );
   });
 });

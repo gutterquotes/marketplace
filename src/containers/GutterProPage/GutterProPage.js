@@ -100,6 +100,7 @@ const GutterProPage = props => {
             <nav className={css.nav} aria-label="Gutter pro navigation">
               <NamedLink name="GutterLeadPage">Gutter leads</NamedLink>
               <NamedLink name="GutterLeadPackagesPage">Lead packages</NamedLink>
+              <NamedLink name="ValueFilterCaseStudyPage">Case study</NamedLink>
               <a href="#how">How it works</a>
               <a href="#lead-types">Lead types</a>
               <a href="#signup">Get started</a>
@@ -128,6 +129,9 @@ const GutterProPage = props => {
                 </NamedLink>
                 <NamedLink name="GutterLeadPackagesPage" className={css.secondaryAction}>
                   View lead packages
+                </NamedLink>
+                <NamedLink name="ValueFilterCaseStudyPage" className={css.secondaryAction}>
+                  See ValueFilter results
                 </NamedLink>
               </div>
             </div>
@@ -252,6 +256,9 @@ const GutterProPage = props => {
             </p>
             <NamedLink name="GutterLeadPackagesPage" className={css.inlineAction}>
               Compare volume lead packages
+            </NamedLink>
+            <NamedLink name="ValueFilterCaseStudyPage" className={css.inlineAction}>
+              Read the ValueFilter case study
             </NamedLink>
           </div>
           <div className={css.priceGrid}>

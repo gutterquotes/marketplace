@@ -170,7 +170,8 @@
 .packageSection,
 .rulesSection,
 .customPanel,
-.integrationPanel {
+.integrationPanel,
+.caseStudyPanel {
   max-width: 1180px;
   margin: 0 auto;
   padding: 80px 6vw;
@@ -183,7 +184,8 @@
 
 .sectionIntro h2,
 .customPanel h2,
-.integrationPanel h2 {
+.integrationPanel h2,
+.caseStudyPanel h2 {
   margin: 10px 0 14px;
   color: var(--deep);
   font-size: 42px;
@@ -193,10 +195,32 @@
 
 .sectionIntro p,
 .customPanel p,
-.integrationPanel p {
+.integrationPanel p,
+.caseStudyPanel p {
   color: var(--muted);
   font-size: 18px;
   line-height: 1.55;
+}
+
+.caseStudyPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 34px;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border: 1px solid #ffd2bd;
+  border-radius: 8px;
+  background: var(--brandSoft);
+}
+
+.caseStudyPanel h2 {
+  max-width: 820px;
+}
+
+.caseStudyPanel p {
+  max-width: 760px;
+  margin-bottom: 0;
 }
 
 .payGoCard {
@@ -444,7 +468,8 @@
   .heroGrid,
   .customPanel,
   .integrationPanel,
-  .payGoCard {
+  .payGoCard,
+  .caseStudyPanel {
     grid-template-columns: 1fr;
   }
 
@@ -494,13 +519,15 @@
   .packageSection,
   .rulesSection,
   .customPanel,
-  .integrationPanel {
+  .integrationPanel,
+  .caseStudyPanel {
     padding: 58px 20px;
   }
 
   .sectionIntro h2,
   .customPanel h2,
-  .integrationPanel h2 {
+  .integrationPanel h2,
+  .caseStudyPanel h2 {
     font-size: 32px;
   }
 }
