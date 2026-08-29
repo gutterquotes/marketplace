@@ -1,6 +1,6 @@
 {
-    "name": "Biketribe",
-    "short_name": "Biketribe",
+    "name": "Gutter Quotes",
+    "short_name": "Gutter Quotes",
     "start_url": "/",
     "display": "standalone",
     "theme_color": "#ffffff",
@@ -12,10 +12,9 @@
         "type": "image/png"
       },
       {
-          "src": "/static/icons/android-chrome-512x512.png",
-          "sizes": "512x512",
-          "type": "image/png"
+        "src": "/static/icons/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
       }
     ]
   }
-  
