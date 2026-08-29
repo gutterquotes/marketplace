@@ -6,13 +6,11 @@
   --gqMuted: #626262;
   --gqLine: #e7e7e7;
   --gqMist: #f7f7f7;
-  --gqWarm: #fff6f0;
+  --gqWarm: #fff;
 
   min-height: calc(100vh - 64px);
   color: var(--gqInk);
-  background:
-    linear-gradient(180deg, rgba(255, 246, 240, 0.78), #fff 42%),
-    #fff;
+  background: #fff;
   font-family: Inter, Arial, sans-serif;
 }
 
@@ -167,7 +165,7 @@
 
 .checkGrid .checkComplete {
   border-color: #ffd2bd;
-  background: var(--gqWarm);
+  background: #fff;
 }
 
 .checkGrid .checkComplete::before {
@@ -236,7 +234,7 @@
 
 .optionButton:first-child {
   border-color: #ffc0a3;
-  background: var(--gqWarm);
+  background: #fff;
 }
 
 .optionButton:hover,
@@ -245,7 +243,7 @@
 }
 
 .optionButtonActive {
-  background: var(--gqWarm);
+  background: #fff;
   box-shadow: inset 0 0 0 1px var(--gqAccent);
 }
 
@@ -378,7 +376,7 @@
   margin-top: 24px;
   border: 1px solid #ffd2bd;
   border-radius: 8px;
-  background: var(--gqWarm);
+  background: #fff;
   padding: 18px;
 }
 
