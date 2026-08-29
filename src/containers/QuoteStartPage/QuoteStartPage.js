@@ -77,21 +77,6 @@ const propertyTypeToValue = {
   'Commercial building': 'commercial',
 };
 
-const detailBoosts = [
-  { key: 'photos', label: 'Photos ready', points: 7 },
-  { key: 'material', label: 'Material preference', points: 5 },
-  { key: 'access', label: 'Easy exterior access', points: 4 },
-];
-
-const matchSignals = [
-  'Service area',
-  'Project type',
-  'Roofline complexity',
-  'Timeline',
-  'Material fit',
-  'Response speed',
-];
-
 const trustCues = ['Free for homeowners', 'No obligation', 'Contact details stay private first'];
 
 const exampleRequests = [
@@ -119,19 +104,23 @@ const QuoteStartPage = props => {
   const [timeline, setTimeline] = useState('This month');
   const [propertyType, setPropertyType] = useState('Single-family home');
   const [homeHeight, setHomeHeight] = useState('Two stories');
-  const [selectedDetails, setSelectedDetails] = useState(['photos']);
   const [notes, setNotes] = useState(projectTypes[0].defaultNotes);
 
-  const readinessScore = useMemo(() => {
-    const zipPoints = zipCode.trim().length >= 5 ? 12 : 0;
-    const timelinePoints = timeline === 'Emergency repair' ? 14 : 10;
-    const detailPoints = selectedDetails.reduce((sum, key) => {
-      const detail = detailBoosts.find(item => item.key === key);
-      return sum + (detail?.points || 0);
-    }, 0);
-    const notesPoints = notes.trim().length > 40 ? 9 : 3;
-    return Math.min(99, 52 + zipPoints + timelinePoints + detailPoints + notesPoints);
-  }, [zipCode, timeline, selectedDetails, notes]);
+  const requestQuality = useMemo(() => {
+    const checks = [
+      { label: 'ZIP code', complete: zipCode.trim().length >= 5 },
+      { label: 'Service type', complete: !!selectedProject.label },
+      { label: 'Timeline', complete: !!timeline },
+      { label: 'Property type', complete: !!propertyType },
+      { label: 'Home height', complete: !!homeHeight },
+      { label: 'Project notes', complete: notes.trim().length >= 30 },
+    ];
+    const completedCount = checks.filter(check => check.complete).length;
+    const status =
+      completedCount >= 6 ? 'Ready for contractor review' : 'Add a few details for better replies';
+
+    return { checks, completedCount, status };
+  }, [zipCode, selectedProject, timeline, propertyType, homeHeight, notes]);
 
   const publicPreview = `${selectedProject.publicSummary} near ${zipCode || 'your ZIP'}: ${
     propertyType
@@ -143,12 +132,6 @@ const QuoteStartPage = props => {
     'Full notes and photos',
     'Direct messaging details',
   ];
-
-  const toggleDetail = key => {
-    setSelectedDetails(current =>
-      current.includes(key) ? current.filter(item => item !== key) : [...current, key]
-    );
-  };
 
   const handleProjectSelect = project => {
     setSelectedProject(project);
@@ -162,12 +145,6 @@ const QuoteStartPage = props => {
     notes,
     '',
     `Property: ${propertyType}. Height: ${homeHeight}. Timeline: ${timeline}.`,
-    selectedDetails.length > 0
-      ? `Helpful details: ${selectedDetails
-          .map(key => detailBoosts.find(detail => detail.key === key)?.label)
-          .filter(Boolean)
-          .join(', ')}.`
-      : null,
   ]
     .filter(Boolean)
     .join('\n');
@@ -183,13 +160,12 @@ const QuoteStartPage = props => {
         homeType: propertyTypeToValue[propertyType],
         timeline: timelineToValue[timeline],
         projectDetails: notes,
-        requestReadinessScore: readinessScore,
+        requestQualityStatus: requestQuality.status,
         publicPreview,
       },
       privateData: {
         projectNotes: notes,
         homeHeight,
-        selectedDetails,
       },
     });
   };
@@ -221,16 +197,20 @@ const QuoteStartPage = props => {
 
           <aside className={css.matchPanel} aria-label="Quote match preview">
             <div className={css.panelTop}>
-              <span>Match readiness</span>
-              <strong>{readinessScore}%</strong>
+              <span>Request quality</span>
+              <strong>
+                {requestQuality.completedCount}/{requestQuality.checks.length}
+              </strong>
             </div>
             <p>
-              The AI-ready brief improves as you add ZIP, timeline, property details, photos, and
-              project notes.
+              {requestQuality.status}. Contractors can respond better when they know the service,
+              ZIP code, timeline, property type, home height, and project notes.
             </p>
-            <div className={css.signalGrid}>
-              {matchSignals.map(signal => (
-                <span key={signal}>{signal}</span>
+            <div className={css.checkGrid}>
+              {requestQuality.checks.map(check => (
+                <span key={check.label} className={check.complete ? css.checkComplete : ''}>
+                  {check.label}
+                </span>
               ))}
             </div>
           </aside>
@@ -314,25 +294,6 @@ const QuoteStartPage = props => {
               </label>
             </div>
 
-            <div className={css.detailGrid} aria-label="Helpful project details">
-              {detailBoosts.map(detail => (
-                <button
-                  key={detail.key}
-                  type="button"
-                  className={
-                    selectedDetails.includes(detail.key)
-                      ? `${css.detailButton} ${css.detailButtonActive}`
-                      : css.detailButton
-                  }
-                  aria-pressed={selectedDetails.includes(detail.key)}
-                  onClick={() => toggleDetail(detail.key)}
-                >
-                  <span>{detail.label}</span>
-                  <strong>+{detail.points}</strong>
-                </button>
-              ))}
-            </div>
-
             <label className={css.messageField}>
               <span>Project notes</span>
               <textarea
@@ -374,7 +335,7 @@ const QuoteStartPage = props => {
                 selectedProject.label,
                 propertyType,
                 homeHeight,
-                `${readinessScore}% request readiness`,
+                requestQuality.status,
               ].map(detail => (
                 <li key={detail}>{detail}</li>
               ))}

@@ -137,14 +137,14 @@
   line-height: 1.5;
 }
 
-.signalGrid {
+.checkGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 9px;
   margin-top: 24px;
 }
 
-.signalGrid span {
+.checkGrid span {
   border: 1px solid var(--gqLine);
   border-radius: 8px;
   background: var(--gqMist);
@@ -152,6 +152,26 @@
   color: var(--gqEvergreen);
   font-size: 13px;
   font-weight: 820;
+}
+
+.checkGrid span::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #c9cfcc;
+  vertical-align: 1px;
+}
+
+.checkGrid .checkComplete {
+  border-color: #ffd2bd;
+  background: var(--gqWarm);
+}
+
+.checkGrid .checkComplete::before {
+  background: var(--gqAccent);
 }
 
 .flow {
@@ -278,53 +298,6 @@
   min-height: 116px;
   padding-top: 14px;
   resize: vertical;
-}
-
-.detailGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.detailButton {
-  display: flex;
-  min-height: 54px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  border: 1px solid var(--gqLine);
-  border-radius: 8px;
-  background: #fff;
-  color: var(--gqInk);
-  cursor: pointer;
-  padding: 10px 12px;
-  text-align: left;
-}
-
-.detailButton span,
-.detailButton strong {
-  line-height: 1.15;
-}
-
-.detailButton span {
-  font-size: 13px;
-  font-weight: 820;
-}
-
-.detailButton strong {
-  color: var(--gqAccent);
-  font-size: 13px;
-  font-weight: 880;
-}
-
-.detailButton:hover,
-.detailButtonActive {
-  border-color: var(--gqAccent);
-}
-
-.detailButtonActive {
-  background: var(--gqWarm);
 }
 
 .briefPanel {
@@ -523,10 +496,9 @@
     font-size: 17px;
   }
 
-  .signalGrid,
+  .checkGrid,
   .optionGrid,
-  .twoColumn,
-  .detailGrid {
+  .twoColumn {
     grid-template-columns: 1fr;
   }
 
