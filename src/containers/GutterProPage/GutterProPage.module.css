@@ -95,7 +95,8 @@
 }
 
 .primaryAction,
-.secondaryAction {
+.secondaryAction,
+.inlineAction {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -114,6 +115,14 @@
 
 .secondaryAction {
   border: 1px solid var(--line);
+  color: var(--deep);
+}
+
+.inlineAction {
+  min-height: 44px;
+  margin-top: 4px;
+  border: 1px solid var(--line);
+  background: #fff;
   color: var(--deep);
 }
 

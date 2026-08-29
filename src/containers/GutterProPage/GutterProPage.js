@@ -99,6 +99,7 @@ const GutterProPage = props => {
             <img src={logoImage} alt="Gutter Quotes" className={css.logo} />
             <nav className={css.nav} aria-label="Gutter pro navigation">
               <NamedLink name="GutterLeadPage">Gutter leads</NamedLink>
+              <NamedLink name="GutterLeadPackagesPage">Lead packages</NamedLink>
               <a href="#how">How it works</a>
               <a href="#lead-types">Lead types</a>
               <a href="#signup">Get started</a>
@@ -124,6 +125,9 @@ const GutterProPage = props => {
                 </NamedLink>
                 <NamedLink name="GutterLeadPage" className={css.secondaryAction}>
                   Explore gutter leads
+                </NamedLink>
+                <NamedLink name="GutterLeadPackagesPage" className={css.secondaryAction}>
+                  View lead packages
                 </NamedLink>
               </div>
             </div>
@@ -246,6 +250,9 @@ const GutterProPage = props => {
               pros get direct onboarding, priority lead alerts, and a cleaner way to pursue
               homeowner gutter projects without buying the same shared lead as everyone else.
             </p>
+            <NamedLink name="GutterLeadPackagesPage" className={css.inlineAction}>
+              Compare volume lead packages
+            </NamedLink>
           </div>
           <div className={css.priceGrid}>
             {launchPlans.map(plan => (
