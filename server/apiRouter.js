@@ -16,6 +16,7 @@ const transactionLineItems = require('./api/transaction-line-items');
 const initiatePrivileged = require('./api/initiate-privileged');
 const transitionPrivileged = require('./api/transition-privileged');
 const deleteAccount = require('./api/delete-account');
+const jobber = require('./api/jobber');
 
 const createUserWithIdp = require('./api/auth/createUserWithIdp');
 
@@ -48,6 +49,12 @@ router.use((req, res, next) => {
   next();
 });
 
+router.use(
+  bodyParser.json({
+    type: 'application/json',
+  })
+);
+
 // ================ API router endpoints: ================ //
 
 router.get('/initiate-login-as', initiateLoginAs);
@@ -56,6 +63,10 @@ router.post('/transaction-line-items', transactionLineItems);
 router.post('/initiate-privileged', initiatePrivileged);
 router.post('/transition-privileged', transitionPrivileged);
 router.post('/delete-account', deleteAccount);
+router.get('/jobber/status', jobber.status);
+router.get('/jobber/connect', jobber.connect);
+router.get('/jobber/callback', jobber.callback);
+router.post('/jobber/test-lead', jobber.testLead);
 
 // Create user with identity provider (e.g. Facebook or Google)
 // This endpoint is called to create a new user after user has confirmed
