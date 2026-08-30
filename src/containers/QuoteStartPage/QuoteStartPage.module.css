@@ -211,6 +211,14 @@
   line-height: 1.05;
 }
 
+.stepHint {
+  margin: 8px 0 0;
+  color: var(--gqMuted);
+  font-size: 15px;
+  font-weight: 760;
+  line-height: 1.35;
+}
+
 .optionGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -230,11 +238,6 @@
   line-height: 1.2;
   padding: 12px 14px;
   text-align: left;
-}
-
-.optionButton:first-child {
-  border-color: #ffc0a3;
-  background: #fff;
 }
 
 .optionButton:hover,

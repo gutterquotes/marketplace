@@ -52,6 +52,8 @@ const projectTypes = [
   },
 ];
 
+const notSureProjectLabel = 'Not sure yet';
+
 const propertyTypes = [
   'Single-family home',
   'Townhome',
@@ -99,17 +101,24 @@ const exampleRequests = [
 
 const QuoteStartPage = props => {
   const { scrollingDisabled } = props;
-  const [selectedProject, setSelectedProject] = useState(projectTypes[0]);
+  const [selectedProjects, setSelectedProjects] = useState([projectTypes[0]]);
   const [zipCode, setZipCode] = useState('28211');
   const [timeline, setTimeline] = useState('This month');
   const [propertyType, setPropertyType] = useState('Single-family home');
   const [homeHeight, setHomeHeight] = useState('Two stories');
   const [notes, setNotes] = useState(projectTypes[0].defaultNotes);
 
+  const primaryProject = selectedProjects[0] || projectTypes[0];
+  const selectedServiceLabels = selectedProjects.map(project => project.label);
+  const serviceSummary =
+    selectedServiceLabels.length > 1
+      ? selectedServiceLabels.join(' + ')
+      : primaryProject.publicSummary;
+
   const requestQuality = useMemo(() => {
     const checks = [
       { label: 'ZIP code', complete: zipCode.trim().length >= 5 },
-      { label: 'Service type', complete: !!selectedProject.label },
+      { label: 'Service type', complete: selectedProjects.length > 0 },
       { label: 'Timeline', complete: !!timeline },
       { label: 'Property type', complete: !!propertyType },
       { label: 'Home height', complete: !!homeHeight },
@@ -120,9 +129,9 @@ const QuoteStartPage = props => {
       completedCount >= 6 ? 'Ready for contractor review' : 'Add a few details for better replies';
 
     return { checks, completedCount, status };
-  }, [zipCode, selectedProject, timeline, propertyType, homeHeight, notes]);
+  }, [zipCode, selectedProjects, timeline, propertyType, homeHeight, notes]);
 
-  const publicPreview = `${selectedProject.publicSummary} near ${zipCode || 'your ZIP'}: ${
+  const publicPreview = `${serviceSummary} near ${zipCode || 'your ZIP'}: ${
     propertyType
   }, ${homeHeight.toLowerCase()}, ${timeline.toLowerCase()}.`;
 
@@ -133,17 +142,32 @@ const QuoteStartPage = props => {
     'Direct messaging details',
   ];
 
-  const handleProjectSelect = project => {
-    setSelectedProject(project);
-    setNotes(project.defaultNotes);
+  const handleProjectToggle = project => {
+    setSelectedProjects(currentProjects => {
+      const isSelected = currentProjects.some(item => item.label === project.label);
+      const isNotSure = project.label === notSureProjectLabel;
+      const withoutProject = currentProjects.filter(item => item.label !== project.label);
+      const withoutNotSure = currentProjects.filter(item => item.label !== notSureProjectLabel);
+
+      if (isSelected) {
+        return withoutProject.length > 0 ? withoutProject : currentProjects;
+      }
+
+      return isNotSure ? [project] : [...withoutNotSure, project];
+    });
+
+    if (project.label === notSureProjectLabel || selectedProjects.length === 1) {
+      setNotes(project.defaultNotes);
+    }
   };
 
-  const title = `${selectedProject.publicSummary} near ${zipCode || 'my area'}`;
+  const title = `${serviceSummary} near ${zipCode || 'my area'}`;
   const draftDescription = [
     publicPreview,
     '',
     notes,
     '',
+    `Services selected: ${selectedServiceLabels.join(', ')}.`,
     `Property: ${propertyType}. Height: ${homeHeight}. Timeline: ${timeline}.`,
   ]
     .filter(Boolean)
@@ -155,7 +179,9 @@ const QuoteStartPage = props => {
       description: draftDescription,
       listingType: GUTTER_QUOTE_LISTING_TYPE,
       publicData: {
-        serviceNeeded: selectedProject.serviceNeeded,
+        serviceNeeded: primaryProject.serviceNeeded,
+        serviceNeededList: selectedProjects.map(project => project.serviceNeeded),
+        selectedServices: selectedServiceLabels,
         projectZip: zipCode,
         homeType: propertyTypeToValue[propertyType],
         timeline: timelineToValue[timeline],
@@ -223,6 +249,7 @@ const QuoteStartPage = props => {
               <div>
                 <p className={css.kicker}>Project type</p>
                 <h2>What gutter work do you need?</h2>
+                <p className={css.stepHint}>Select all that apply.</p>
               </div>
             </div>
             <div className={css.optionGrid}>
@@ -231,12 +258,12 @@ const QuoteStartPage = props => {
                   key={project.label}
                   type="button"
                   className={
-                    selectedProject.label === project.label
+                    selectedProjects.some(selected => selected.label === project.label)
                       ? `${css.optionButton} ${css.optionButtonActive}`
                       : css.optionButton
                   }
-                  aria-pressed={selectedProject.label === project.label}
-                  onClick={() => handleProjectSelect(project)}
+                  aria-pressed={selectedProjects.some(selected => selected.label === project.label)}
+                  onClick={() => handleProjectToggle(project)}
                 >
                   {project.label}
                 </button>
@@ -309,8 +336,9 @@ const QuoteStartPage = props => {
                 <h3>{publicPreview}</h3>
               </div>
               <p>
-                Contractor signal: {selectedProject.proSignal}. Your exact address and contact
-                details stay private until account and lead access steps are complete.
+                Contractor signal: {selectedProjects.map(project => project.proSignal).join('; ')}.
+                Your exact address and contact details stay private until account and lead access
+                steps are complete.
               </p>
             </div>
 
@@ -332,7 +360,7 @@ const QuoteStartPage = props => {
             <h2>Post once. Let qualified gutter pros compete for the work.</h2>
             <ul>
               {[
-                selectedProject.label,
+                selectedServiceLabels.join(', '),
                 propertyType,
                 homeHeight,
                 requestQuality.status,

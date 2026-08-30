@@ -38,7 +38,7 @@ describe('QuoteStartPage', () => {
 
     expect(
       screen.getByText(
-        'Gutter repair request near 30301: Single-family home, two stories, emergency repair.'
+        'Seamless gutter installation + Gutter repair near 30301: Single-family home, two stories, emergency repair.'
       )
     ).toBeInTheDocument();
     expect(screen.getByText('Private until lead access')).toBeInTheDocument();
@@ -46,13 +46,39 @@ describe('QuoteStartPage', () => {
     fireEvent.click(screen.getByRole('link', { name: 'Continue free request' }));
     const savedDraft = JSON.parse(window.localStorage.getItem('gutterQuotes.requestDraft.v1'));
     expect(savedDraft).toMatchObject({
-      title: 'Gutter repair request near 30301',
+      title: 'Seamless gutter installation + Gutter repair near 30301',
       listingType: 'post-request',
       publicData: {
-        serviceNeeded: 'repair',
+        serviceNeeded: 'installation',
+        serviceNeededList: ['installation', 'repair'],
+        selectedServices: ['Seamless gutter installation', 'Gutter repair'],
         projectZip: '30301',
         timeline: 'emergency',
       },
     });
+  });
+
+  it('lets homeowners select multiple gutter services and keep not sure yet exclusive', () => {
+    render(<QuoteStartPage scrollingDisabled={false} />);
+
+    const installation = screen.getByRole('button', { name: 'Seamless gutter installation' });
+    const guards = screen.getByRole('button', { name: 'Gutter guards' });
+    const notSure = screen.getByRole('button', { name: 'Not sure yet' });
+
+    expect(screen.getByText('Select all that apply.')).toBeInTheDocument();
+    expect(installation).toHaveAttribute('aria-pressed', 'true');
+
+    fireEvent.click(guards);
+    expect(installation).toHaveAttribute('aria-pressed', 'true');
+    expect(guards).toHaveAttribute('aria-pressed', 'true');
+
+    fireEvent.click(notSure);
+    expect(installation).toHaveAttribute('aria-pressed', 'false');
+    expect(guards).toHaveAttribute('aria-pressed', 'false');
+    expect(notSure).toHaveAttribute('aria-pressed', 'true');
+
+    fireEvent.click(guards);
+    expect(notSure).toHaveAttribute('aria-pressed', 'false');
+    expect(guards).toHaveAttribute('aria-pressed', 'true');
   });
 });

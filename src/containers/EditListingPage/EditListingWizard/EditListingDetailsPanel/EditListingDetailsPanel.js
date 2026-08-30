@@ -439,6 +439,8 @@ const EditListingDetailsPanel = props => {
                 ? {
                     requestReadinessScore: quoteDraft.publicData?.requestReadinessScore,
                     publicPreview: quoteDraft.publicData?.publicPreview,
+                    serviceNeededList: quoteDraft.publicData?.serviceNeededList,
+                    selectedServices: quoteDraft.publicData?.selectedServices,
                   }
                 : {};
             const draftPrivateData =
