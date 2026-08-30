@@ -214,96 +214,66 @@
   line-height: 1;
 }
 
-.matchCard {
+.requestCard {
   border: 1px solid var(--gqLine);
   border-radius: 8px;
   background: #fff;
-  padding: 26px;
+  padding: 30px;
   box-shadow: 0 24px 56px rgba(17, 20, 19, 0.08);
 }
 
-.cardTop {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  color: var(--gqMuted);
-  font-size: 13px;
-  font-weight: 850;
-}
-
-.cardTop strong {
-  color: var(--gqAccent);
-}
-
-.matchMeter {
-  display: grid;
-  grid-template-columns: 118px minmax(0, 1fr);
-  gap: 18px;
-  align-items: center;
-  margin-top: 30px;
-}
-
-.matchMeter span {
-  display: flex;
-  width: 118px;
-  height: 118px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background:
-    linear-gradient(#fff, #fff) padding-box,
-    conic-gradient(var(--gqAccent) 0 96%, #e8eeeb 96% 100%) border-box;
-  border: 10px solid transparent;
-  color: var(--gqEvergreen);
-  font-size: 31px;
-  font-weight: 880;
-}
-
-.matchMeter p {
+.requestCard h2 {
   margin: 0;
   color: var(--gqInk);
-  font-size: 24px;
-  font-weight: 850;
-  line-height: 1.1;
+  font-size: 36px;
+  font-weight: 880;
+  letter-spacing: 0;
+  line-height: 1.04;
 }
 
-.signalGrid {
+.requestCard ul {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 9px;
-  margin-top: 28px;
+  gap: 12px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.signalGrid span {
+.requestCard li {
   border: 1px solid var(--gqLine);
   border-radius: 8px;
   background: var(--gqMist);
-  padding: 11px 12px;
+  padding: 14px;
   color: var(--gqEvergreen);
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.proPreview {
-  margin-top: 24px;
-  border: 1px solid #ffd2bd;
-  border-radius: 8px;
-  background: var(--gqWarm);
-  padding: 17px;
-}
-
-.proPreview strong {
-  display: block;
-  color: var(--gqInk);
-  font-size: 18px;
-  font-weight: 880;
-}
-
-.proPreview p {
-  margin: 7px 0 0;
-  color: var(--gqMuted);
   font-size: 14px;
-  line-height: 1.45;
+  font-weight: 820;
+  line-height: 1.35;
+}
+
+.requestCard li::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--gqAccent);
+  vertical-align: 1px;
+}
+
+.cardAction {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 24px;
+  border-radius: 8px;
+  background: var(--gqAccent);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 880;
+  text-decoration: none;
 }
 
 .projectsSection,
@@ -382,23 +352,9 @@
   transform: translateY(-2px);
 }
 
-.rating {
-  display: inline-flex;
-  min-width: 46px;
-  height: 30px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  background: var(--gqAccent);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 880;
-}
-
 .projectCard h3,
 .stepCard h3,
 .guideCard h3 {
-  margin-top: 22px;
   color: var(--gqInk);
   font-size: 22px;
   font-weight: 880;
@@ -570,21 +526,7 @@
     font-size: 17px;
   }
 
-  .matchMeter {
-    grid-template-columns: 1fr;
-  }
-
-  .matchMeter span {
-    width: 100px;
-    height: 100px;
-    font-size: 28px;
-  }
-
-  .signalGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .matchCard,
+  .requestCard,
   .projectCard,
   .stepCard,
   .platformPanel,
@@ -594,6 +536,7 @@
   }
 
   .sectionIntro h2,
+  .requestCard h2,
   .platformPanel h2,
   .platformPanelDark h2,
   .finalCta h2 {

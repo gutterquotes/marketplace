@@ -7,21 +7,12 @@ import logoImage from '../../assets/gutter-quotes-logo.png';
 import css from './FallbackPage.module.css';
 
 const popularProjects = [
-  { title: 'Seamless gutter installation', score: '4.9', detail: 'Matched by roofline, material, and ZIP' },
-  { title: 'Gutter guards', score: '4.8', detail: 'Compare guard types, warranties, and install timelines' },
-  { title: 'Gutter repair', score: '4.7', detail: 'Leaks, sagging runs, fascia issues, and storm damage' },
-  { title: 'Gutter cleaning', score: '4.8', detail: 'Fast seasonal service with downspout clearing' },
-  { title: 'Downspout drainage', score: '4.6', detail: 'Move water away from siding, soil, and foundations' },
-  { title: 'Commercial gutters', score: '4.7', detail: 'Multifamily, retail, office, and light commercial work' },
-];
-
-const intelligenceSignals = [
-  'Project scope',
-  'Home type',
-  'Roofline complexity',
-  'Material preference',
-  'Timeline',
-  'Service area',
+  { title: 'Seamless gutter installation', detail: 'Compare local installers for new aluminum, copper, half-round, and K-style gutters.' },
+  { title: 'Gutter guards', detail: 'Find pros who install protection systems built around your roofline and tree coverage.' },
+  { title: 'Gutter repair', detail: 'Get help with leaks, sagging runs, fascia issues, overflow, and storm damage.' },
+  { title: 'Gutter cleaning', detail: 'Request seasonal gutter cleaning, debris removal, and downspout clearing.' },
+  { title: 'Downspout drainage', detail: 'Move water away from siding, soil, landscaping, crawlspaces, and foundations.' },
+  { title: 'Commercial gutters', detail: 'Connect with gutter specialists for multifamily, retail, office, and light commercial work.' },
 ];
 
 const steps = [
@@ -104,27 +95,17 @@ const FallbackPage = () => {
             </div>
           </div>
 
-          <aside className={css.matchCard} aria-label="Gutter Quotes matching preview">
-            <div className={css.cardTop}>
-              <span>Match engine</span>
-              <strong>Live preview</strong>
-            </div>
-            <div className={css.matchMeter}>
-              <span>96%</span>
-              <p>fit score for seamless gutters and guards</p>
-            </div>
-            <div className={css.signalGrid}>
-              {intelligenceSignals.map(signal => (
-                <span key={signal}>{signal}</span>
-              ))}
-            </div>
-            <div className={css.proPreview}>
-              <strong>Launching market by market</strong>
-              <p>
-                Homeowner requests help attract the right gutter pros, and early contractors can
-                claim territory before demand gets crowded.
-              </p>
-            </div>
+          <aside className={css.requestCard} aria-label="Gutter quote request preview">
+            <p className={css.kicker}>Free homeowner request</p>
+            <h2>Tell us the work. We help you compare the right gutter pros.</h2>
+            <ul>
+              <li>Choose one or more gutter services</li>
+              <li>Add your ZIP code, timeline, and home details</li>
+              <li>Keep contact details private until the next step</li>
+            </ul>
+            <NamedLink name="QuoteStartPage" className={css.cardAction}>
+              Start a free request
+            </NamedLink>
           </aside>
         </div>
       </section>
@@ -142,7 +123,6 @@ const FallbackPage = () => {
         <div className={css.projectGrid}>
           {popularProjects.map(project => (
             <NamedLink key={project.title} name="QuoteStartPage" className={css.projectCard}>
-              <span className={css.rating}>{project.score}</span>
               <h3>{project.title}</h3>
               <p>{project.detail}</p>
             </NamedLink>
@@ -209,9 +189,10 @@ const FallbackPage = () => {
       <section className={css.finalCta}>
         <div>
           <p className={css.kicker}>Gutter Quotes nationwide</p>
-          <h2>The category-defining platform for gutter services.</h2>
+          <h2>Start with one free request and compare local gutter pros.</h2>
           <p>
-            Built to become the trusted place homeowners start and gutter pros grow.
+            Tell us what your home needs, then move forward with a clearer project brief and a
+            focused network of gutter specialists.
           </p>
         </div>
         <NamedLink
