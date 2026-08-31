@@ -16,9 +16,7 @@
 }
 
 .hero {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 246, 240, 0.78) 100%),
-    #fff;
+  background: #fff;
   border-bottom: 1px solid var(--gqLine);
 }
 
@@ -26,8 +24,7 @@
 .heroGrid,
 .projectsSection,
 .howSection,
-.platformSection,
-.guidesSection,
+.proSection,
 .finalCta {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
@@ -66,30 +63,27 @@
 }
 
 .heroGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(350px, 438px);
-  gap: 54px;
+  display: block;
+  max-width: 930px;
   align-items: center;
-  padding: 58px 0 78px;
+  padding: 44px 0 58px;
 }
 
 .heroCopy h1,
 .sectionIntro h2,
 .stepCard h3,
 .projectCard h3,
-.platformPanel h2,
-.platformPanelDark h2,
-.guideCard h3,
+.proSection h2,
 .finalCta h2 {
   margin: 0;
   letter-spacing: 0;
 }
 
 .heroCopy h1 {
-  max-width: 760px;
+  max-width: 820px;
   color: var(--gqInk);
-  font-size: 70px;
-  line-height: 0.94;
+  font-size: 62px;
+  line-height: 0.98;
   font-weight: 880;
 }
 
@@ -214,74 +208,11 @@
   line-height: 1;
 }
 
-.requestCard {
-  border: 1px solid var(--gqLine);
-  border-radius: 8px;
-  background: #fff;
-  padding: 30px;
-  box-shadow: 0 24px 56px rgba(17, 20, 19, 0.08);
-}
-
-.requestCard h2 {
-  margin: 0;
-  color: var(--gqInk);
-  font-size: 36px;
-  font-weight: 880;
-  letter-spacing: 0;
-  line-height: 1.04;
-}
-
-.requestCard ul {
-  display: grid;
-  gap: 12px;
-  margin: 26px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.requestCard li {
-  border: 1px solid var(--gqLine);
-  border-radius: 8px;
-  background: var(--gqMist);
-  padding: 14px;
-  color: var(--gqEvergreen);
-  font-size: 14px;
-  font-weight: 820;
-  line-height: 1.35;
-}
-
-.requestCard li::before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 10px;
-  border-radius: 50%;
-  background: var(--gqAccent);
-  vertical-align: 1px;
-}
-
-.cardAction {
-  display: inline-flex;
-  min-height: 50px;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: 24px;
-  border-radius: 8px;
-  background: var(--gqAccent);
-  color: #fff;
-  font-size: 15px;
-  font-weight: 880;
-  text-decoration: none;
-}
-
 .projectsSection,
 .howSection,
-.platformSection,
-.guidesSection,
+.proSection,
 .finalCta {
-  padding: 72px 0;
+  padding: 56px 0;
 }
 
 .sectionIntro {
@@ -293,8 +224,6 @@
 }
 
 .sectionIntro h2,
-.platformPanel h2,
-.platformPanelDark h2,
 .finalCta h2 {
   color: var(--gqInk);
   font-size: 42px;
@@ -305,9 +234,6 @@
 .sectionIntro p,
 .stepCard p,
 .projectCard p,
-.platformPanel p,
-.platformPanelDark p,
-.guideCard p,
 .finalCta p {
   margin: 0;
   color: var(--gqMuted);
@@ -321,16 +247,14 @@
 }
 
 .projectGrid,
-.stepGrid,
-.guideGrid {
+.stepGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
 
 .projectCard,
-.stepCard,
-.guideCard {
+.stepCard {
   border: 1px solid var(--gqLine);
   border-radius: 8px;
   background: #fff;
@@ -353,8 +277,7 @@
 }
 
 .projectCard h3,
-.stepCard h3,
-.guideCard h3 {
+.stepCard h3 {
   color: var(--gqInk);
   font-size: 22px;
   font-weight: 880;
@@ -362,13 +285,11 @@
 }
 
 .projectCard p,
-.stepCard p,
-.guideCard p {
+.stepCard p {
   margin-top: 12px;
 }
 
-.howSection,
-.guidesSection {
+.howSection {
   border-top: 1px solid var(--gqLine);
   background: #fff;
 }
@@ -391,53 +312,33 @@
   font-weight: 880;
 }
 
-.platformSection {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.platformPanel,
-.platformPanelDark {
-  border-radius: 8px;
-  padding: 36px;
-}
-
-.platformPanel {
+.proSection {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  justify-content: space-between;
   border: 1px solid var(--gqLine);
-  background: #fff;
+  border-radius: 8px;
+  background: var(--gqMist);
+  padding: 34px;
 }
 
-.platformPanelDark {
-  background: var(--gqAccent);
+.proSection div {
+  max-width: 720px;
 }
 
-.platformPanelDark h2,
-.platformPanelDark p {
-  color: #fff;
-}
-
-.platformPanel p,
-.platformPanelDark p {
-  margin-top: 18px;
-  font-size: 17px;
-}
-
-.guideCard {
-  min-height: 180px;
-  background: #fff;
-}
-
-.guideCard span {
-  color: var(--gqAccent);
-  font-size: 12px;
+.proSection h2 {
+  color: var(--gqInk);
+  font-size: 36px;
   font-weight: 880;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  line-height: 1.06;
 }
 
-.guideCard h3 {
-  margin-top: 18px;
+.proSection p {
+  margin: 14px 0 0;
+  color: var(--gqMuted);
+  font-size: 17px;
+  line-height: 1.55;
 }
 
 .finalCta {
@@ -466,13 +367,12 @@
 
   .heroGrid,
   .sectionIntro,
-  .platformSection,
+  .proSection,
   .finalCta {
     grid-template-columns: 1fr;
   }
 
   .heroGrid {
-    gap: 36px;
     padding: 34px 0 54px;
   }
 
@@ -489,17 +389,19 @@
   }
 
   .projectGrid,
-  .stepGrid,
-  .guideGrid {
+  .stepGrid {
     grid-template-columns: 1fr;
   }
 
   .projectsSection,
   .howSection,
-  .platformSection,
-  .guidesSection,
+  .proSection,
   .finalCta {
     padding: 54px 0;
+  }
+
+  .proSection {
+    display: grid;
   }
 }
 
@@ -508,8 +410,7 @@
   .heroGrid,
   .projectsSection,
   .howSection,
-  .platformSection,
-  .guidesSection,
+  .proSection,
   .finalCta {
     width: min(100% - 24px, 1180px);
   }
@@ -526,19 +427,14 @@
     font-size: 17px;
   }
 
-  .requestCard,
   .projectCard,
   .stepCard,
-  .platformPanel,
-  .platformPanelDark,
-  .guideCard {
+  .proSection {
     padding: 22px;
   }
 
   .sectionIntro h2,
-  .requestCard h2,
-  .platformPanel h2,
-  .platformPanelDark h2,
+  .proSection h2,
   .finalCta h2 {
     font-size: 32px;
   }

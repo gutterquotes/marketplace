@@ -30,13 +30,6 @@ const steps = [
   },
 ];
 
-const guides = [
-  { title: 'Gutter Installation Cost', slug: 'gutter-installation-cost' },
-  { title: 'Are Gutter Guards Worth It', slug: 'are-gutter-guards-worth-it' },
-  { title: 'Gutters Overflowing', slug: 'gutters-overflowing' },
-  { title: 'Buy Gutter Leads', slug: 'buy-gutter-leads' },
-];
-
 const launchTrust = [
   'Free request for homeowners',
   'Focused only on gutters and drainage',
@@ -54,7 +47,6 @@ const FallbackPage = () => {
             <NamedLink name="SearchPage">Find pros</NamedLink>
             <a href="#projects">Projects</a>
             <a href="#how">How it works</a>
-            <NamedLink name="LocationsPage">Service areas</NamedLink>
             <NamedLink name="GutterProPage">
               Join as a pro
             </NamedLink>
@@ -94,19 +86,6 @@ const FallbackPage = () => {
               ))}
             </div>
           </div>
-
-          <aside className={css.requestCard} aria-label="Gutter quote request preview">
-            <p className={css.kicker}>Free homeowner request</p>
-            <h2>Tell us the work. We help you compare the right gutter pros.</h2>
-            <ul>
-              <li>Choose one or more gutter services</li>
-              <li>Add your ZIP code, timeline, and home details</li>
-              <li>Keep contact details private until the next step</li>
-            </ul>
-            <NamedLink name="QuoteStartPage" className={css.cardAction}>
-              Start a free request
-            </NamedLink>
-          </aside>
         </div>
       </section>
 
@@ -146,44 +125,18 @@ const FallbackPage = () => {
         </div>
       </section>
 
-      <section className={css.platformSection}>
-        <div className={css.platformPanel}>
-          <p className={css.kicker}>For homeowners</p>
-          <h2>From gutter problem to quote-ready request without the phone-tag marathon.</h2>
-          <p>
-            Compare interested pros, understand what matters for your roofline, and make the next
-            step with more confidence than a generic search result can give you.
-          </p>
-        </div>
-        <div className={css.platformPanelDark}>
+      <section className={css.proSection}>
+        <div>
           <p className={css.kicker}>For gutter companies</p>
-          <h2>High-intent homeowner gutter leads in the areas you serve.</h2>
+          <h2>Want exclusive, high-intent homeowner gutter leads?</h2>
           <p>
-            Browse limited request previews, unlock the jobs worth pursuing, and grow inside a
-            marketplace built around your trade instead of every home service category.
+            Join Gutter Quotes to reach homeowners looking for installation, guards, repair,
+            cleaning, and drainage work in your service area.
           </p>
         </div>
-      </section>
-
-      <section className={css.guidesSection}>
-        <div className={css.sectionIntro}>
-          <p className={css.kicker}>Research and plan</p>
-          <h2>Cost guidance and decision support before anyone sells.</h2>
-        </div>
-        <div className={css.guideGrid}>
-          {guides.map(guide => (
-            <NamedLink
-              key={guide.slug}
-              name="SeoLandingPage"
-              params={{ seoSlug: guide.slug }}
-              className={css.guideCard}
-            >
-              <span>Guide</span>
-              <h3>{guide.title}</h3>
-              <p>Clear answers for planning the job, comparing options, and asking better questions.</p>
-            </NamedLink>
-          ))}
-        </div>
+        <NamedLink name="GutterProPage" className={css.secondaryAction}>
+          Grow with Gutter Quotes
+        </NamedLink>
       </section>
 
       <section className={css.finalCta}>
