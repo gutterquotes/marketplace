@@ -22,25 +22,27 @@ describe('LandingPage', () => {
     e.type = 'error';
     e.name = 'Test';
 
-    const { getByRole, getByText } = render(
+    const { getAllByRole, getByRole, getByText } = render(
       <LandingPageComponent pageAssetsData={null} inProgress={false} error={e} />
     );
 
     await waitFor(() => {
-      expect(getByText('The smartest way to find trusted gutter pros.')).toBeInTheDocument();
-      expect(getByText('Seamless gutter installation')).toBeInTheDocument();
-      expect(
-        getByText('Find the right gutter solution before water becomes a bigger problem.')
-      ).toBeInTheDocument();
-      expect(getByRole('link', { name: 'Find gutter pros' })).toHaveAttribute(
+      expect(getByText('Compare trusted gutter quotes near you.')).toBeInTheDocument();
+      expect(getByText('Free for homeowners')).toBeInTheDocument();
+      expect(getByText('No obligation')).toBeInTheDocument();
+      expect(getByText('Need exclusive, high-intent homeowner gutter leads?')).toBeInTheDocument();
+      expect(getByRole('link', { name: 'Start a free gutter quote' })).toHaveAttribute(
         'href',
         '/quote'
       );
-      expect(getByRole('link', { name: 'Join as a pro' })).toHaveAttribute(
+      expect(getAllByRole('link', { name: 'For gutter pros' })[0]).toHaveAttribute(
         'href',
         '/pros'
       );
-      expect(getByText('Want exclusive, high-intent homeowner gutter leads?')).toBeInTheDocument();
+      expect(getByRole('link', { name: 'Get leads in your area' })).toHaveAttribute(
+        'href',
+        '/pros'
+      );
     });
   });
 
