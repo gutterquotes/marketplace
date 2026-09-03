@@ -25,10 +25,7 @@ describe('QuoteStartPage', () => {
   it('updates the project brief from homeowner inputs', () => {
     render(<QuoteStartPage scrollingDisabled={false} />);
 
-    expect(screen.getByText('Your request preview')).toBeInTheDocument();
-    expect(
-      screen.getByText(/New seamless gutter installation near 28211/i)
-    ).toBeInTheDocument();
+    expect(screen.getByText('Tell us what your home needs.')).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole('button', { name: 'Gutter repair' }));
     fireEvent.change(screen.getByLabelText('ZIP code'), { target: { value: '30301' } });
@@ -37,11 +34,8 @@ describe('QuoteStartPage', () => {
     });
 
     expect(
-      screen.getByText(
-        'Seamless gutter installation + Gutter repair near 30301: Single-family home, two stories, emergency repair.'
-      )
+      screen.getByText('Your exact address and contact details stay private until the next step.')
     ).toBeInTheDocument();
-    expect(screen.getByText('Your contact details are not shown in the public preview.')).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole('link', { name: 'Continue free request' }));
     const savedDraft = JSON.parse(window.localStorage.getItem('gutterQuotes.requestDraft.v1'));

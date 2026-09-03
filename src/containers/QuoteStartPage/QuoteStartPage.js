@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { NamedLink, Page, TopbarSimplified } from '../../components';
+import { Page, TopbarSimplified } from '../../components';
 import { GUTTER_QUOTE_LISTING_TYPE, saveGutterQuoteDraft } from '../../util/gutterQuoteDraft';
 
 import css from './QuoteStartPage.module.css';
@@ -70,8 +70,6 @@ const propertyTypeToValue = {
   'Multifamily property': 'multi-family',
   'Commercial building': 'commercial',
 };
-
-const trustCues = ['Free for homeowners', 'No obligation', 'Contact details stay private first'];
 
 const QuoteStartPage = props => {
   const { scrollingDisabled } = props;
@@ -155,31 +153,23 @@ const QuoteStartPage = props => {
     >
       <TopbarSimplified />
       <main className={css.root}>
-        <section className={css.hero}>
-          <div className={css.heroCopy}>
+        <section className={css.formShell}>
+          <div className={css.formPanel}>
+            <div className={css.formHeader}>
             <p className={css.kicker}>Free gutter quote request</p>
             <h1>Tell us what your home needs.</h1>
             <p className={css.lead}>
               Answer a few questions so local gutter pros can understand the job and compete for
               your business.
             </p>
-            <div className={css.trustRow}>
-              {trustCues.map(cue => (
-                <span key={cue}>{cue}</span>
-              ))}
+            <p className={css.trustLine}>
+              Free for homeowners. No obligation. Contact details stay private first.
+            </p>
             </div>
-          </div>
-        </section>
 
-        <section className={css.flow}>
-          <div className={css.formPanel}>
-            <div className={css.stepHeader}>
-              <span>1</span>
-              <div>
-                <p className={css.kicker}>Project type</p>
-                <h2>What gutter work do you need?</h2>
-                <p className={css.stepHint}>Select all that apply.</p>
-              </div>
+            <div className={css.fieldGroup}>
+              <h2>What gutter work do you need?</h2>
+              <p className={css.stepHint}>Select all that apply.</p>
             </div>
             <div className={css.optionGrid}>
               {projectTypes.map(project => (
@@ -259,16 +249,6 @@ const QuoteStartPage = props => {
               />
             </label>
 
-            <div className={css.briefPanel} aria-label="Project brief preview">
-              <div>
-                <p className={css.kicker}>Your request preview</p>
-                <h3>{publicPreview}</h3>
-              </div>
-              <p>
-                Your exact address and contact details stay private until the next step.
-              </p>
-            </div>
-
             <a
               href={`/l/new?listingType=${GUTTER_QUOTE_LISTING_TYPE}`}
               onClick={saveDraft}
@@ -277,33 +257,11 @@ const QuoteStartPage = props => {
               Continue free request
             </a>
             <p className={css.microcopy}>
-              Next: create your account and publish when you are ready.
+              Your exact address and contact details stay private until the next step.
             </p>
           </div>
-
-          <aside className={css.sidePanel}>
-            <p className={css.kicker}>What stays private</p>
-            <h2>Your contact details are not shown in the public preview.</h2>
-            <ul>
-              {[
-                'Name and phone number',
-                'Exact street address',
-                'Photos and full notes',
-              ].map(detail => (
-                <li key={detail}>{detail}</li>
-              ))}
-            </ul>
-          </aside>
         </section>
       </main>
-      <footer className={css.footer}>
-        <span>© 2026 Gutter Quotes</span>
-        <nav aria-label="Footer">
-          <NamedLink name="TermsOfServicePage">Terms</NamedLink>
-          <NamedLink name="PrivacyPolicyPage">Privacy</NamedLink>
-          <NamedLink name="ContactPage">Contact</NamedLink>
-        </nav>
-      </footer>
     </Page>
   );
 };
