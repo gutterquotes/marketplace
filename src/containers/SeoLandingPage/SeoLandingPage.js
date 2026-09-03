@@ -12,6 +12,7 @@ const quoteQuestions = {
   cost: 'What should I include when comparing gutter cost quotes?',
   'near-me': 'How do I find the right gutter pro near me?',
   problems: 'When should I call a gutter contractor?',
+  drainage: 'What should I compare before hiring a drainage contractor?',
   compare: 'How should I compare gutter options?',
   materials: 'Which gutter material is best for my home?',
   pros: 'What makes a gutter lead worth pursuing?',
@@ -24,6 +25,8 @@ const defaultAnswers = {
     'Start with a clear project request, then compare contractors by service area, gutter specialty, responsiveness, photos, and quote detail.',
   problems:
     'Call a pro when water is overflowing, leaking, pooling near the foundation, damaging fascia, or not moving away from the house.',
+  drainage:
+    'Compare the source of the water, yard slope, soil conditions, downspout discharge, drain route, outlet location, and how the yard will be restored after installation.',
   compare:
     'Compare the tradeoffs that matter for your home: performance, maintenance, durability, appearance, installer quality, and long-term value.',
   materials:
@@ -62,7 +65,14 @@ export const createSeoGuideSchema = ({ page, marketplaceRootURL }) => {
       },
       mainEntityOfPage: pageURL,
       articleSection: page.groupLabel,
-      about: ['Gutter installation', 'Gutter guards', 'Gutter repair', 'Gutter cleaning'],
+      about: [
+        'Gutter installation',
+        'Gutter guards',
+        'Gutter repair',
+        'Gutter cleaning',
+        'Yard drainage',
+        'Underground downspout drains',
+      ],
     },
     {
       '@type': 'FAQPage',

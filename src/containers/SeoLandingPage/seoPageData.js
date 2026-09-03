@@ -1,3 +1,5 @@
+import { southeastCities } from '../CityLandingPage/cityData';
+
 const costPages = [
   ['gutter-installation-cost', 'Gutter Installation Cost', 'Plan a gutter installation with clearer pricing expectations before you talk to contractors.', 'roofline length, number of stories, material choice, downspout count, fascia condition, and removal of old gutters'],
   ['seamless-gutter-cost', 'Seamless Gutter Cost', 'Understand what affects seamless gutter pricing and when a custom-fit system is worth comparing.', 'linear footage, aluminum thickness, color finish, corner count, hanger spacing, and onsite fabrication'],
@@ -27,6 +29,69 @@ const problemPages = [
   ['downspout-drainage-problems', 'Downspout Drainage Problems', 'Downspout drainage problems can leave water beside the home even when the gutter run is clear.', 'clogged elbows, short extensions, buried pipe issues, discharge location, and yard slope'],
   ['rainwater-not-draining-away-from-house', 'Rainwater Not Draining Away From House', 'If rainwater is not draining away from the house, the fix may involve gutters, downspouts, grading, or drains.', 'roof runoff, grading, extensions, underground drainage, and low spots in the yard'],
 ];
+
+const drainagePages = [
+  ['yard-drainage-contractors', 'Yard Drainage Contractors', 'Find drainage contractors who can help with standing water, soggy lawns, downspout runoff, and water near the foundation.', 'low spots, soil conditions, roof runoff, grading, discharge route, catch basins, and underground pipe layout'],
+  ['yard-drainage-solutions', 'Yard Drainage Solutions', 'Compare yard drainage solutions for soggy lawns, pooling water, poor grading, and runoff that stays too close to the house.', 'standing water location, slope, soil saturation, gutter discharge, drain type, and where water can exit safely'],
+  ['underground-downspout-drain-installation', 'Underground Downspout Drain Installation', 'Route downspout water underground so roof runoff moves farther away from the foundation and landscaping.', 'downspout count, trench length, pipe size, pop-up emitters, catch basins, discharge point, and landscape restoration'],
+  ['downspout-drainage-systems', 'Downspout Drainage Systems', 'Plan a downspout drainage system that moves roof water away from siding, crawlspaces, basements, landscaping, and foundations.', 'roof size, downspout placement, underground pipe routes, slope, soil type, cleanouts, and outlet location'],
+  ['foundation-drainage-solutions', 'Foundation Drainage Solutions', 'Find gutter and drainage pros for water collecting near the foundation after heavy rain.', 'gutter overflow, downspout exits, grading, saturated soil, underground drains, extensions, and foundation risk areas'],
+  ['soggy-yard-drainage', 'Soggy Yard Drainage', 'Soggy yards often need better surface drainage, downspout routing, soil evaluation, or underground drain paths.', 'standing water, clay soil, shade, low areas, roof runoff, drainage route, and lawn restoration'],
+  ['standing-water-in-yard', 'Standing Water In Yard', 'Standing water after rain can point to grading, compacted soil, blocked drains, or downspouts dumping too close to the home.', 'where water collects, how long it stays, soil type, downspout discharge, yard slope, and outlet options'],
+  ['french-drain-vs-underground-downspout-drain', 'French Drain vs Underground Downspout Drain', 'Compare French drains and underground downspout drains before choosing the right drainage fix for your home.', 'water source, soil saturation, trench route, pipe type, gravel, fabric, cleanouts, and discharge point'],
+];
+
+const drainageCityKeywords = [
+  {
+    slug: 'yard-drainage-contractors',
+    phrase: 'Yard Drainage Contractors',
+    summary: city =>
+      `Compare yard drainage contractors in ${city.city}, ${city.stateAbbr} for standing water, soggy lawns, poor grading, and runoff near the home.`,
+    factors:
+      'standing water location, yard slope, soil saturation, downspout runoff, drain route, outlet options, and landscape repair',
+  },
+  {
+    slug: 'yard-drainage-solutions',
+    phrase: 'Yard Drainage Solutions',
+    summary: city =>
+      `Find yard drainage solutions in ${city.city}, ${city.stateAbbr} for pooling water, saturated soil, low areas, and drainage paths that protect the foundation.`,
+    factors:
+      'low spots, soil type, grading, catch basins, channel drains, underground pipe, discharge location, and lawn restoration',
+  },
+  {
+    slug: 'underground-downspout-drains',
+    phrase: 'Underground Downspout Drains',
+    summary: city =>
+      `Compare underground downspout drain pros in ${city.city}, ${city.stateAbbr} who can move roof water away from the foundation.`,
+    factors:
+      'downspout count, trench length, pipe size, slope, cleanouts, pop-up emitters, discharge point, and landscaping',
+  },
+  {
+    slug: 'downspout-drainage-systems',
+    phrase: 'Downspout Drainage Systems',
+    summary: city =>
+      `Plan a downspout drainage system in ${city.city}, ${city.stateAbbr} for roof runoff, foundation protection, and better water routing after storms.`,
+    factors:
+      'roof runoff volume, gutter capacity, downspout placement, buried pipe routes, outlet location, soil conditions, and maintenance access',
+  },
+  {
+    slug: 'foundation-drainage',
+    phrase: 'Foundation Drainage',
+    summary: city =>
+      `Find foundation drainage help in ${city.city}, ${city.stateAbbr} when rainwater collects near the home, crawlspace, basement, or landscaping.`,
+    factors:
+      'water near the foundation, gutter overflow, downspout discharge, grading, soil saturation, drain design, and safe outlet points',
+  },
+];
+
+const drainageCityPages = southeastCities.flatMap(city =>
+  drainageCityKeywords.map(keyword => [
+    `${keyword.slug}-${city.slug}`,
+    `${keyword.phrase} ${city.city} ${city.stateAbbr}`,
+    keyword.summary(city),
+    keyword.factors,
+  ])
+);
 
 const comparisonPages = [
   ['seamless-gutters-vs-regular-gutters', 'Seamless Gutters vs Regular Gutters', 'Compare seamless and sectional gutter systems before deciding what belongs on your home.', 'leak risk, installation method, material options, repairability, appearance, and long-term maintenance'],
@@ -62,6 +127,7 @@ const pageGroups = [
   ['cost', 'Cost guides', 'Money questions', costPages],
   ['near-me', 'Near me pages', 'Ready-to-hire searches', nearMePages],
   ['problems', 'Problem guides', 'Homeowner problem searches', problemPages],
+  ['drainage', 'Drainage pages', 'Drainage and water problem searches', [...drainagePages, ...drainageCityPages]],
   ['compare', 'Comparison guides', 'Decision searches', comparisonPages],
   ['materials', 'Material guides', 'Product research', materialPages],
   ['pros', 'Pro growth pages', 'Contractor acquisition', proPages],

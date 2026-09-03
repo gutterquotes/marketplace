@@ -34,13 +34,33 @@ describe('SeoLandingPage', () => {
   });
 
   it('includes all planned guide pages', () => {
-    expect(seoPages).toHaveLength(42);
+    expect(seoPages).toHaveLength(210);
     expect(findSeoPageBySlug('gutter-guard-installers-near-me').title).toBe(
       'Gutter Guard Installers Near Me'
     );
     expect(findSeoPageBySlug('pay-per-lead-gutter-marketing').title).toBe(
       'Pay Per Lead Gutter Marketing'
     );
+    expect(findSeoPageBySlug('underground-downspout-drains-charlotte-nc').title).toBe(
+      'Underground Downspout Drains Charlotte NC'
+    );
+    expect(findSeoPageBySlug('yard-drainage-contractors-raleigh-nc').title).toBe(
+      'Yard Drainage Contractors Raleigh NC'
+    );
+  });
+
+  it('renders a city drainage guide page', () => {
+    render(
+      <SeoLandingPage
+        params={{ seoSlug: 'downspout-drainage-systems-charleston-sc' }}
+        scrollingDisabled={false}
+      />
+    );
+
+    expect(
+      screen.getByRole('heading', { name: 'Downspout Drainage Systems Charleston SC' })
+    ).toBeInTheDocument();
+    expect(screen.getByText(/Plan a downspout drainage system in Charleston, SC/i)).toBeInTheDocument();
   });
 
   it('creates article, FAQ, and breadcrumb structured data', () => {

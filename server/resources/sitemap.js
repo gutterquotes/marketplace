@@ -133,7 +133,28 @@ const seoGuideSlugs = [
   'buy-gutter-leads',
   'pay-per-lead-gutter-marketing',
   'gutter-contractor-marketing',
+  'yard-drainage-contractors',
+  'yard-drainage-solutions',
+  'underground-downspout-drain-installation',
+  'downspout-drainage-systems',
+  'foundation-drainage-solutions',
+  'soggy-yard-drainage',
+  'standing-water-in-yard',
+  'french-drain-vs-underground-downspout-drain',
 ];
+
+const drainageCityGuidePrefixes = [
+  'yard-drainage-contractors',
+  'yard-drainage-solutions',
+  'underground-downspout-drains',
+  'downspout-drainage-systems',
+  'foundation-drainage',
+];
+
+const drainageCityGuideSlugs = drainageCityGuidePrefixes.reduce(
+  (slugs, prefix) => [...slugs, ...southeastCitySlugs.map(citySlug => `${prefix}-${citySlug}`)],
+  []
+);
 
 const defaultPublicPaths = {
   landingPage: { url: '/' },
@@ -162,6 +183,13 @@ const defaultPublicPaths = {
     {}
   ),
   ...seoGuideSlugs.reduce(
+    (paths, slug) => ({
+      ...paths,
+      [`guide-${slug}`]: { url: `/guides/${slug}` },
+    }),
+    {}
+  ),
+  ...drainageCityGuideSlugs.reduce(
     (paths, slug) => ({
       ...paths,
       [`guide-${slug}`]: { url: `/guides/${slug}` },
