@@ -1,9 +1,7 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 
-import { Page, TopbarSimplified } from '../../components';
-import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
+import { NamedLink, Page, TopbarSimplified } from '../../components';
 import { GUTTER_QUOTE_LISTING_TYPE, saveGutterQuoteDraft } from '../../util/gutterQuoteDraft';
-import logoImage from '../../assets/gutter-quotes-logo.png';
 
 import css from './QuoteStartPage.module.css';
 
@@ -12,42 +10,36 @@ const projectTypes = [
     label: 'Seamless gutter installation',
     publicSummary: 'New seamless gutter installation',
     serviceNeeded: 'installation',
-    proSignal: 'Installation crew, material options, measurements, and warranty fit',
     defaultNotes: 'I want to compare options for seamless gutters and gutter guards.',
   },
   {
     label: 'Gutter guards',
     publicSummary: 'Gutter guard installation',
     serviceNeeded: 'guards',
-    proSignal: 'Guard type, roof pitch, tree coverage, and existing gutter condition',
     defaultNotes: 'I want to compare gutter guard options and understand what works for my home.',
   },
   {
     label: 'Gutter repair',
     publicSummary: 'Gutter repair request',
     serviceNeeded: 'repair',
-    proSignal: 'Leak location, sagging runs, fascia condition, and urgency',
     defaultNotes: 'I have gutter issues and want a pro to inspect repair or replacement options.',
   },
   {
     label: 'Gutter cleaning',
     publicSummary: 'Gutter cleaning request',
     serviceNeeded: 'cleaning',
-    proSignal: 'Home height, debris level, downspout clearing, and seasonal availability',
     defaultNotes: 'I need gutter cleaning and downspout clearing.',
   },
   {
     label: 'Downspouts and drainage',
     publicSummary: 'Downspout and drainage improvement',
     serviceNeeded: 'drainage',
-    proSignal: 'Water discharge point, soil slope, foundation concerns, and extensions',
     defaultNotes: 'I want to move water away from the home and improve drainage.',
   },
   {
     label: 'Not sure yet',
     publicSummary: 'Gutter assessment request',
     serviceNeeded: 'installation',
-    proSignal: 'Diagnostic visit, photos, roofline, and homeowner goals',
     defaultNotes: 'I am not sure what I need yet and want guidance from a gutter pro.',
   },
 ];
@@ -81,24 +73,6 @@ const propertyTypeToValue = {
 
 const trustCues = ['Free for homeowners', 'No obligation', 'Contact details stay private first'];
 
-const exampleRequests = [
-  {
-    title: 'Seamless gutter install',
-    location: 'Charlotte, NC',
-    details: 'Two-story home, this month, interested in guards',
-  },
-  {
-    title: 'Overflowing gutter repair',
-    location: 'Atlanta, GA',
-    details: 'Heavy rain overflow near front porch and downspout',
-  },
-  {
-    title: 'Underground downspout drain',
-    location: 'Raleigh, NC',
-    details: 'Move water farther from foundation and low side yard',
-  },
-];
-
 const QuoteStartPage = props => {
   const { scrollingDisabled } = props;
   const [selectedProjects, setSelectedProjects] = useState([projectTypes[0]]);
@@ -115,32 +89,9 @@ const QuoteStartPage = props => {
       ? selectedServiceLabels.join(' + ')
       : primaryProject.publicSummary;
 
-  const requestQuality = useMemo(() => {
-    const checks = [
-      { label: 'ZIP code', complete: zipCode.trim().length >= 5 },
-      { label: 'Service type', complete: selectedProjects.length > 0 },
-      { label: 'Timeline', complete: !!timeline },
-      { label: 'Property type', complete: !!propertyType },
-      { label: 'Home height', complete: !!homeHeight },
-      { label: 'Project notes', complete: notes.trim().length >= 30 },
-    ];
-    const completedCount = checks.filter(check => check.complete).length;
-    const status =
-      completedCount >= 6 ? 'Ready for contractor review' : 'Add a few details for better replies';
-
-    return { checks, completedCount, status };
-  }, [zipCode, selectedProjects, timeline, propertyType, homeHeight, notes]);
-
   const publicPreview = `${serviceSummary} near ${zipCode || 'your ZIP'}: ${
     propertyType
   }, ${homeHeight.toLowerCase()}, ${timeline.toLowerCase()}.`;
-
-  const privatePreview = [
-    'Name and contact info',
-    'Exact street address',
-    'Full notes and photos',
-    'Direct messaging details',
-  ];
 
   const handleProjectToggle = project => {
     setSelectedProjects(currentProjects => {
@@ -186,7 +137,7 @@ const QuoteStartPage = props => {
         homeType: propertyTypeToValue[propertyType],
         timeline: timelineToValue[timeline],
         projectDetails: notes,
-        requestQualityStatus: requestQuality.status,
+        requestQualityStatus: 'Ready for contractor review',
         publicPreview,
       },
       privateData: {
@@ -206,13 +157,11 @@ const QuoteStartPage = props => {
       <main className={css.root}>
         <section className={css.hero}>
           <div className={css.heroCopy}>
-            <img src={logoImage} alt="Gutter Quotes" className={css.logo} />
-            <p className={css.kicker}>Smart gutter quote intake</p>
-            <h1>Tell us what your home needs. We will guide the rest.</h1>
+            <p className={css.kicker}>Free gutter quote request</p>
+            <h1>Tell us what your home needs.</h1>
             <p className={css.lead}>
-              Start a free, no-obligation gutter request in about two minutes. We turn your notes
-              into a clear project brief so interested local gutter pros can understand the job
-              before they respond.
+              Answer a few questions so local gutter pros can understand the job and compete for
+              your business.
             </p>
             <div className={css.trustRow}>
               {trustCues.map(cue => (
@@ -220,26 +169,6 @@ const QuoteStartPage = props => {
               ))}
             </div>
           </div>
-
-          <aside className={css.matchPanel} aria-label="Quote match preview">
-            <div className={css.panelTop}>
-              <span>Request quality</span>
-              <strong>
-                {requestQuality.completedCount}/{requestQuality.checks.length}
-              </strong>
-            </div>
-            <p>
-              {requestQuality.status}. Contractors can respond better when they know the service,
-              ZIP code, timeline, property type, home height, and project notes.
-            </p>
-            <div className={css.checkGrid}>
-              {requestQuality.checks.map(check => (
-                <span key={check.label} className={check.complete ? css.checkComplete : ''}>
-                  {check.label}
-                </span>
-              ))}
-            </div>
-          </aside>
         </section>
 
         <section className={css.flow}>
@@ -330,15 +259,13 @@ const QuoteStartPage = props => {
               />
             </label>
 
-            <div className={css.briefPanel} aria-label="AI project brief preview">
+            <div className={css.briefPanel} aria-label="Project brief preview">
               <div>
-                <p className={css.kicker}>AI project brief</p>
+                <p className={css.kicker}>Your request preview</p>
                 <h3>{publicPreview}</h3>
               </div>
               <p>
-                Contractor signal: {selectedProjects.map(project => project.proSignal).join('; ')}.
-                Your exact address and contact details stay private until account and lead access
-                steps are complete.
+                Your exact address and contact details stay private until the next step.
               </p>
             </div>
 
@@ -350,51 +277,33 @@ const QuoteStartPage = props => {
               Continue free request
             </a>
             <p className={css.microcopy}>
-              Next: create your account, add photos if you have them, and publish the request when
-              you are ready.
+              Next: create your account and publish when you are ready.
             </p>
           </div>
 
           <aside className={css.sidePanel}>
-            <p className={css.kicker}>Quote-ready request</p>
-            <h2>Post once. Let qualified gutter pros compete for the work.</h2>
+            <p className={css.kicker}>What stays private</p>
+            <h2>Your contact details are not shown in the public preview.</h2>
             <ul>
               {[
-                selectedServiceLabels.join(', '),
-                propertyType,
-                homeHeight,
-                requestQuality.status,
+                'Name and phone number',
+                'Exact street address',
+                'Photos and full notes',
               ].map(detail => (
                 <li key={detail}>{detail}</li>
               ))}
             </ul>
-            <div className={css.visibilityPanel}>
-              <strong>Private until lead access</strong>
-              {privatePreview.map(item => (
-                <span key={item}>{item}</span>
-              ))}
-            </div>
-            <div className={css.resultCard}>
-              <strong>Now onboarding local pros</strong>
-              <p>
-                If your ZIP is early in the network, your request helps open the market and gives
-                nearby gutter companies a reason to join.
-              </p>
-            </div>
-            <div className={css.examplePanel}>
-              <strong>Example homeowner requests</strong>
-              {exampleRequests.map(request => (
-                <article key={`${request.title}-${request.location}`}>
-                  <span>{request.location}</span>
-                  <h3>{request.title}</h3>
-                  <p>{request.details}</p>
-                </article>
-              ))}
-            </div>
           </aside>
         </section>
       </main>
-      <GutterQuotesFooter />
+      <footer className={css.footer}>
+        <span>© 2026 Gutter Quotes</span>
+        <nav aria-label="Footer">
+          <NamedLink name="TermsOfServicePage">Terms</NamedLink>
+          <NamedLink name="PrivacyPolicyPage">Privacy</NamedLink>
+          <NamedLink name="ContactPage">Contact</NamedLink>
+        </nav>
+      </footer>
     </Page>
   );
 };
