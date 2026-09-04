@@ -27,22 +27,23 @@ describe('GutterLeadPage', () => {
 
     expect(
       screen.getByRole('heading', {
-        name: 'High-intent homeowner gutter leads in your area.',
+        name: 'Exclusive gutter leads in your area.',
       })
     ).toBeInTheDocument();
-    expect(screen.getByText('Seamless gutter replacement near 28211')).toBeInTheDocument();
-    expect(screen.getByText('Every major gutter revenue line, packaged for local demand.')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Get gutter leads' })).toHaveAttribute(
+    expect(screen.getByText('$75 pay as you go')).toBeInTheDocument();
+    expect(screen.getByText('Lower effective rates with packages')).toBeInTheDocument();
+    expect(screen.getByText('$2,499')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Start getting leads' })).toHaveAttribute(
       'href',
       '/signup/provider'
     );
-    expect(screen.getByRole('link', { name: 'Preview request board' })).toHaveAttribute(
-      'href',
-      '/s'
-    );
-    expect(screen.getByRole('link', { name: 'See client results' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Read the case study' })).toHaveAttribute(
       'href',
       '/pros/case-studies/valuefilter'
+    );
+    expect(screen.getByRole('link', { name: 'View all packages' })).toHaveAttribute(
+      'href',
+      '/pros/lead-packages'
     );
   });
 });
