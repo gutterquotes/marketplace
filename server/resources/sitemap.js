@@ -81,13 +81,20 @@ const southeastCitySlugs = [
 
 const gutterServiceSlugs = [
   'seamless-gutter-installation',
+  'k-style-aluminum-seamless-gutter-installation',
+  'copper-gutter-installation',
+  'galvalume-gutter-installation',
+  'half-round-gutter-installation',
   'gutter-replacement',
   'gutter-guards',
   'gutter-repair',
   'gutter-cleaning',
   'underground-downspout-drain',
   'yard-drainage',
+  'metal-building-gutters',
   'commercial-gutters',
+  '7-inch-gutter-installation',
+  'copper-gutter-filter-installation',
 ];
 
 const seoGuideSlugs = [

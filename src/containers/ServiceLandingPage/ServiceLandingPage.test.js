@@ -5,7 +5,7 @@ import { renderWithProviders as render, testingLibrary } from '../../util/testHe
 import { findCityBySlug } from '../CityLandingPage/cityData';
 
 import ServiceLandingPage, { createServiceSchema } from './ServiceLandingPage';
-import { findServiceBySlug } from './serviceData';
+import { findServiceBySlug, gutterServices } from './serviceData';
 
 const { screen } = testingLibrary;
 
@@ -51,6 +51,41 @@ describe('ServiceLandingPage', () => {
     expect(screen.getAllByRole('link', { name: 'Get gutter leads' })[0]).toHaveAttribute(
       'href',
       '/pros'
+    );
+  });
+
+  it('renders specialty material and gutter type city pages', () => {
+    render(
+      <ServiceLandingPage
+        params={{
+          serviceSlug: 'k-style-aluminum-seamless-gutter-installation',
+          citySlug: 'charleston-sc',
+        }}
+        scrollingDisabled={false}
+      />
+    );
+
+    expect(
+      screen.getByRole('heading', {
+        name: 'K-Style Aluminum Seamless Gutter Installation Charleston SC',
+      })
+    ).toBeInTheDocument();
+    expect(screen.getByText('Copper Gutter Installation Charleston SC')).toBeInTheDocument();
+    expect(screen.getByText('7 Inch Gutter Installation Charleston SC')).toBeInTheDocument();
+  });
+
+  it('includes specialty gutter services for city SEO generation', () => {
+    expect(gutterServices.map(service => service.slug)).toEqual(
+      expect.arrayContaining([
+        'k-style-aluminum-seamless-gutter-installation',
+        'copper-gutter-installation',
+        'galvalume-gutter-installation',
+        'half-round-gutter-installation',
+        'metal-building-gutters',
+        'commercial-gutters',
+        '7-inch-gutter-installation',
+        'copper-gutter-filter-installation',
+      ])
     );
   });
 

@@ -7,6 +7,34 @@ export const gutterServices = [
     details: ['aluminum and metal options', 'roofline measurements', 'downspout placement'],
   },
   {
+    slug: 'k-style-aluminum-seamless-gutter-installation',
+    phrase: 'K-Style Aluminum Seamless Gutter Installation',
+    shortName: 'K-style aluminum seamless gutters',
+    homeownerNeed: 'custom K-style aluminum seamless gutters for a clean roofline and strong rainwater capacity',
+    details: ['K-style profile', 'seamless aluminum runs', 'color and downspout layout'],
+  },
+  {
+    slug: 'copper-gutter-installation',
+    phrase: 'Copper Gutter Installation',
+    shortName: 'Copper gutters',
+    homeownerNeed: 'premium copper gutters for long-lasting performance, curb appeal, and specialty rooflines',
+    details: ['copper gutter profile', 'half-round or K-style options', 'premium downspouts and accessories'],
+  },
+  {
+    slug: 'galvalume-gutter-installation',
+    phrase: 'Galvalume Gutter Installation',
+    shortName: 'Galvalume gutters',
+    homeownerNeed: 'metal gutters with a durable Galvalume finish for homes, shops, barns, and commercial buildings',
+    details: ['Galvalume material options', 'metal roof compatibility', 'custom gutter and downspout sizing'],
+  },
+  {
+    slug: 'half-round-gutter-installation',
+    phrase: 'Half Round Gutter Installation',
+    shortName: 'Half round gutters',
+    homeownerNeed: 'half round gutters for historic homes, premium exteriors, copper systems, and rounded gutter profiles',
+    details: ['half round profile', 'bracket and hanger style', 'copper, aluminum, or steel options'],
+  },
+  {
     slug: 'gutter-replacement',
     phrase: 'Gutter Replacement',
     shortName: 'Gutter replacement',
@@ -49,11 +77,32 @@ export const gutterServices = [
     details: ['surface drainage', 'water routing', 'foundation protection'],
   },
   {
+    slug: 'metal-building-gutters',
+    phrase: 'Metal Building Gutters',
+    shortName: 'Metal building gutters',
+    homeownerNeed: 'gutter systems for metal buildings, shops, warehouses, barns, and light commercial structures',
+    details: ['metal building roof edges', 'larger downspouts', 'commercial-grade water control'],
+  },
+  {
     slug: 'commercial-gutters',
     phrase: 'Commercial Gutter Installation',
     shortName: 'Commercial gutters',
     homeownerNeed: 'gutter and drainage help for multifamily, retail, office, and light commercial buildings',
     details: ['larger rooflines', 'commercial downspouts', 'maintenance planning'],
+  },
+  {
+    slug: '7-inch-gutter-installation',
+    phrase: '7 Inch Gutter Installation',
+    shortName: '7 inch gutters',
+    homeownerNeed: 'oversized 7 inch gutters for large roofs, steep rooflines, metal buildings, and heavy rainfall areas',
+    details: ['high-capacity gutter sizing', 'large downspouts', 'roof pitch and runoff volume'],
+  },
+  {
+    slug: 'copper-gutter-filter-installation',
+    phrase: 'Copper Gutter Filter Installation',
+    shortName: 'Copper gutter filters',
+    homeownerNeed: 'gutter protection options for copper gutter systems that reduce clogs while preserving curb appeal',
+    details: ['copper gutter compatibility', 'filter or guard style', 'leaf and debris protection'],
   },
 ];
 
