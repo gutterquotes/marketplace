@@ -53,10 +53,10 @@ const metrics = [
 ];
 
 const launchOffer = [
-  '$399/mo founding pro pilot',
-  '$799/mo market partner pilot',
-  'Priority access before broad contractor rollout',
-  'Manual onboarding while automated lead buying launches',
+  '$75 pay-as-you-go leads',
+  '$999, $2,499, $4,999, and $9,999 lead packages',
+  'Discounted effective lead rates for volume buyers',
+  'Custom market plans for larger service areas',
 ];
 
 const GutterLeadPage = props => {
@@ -183,11 +183,12 @@ const GutterLeadPage = props => {
 
         <section id="lead-form" className={css.leadFormSection}>
           <div>
-            <p className={css.kicker}>Launch-week pro offer</p>
-            <h2>Reserve paid access to homeowner gutter demand in your area.</h2>
+            <p className={css.kicker}>Gutter lead pricing</p>
+            <h2>Buy leads one at a time or use packages to lower your rate.</h2>
             <p>
-              We are onboarding founding gutter pros now. Start with your trade, ZIP, and service
-              radius, then our team will help confirm your market and set up the right paid pilot.
+              Start with $75 pay-as-you-go leads or choose a volume package when your team is
+              ready to scale. Larger packages lower the effective lead rate and help us plan your
+              market more intentionally.
             </p>
             <div className={css.offerList}>
               {launchOffer.map(item => (
@@ -223,10 +224,10 @@ const GutterLeadPage = props => {
               Start getting leads
             </NamedLink>
             <a
-              href="mailto:mills@gutterquotes.com?subject=Gutter%20Leads%20Pilot&body=I%20want%20to%20join%20the%20Gutter%20Quotes%20paid%20pilot.%20Company%20name%2C%20service%20area%2C%20and%20phone%3A"
+              href="mailto:mills@gutterquotes.com?subject=Gutter%20Lead%20Pricing&body=I%20want%20to%20discuss%20Gutter%20Quotes%20lead%20pricing.%20Company%20name%2C%20service%20area%2C%20monthly%20lead%20goal%2C%20and%20phone%3A"
               className={css.secondaryAction}
             >
-              Reserve founding access
+              Discuss lead pricing
             </a>
             <NamedLink name="GutterLeadPackagesPage" className={css.secondaryAction}>
               Compare packages

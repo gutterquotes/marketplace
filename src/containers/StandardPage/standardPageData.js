@@ -124,12 +124,12 @@ export const standardPages = {
     eyebrow: 'Legal',
     hero: 'A clear refund framework for paid marketplace access.',
     description:
-      'Refund policy placeholder for Gutter Quotes lead purchases, subscriptions, and marketplace fees.',
+      'Refund policy placeholder for Gutter Quotes lead purchases, lead credits, package balances, and marketplace fees.',
     sections: [
       {
         title: 'Before payments are enabled',
         text:
-          'This marketplace is currently being prepared for launch. Final refund rules should be reviewed before any paid lead access, membership, or transaction fee is collected.',
+          'This marketplace is currently being prepared for launch. Final refund rules should be reviewed before any paid lead access, lead package, credit balance, or transaction fee is collected.',
       },
       {
         title: 'Potential lead-credit rules',

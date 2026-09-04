@@ -60,25 +60,25 @@ const marketSignals = ['Installation demand', 'Guard interest', 'Repair urgency'
 
 const launchPlans = [
   {
-    name: 'Founding Pro',
-    price: '$399/mo',
-    note: 'Best for one crew or owner-operator teams',
+    name: 'Pay as you go',
+    price: '$75/lead',
+    note: 'Best for testing lead quality before buying a package',
     features: [
-      'Early access in your preferred service area',
-      'Profile review and territory setup',
-      'Priority notice for matching homeowner requests',
-      'Manual lead review with the Gutter Quotes team',
+      'Buy qualified homeowner leads one at a time',
+      'No package commitment',
+      'Upgrade to volume pricing when ready',
+      'Best for validating one market',
     ],
   },
   {
-    name: 'Market Partner',
-    price: '$799/mo',
-    note: 'Best for growing gutter companies',
+    name: 'Volume lead packages',
+    price: '$999+',
+    note: 'Best for companies ready to scale in a target market',
     features: [
-      'Multi-ZIP service area planning',
-      'Installation, guard, repair, and cleaning categories',
-      'Weekly pipeline check-in during launch',
-      'Priority placement in local rollout markets',
+      '$999, $2,499, $4,999, and $9,999 packages',
+      'Discounted effective lead rates with volume',
+      'Market planning around your service area',
+      'Custom packages available for larger operators',
     ],
   },
 ];
@@ -245,14 +245,14 @@ const GutterProPage = props => {
           </div>
         </section>
 
-        <section className={css.pricingSection} aria-label="Founding pro launch pricing">
+        <section className={css.pricingSection} aria-label="Gutter pro lead pricing">
           <div className={css.sectionIntro}>
-            <p className={css.kicker}>Revenue launch offer</p>
-            <h2>Reserve early access before your market gets crowded.</h2>
+            <p className={css.kicker}>Lead pricing</p>
+            <h2>Start at $75 per lead or lower your rate with volume packages.</h2>
             <p>
-              We are opening markets with a small group of serious gutter companies first. Founding
-              pros get direct onboarding, priority lead alerts, and a cleaner way to pursue
-              homeowner gutter projects without buying the same shared lead as everyone else.
+              Gutter companies can buy qualified homeowner leads one at a time or choose a package
+              to reduce the effective cost per opportunity. Standard packages start at $999 and
+              scale to $9,999, with custom volume available.
             </p>
             <NamedLink name="GutterLeadPackagesPage" className={css.inlineAction}>
               Compare volume lead packages
@@ -279,10 +279,10 @@ const GutterProPage = props => {
                   href={`mailto:mills@gutterquotes.com?subject=${encodeURIComponent(
                     `${plan.name} interest`
                   )}&body=${encodeURIComponent(
-                    'I want to reserve early access for my gutter company. Company name, service area, and phone:'
+                    'I want to discuss Gutter Quotes lead pricing for my gutter company. Company name, service area, monthly lead goal, and phone:'
                   )}`}
                 >
-                  Reserve founding access
+                  Discuss lead pricing
                 </a>
               </article>
             ))}
@@ -291,12 +291,12 @@ const GutterProPage = props => {
 
         <section id="signup" className={css.signupPanel}>
           <div>
-            <p className={css.kicker}>Launch partner offer</p>
-            <h2>Start the paid pilot conversation today.</h2>
+            <p className={css.kicker}>Contractor signup</p>
+            <h2>Start with pay-as-you-go or choose a lead package.</h2>
             <p>
               Create your pro account, then email us your company name, service area, and best
-              phone number. We will help you choose a launch market and invoice the founding pro
-              pilot manually while the automated lead marketplace ramps up.
+              phone number. We will help you choose between $75 pay-as-you-go leads, a discounted
+              volume package, or a custom market plan.
             </p>
           </div>
           <div className={css.formCard}>
@@ -320,10 +320,10 @@ const GutterProPage = props => {
               Start contractor signup
             </NamedLink>
             <a
-              href="mailto:mills@gutterquotes.com?subject=Founding%20Pro%20Pilot&body=I%20want%20to%20join%20the%20Gutter%20Quotes%20Founding%20Pro%20Pilot.%20Company%20name%2C%20service%20area%2C%20and%20phone%3A"
+              href="mailto:mills@gutterquotes.com?subject=Gutter%20Quotes%20Lead%20Pricing&body=I%20want%20to%20discuss%20Gutter%20Quotes%20lead%20pricing.%20Company%20name%2C%20service%20area%2C%20monthly%20lead%20goal%2C%20and%20phone%3A"
               className={css.secondaryAction}
             >
-              Email founding pro team
+              Email about lead pricing
             </a>
           </div>
         </section>
