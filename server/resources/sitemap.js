@@ -95,6 +95,8 @@ const gutterServiceSlugs = [
   'commercial-gutters',
   '7-inch-gutter-installation',
   'copper-gutter-filter-installation',
+  'permanent-under-eave-lighting',
+  'permanent-roofline-lighting',
 ];
 
 const seoGuideSlugs = [

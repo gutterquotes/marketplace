@@ -17,6 +17,7 @@ const serviceOptions = [
   'Gutter repair',
   'Gutter cleaning',
   'Downspout drainage',
+  'Permanent under-eave lighting',
 ];
 
 const FallbackPage = () => {

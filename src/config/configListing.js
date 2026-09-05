@@ -64,6 +64,7 @@ export const listingFields = [
       { option: 'cleaning', label: 'Gutter cleaning' },
       { option: 'guards', label: 'Gutter guard installation' },
       { option: 'drainage', label: 'Underground downspout drainage' },
+      { option: 'under-eave-lighting', label: 'Permanent under-eave lighting' },
       { option: 'fascia-soffit', label: 'Fascia and soffit repair' },
       { option: 'commercial', label: 'Commercial gutter services' },
       { option: 'emergency', label: 'Emergency gutter repair' },

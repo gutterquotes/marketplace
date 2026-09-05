@@ -59,7 +59,7 @@ describe('QuoteStartPage', () => {
     const guards = screen.getByRole('button', { name: 'Gutter guards' });
     const notSure = screen.getByRole('button', { name: 'Not sure yet' });
 
-    expect(screen.getByText('Select all that apply.')).toBeInTheDocument();
+    expect(screen.getByText(/Select all that apply/)).toBeInTheDocument();
     expect(installation).toHaveAttribute('aria-pressed', 'true');
 
     fireEvent.click(guards);
@@ -74,5 +74,23 @@ describe('QuoteStartPage', () => {
     fireEvent.click(guards);
     expect(notSure).toHaveAttribute('aria-pressed', 'false');
     expect(guards).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  it('lets homeowners add permanent under-eave lighting to a gutter request', () => {
+    render(<QuoteStartPage scrollingDisabled={false} />);
+
+    const lighting = screen.getByRole('button', { name: 'Permanent under-eave lighting' });
+    fireEvent.click(lighting);
+    fireEvent.click(screen.getByRole('link', { name: 'Continue free request' }));
+
+    const savedDraft = JSON.parse(window.localStorage.getItem('gutterQuotes.requestDraft.v1'));
+    expect(savedDraft).toMatchObject({
+      title: 'Seamless gutter installation + Permanent under-eave lighting near 28211',
+      publicData: {
+        serviceNeeded: 'installation',
+        serviceNeededList: ['installation', 'under-eave-lighting'],
+        selectedServices: ['Seamless gutter installation', 'Permanent under-eave lighting'],
+      },
+    });
   });
 });

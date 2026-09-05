@@ -85,8 +85,26 @@ describe('ServiceLandingPage', () => {
         'commercial-gutters',
         '7-inch-gutter-installation',
         'copper-gutter-filter-installation',
+        'permanent-under-eave-lighting',
+        'permanent-roofline-lighting',
       ])
     );
+  });
+
+  it('renders permanent lighting city SEO pages', () => {
+    render(
+      <ServiceLandingPage
+        params={{ serviceSlug: 'permanent-under-eave-lighting', citySlug: 'charlotte-nc' }}
+        scrollingDisabled={false}
+      />
+    );
+
+    expect(
+      screen.getByRole('heading', {
+        name: 'Permanent Under Eave Lighting Charlotte NC',
+      })
+    ).toBeInTheDocument();
+    expect(screen.getByText('Permanent Roofline Lighting Charlotte NC')).toBeInTheDocument();
   });
 
   it('adds service and local area structured data', () => {

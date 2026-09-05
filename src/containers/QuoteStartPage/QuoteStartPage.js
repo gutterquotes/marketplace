@@ -37,6 +37,13 @@ const projectTypes = [
     defaultNotes: 'I want to move water away from the home and improve drainage.',
   },
   {
+    label: 'Permanent under-eave lighting',
+    publicSummary: 'Permanent under-eave lighting installation',
+    serviceNeeded: 'under-eave-lighting',
+    defaultNotes:
+      'I am interested in permanent under-eave lighting for year-round accent, holiday, or security lighting.',
+  },
+  {
     label: 'Not sure yet',
     publicSummary: 'Gutter assessment request',
     serviceNeeded: 'installation',
@@ -169,7 +176,10 @@ const QuoteStartPage = props => {
 
             <div className={css.fieldGroup}>
               <h2>What gutter work do you need?</h2>
-              <p className={css.stepHint}>Select all that apply.</p>
+              <p className={css.stepHint}>
+                Select all that apply. You can also add permanent under-eave lighting while pros
+                are looking at the roofline.
+              </p>
             </div>
             <div className={css.optionGrid}>
               {projectTypes.map(project => (

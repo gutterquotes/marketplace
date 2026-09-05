@@ -104,6 +104,22 @@ export const gutterServices = [
     homeownerNeed: 'gutter protection options for copper gutter systems that reduce clogs while preserving curb appeal',
     details: ['copper gutter compatibility', 'filter or guard style', 'leaf and debris protection'],
   },
+  {
+    slug: 'permanent-under-eave-lighting',
+    phrase: 'Permanent Under Eave Lighting',
+    shortName: 'Permanent under-eave lighting',
+    homeownerNeed:
+      'discreet permanent lighting installed under the eaves for holidays, accent lighting, security, and year-round curb appeal',
+    details: ['under-eave placement', 'smart lighting controls', 'roofline and gutter compatibility'],
+  },
+  {
+    slug: 'permanent-roofline-lighting',
+    phrase: 'Permanent Roofline Lighting',
+    shortName: 'Permanent roofline lighting',
+    homeownerNeed:
+      'low-profile permanent outdoor lighting along the roofline while gutters, fascia, or exterior trim are already being reviewed',
+    details: ['roofline layout', 'holiday and accent lighting modes', 'power and controller placement'],
+  },
 ];
 
 export const findServiceBySlug = slug => gutterServices.find(service => service.slug === slug);
