@@ -8,14 +8,51 @@ import css from './GutterLeadPage.module.css';
 const proofPoints = [
   'Exclusive homeowner gutter leads',
   '$75 pay as you go',
-  'Lower effective rates with packages',
+  'Package discounts from $999 to $9,999',
 ];
 
 const packages = [
-  { name: 'Pay as you go', price: '$75', detail: 'per qualified lead' },
-  { name: 'Starter package', price: '$999', detail: '15 lead credits' },
-  { name: 'Growth package', price: '$2,499', detail: '42 lead credits' },
-  { name: 'Scale package', price: '$4,999+', detail: 'volume pricing' },
+  { name: 'Pay as you go', price: '$75', detail: 'per exclusive qualified lead' },
+  { name: 'Starter', price: '$999', detail: '15 lead credits, about $66.60/lead' },
+  { name: 'Growth', price: '$2,499', detail: '42 lead credits, about $59.50/lead' },
+  { name: 'Scale', price: '$4,999', detail: '92 lead credits, about $54.34/lead' },
+  { name: 'Territory', price: '$9,999', detail: '200 lead credits, about $50/lead' },
+];
+
+const revenueProof = [
+  { value: '$100k+', label: 'ValueFilter month-one revenue from Gutter Quotes leads' },
+  { value: '$220k+', label: 'monthly revenue exceeded by month four' },
+  { value: '$300k+', label: 'current monthly revenue track from Gutter Quotes leads' },
+];
+
+const processSteps = [
+  {
+    title: 'Choose your market',
+    text: 'Tell us the ZIP codes, cities, and gutter services you want to grow.',
+  },
+  {
+    title: 'We create demand',
+    text: 'Gutter Quotes activates homeowner lead flow in your area and screens for project intent.',
+  },
+  {
+    title: 'You receive exclusive leads',
+    text: 'Buy one at a time or use package credits. The same lead is not sold as a shared race.',
+  },
+  {
+    title: 'Follow up fast',
+    text: 'Leads can move into your sales process, with Jobber delivery planned for qualified clients.',
+  },
+];
+
+const leadTypes = [
+  'Seamless gutter installation',
+  'Gutter replacement',
+  'Gutter guards',
+  'Gutter repair',
+  'Gutter cleaning',
+  'Downspout drainage',
+  'Commercial gutters',
+  'Copper and specialty gutters',
 ];
 
 const packageMailto =
@@ -48,9 +85,10 @@ const GutterLeadPage = props => {
               <p className={css.kicker}>Gutter leads for contractors</p>
               <h1>Exclusive gutter leads in your area.</h1>
               <p className={css.lead}>
-                Get high-intent homeowner requests for gutter installation, guards, replacement,
-                repair, cleaning, downspouts, and drainage. Start at $75 per lead or lower your
-                rate with a package.
+                Stop fighting over shared leads. Get exclusive, high-intent homeowner requests for
+                gutter installation, guards, replacement, repair, cleaning, downspouts, drainage,
+                and specialty gutter projects. Start at $75 per lead or lower your effective rate
+                with a package.
               </p>
               <div className={css.actions}>
                 <NamedLink
@@ -68,10 +106,10 @@ const GutterLeadPage = props => {
 
             <aside className={css.proofCard} aria-label="Gutter Quotes proof">
               <span>Client proof</span>
-              <strong>$220k+</strong>
+              <strong>$300k+</strong>
               <p>
-                ValueFilter exceeded $220k in monthly revenue from Gutter Quotes leads by month
-                four and is tracking toward $300k+ monthly revenue.
+                ValueFilter is now tracking toward $300k+ in monthly revenue from Gutter Quotes
+                leads after exceeding $220k in month four.
               </p>
               <NamedLink name="ValueFilterCaseStudyPage">Read the case study</NamedLink>
             </aside>
@@ -87,7 +125,11 @@ const GutterLeadPage = props => {
         <section className={css.pricingSection}>
           <div className={css.sectionIntro}>
             <p className={css.kicker}>Simple lead pricing</p>
-            <h2>Buy only the leads you want. Use packages when volume makes sense.</h2>
+            <h2>Pay per lead or pre-buy volume at a better rate.</h2>
+            <p>
+              No confusing subscription pitch. Contractors can start with $75 pay-as-you-go leads,
+              then move into discounted lead banks when the market is ready to scale.
+            </p>
           </div>
           <div className={css.packageGrid}>
             {packages.map(plan => (
@@ -100,10 +142,76 @@ const GutterLeadPage = props => {
           </div>
         </section>
 
+        <section className={css.proofSection} aria-label="Gutter lead revenue proof">
+          <div className={css.sectionIntro}>
+            <p className={css.kicker}>Why pros answer the call</p>
+            <h2>Real revenue proof beats another generic lead marketplace promise.</h2>
+            <p>
+              Gutter Quotes is being built from an actual gutter lead business, not a theory. The
+              first case study gives sales calls a clear reason to keep moving.
+            </p>
+          </div>
+          <div className={css.revenueGrid}>
+            {revenueProof.map(item => (
+              <article key={item.value}>
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className={css.processSection}>
+          <div className={css.sectionIntro}>
+            <p className={css.kicker}>How lead flow works</p>
+            <h2>Designed for fast launch markets and disciplined contractor spend.</h2>
+          </div>
+          <div className={css.stepGrid}>
+            {processSteps.map((step, index) => (
+              <article key={step.title} className={css.stepCard}>
+                <span>{index + 1}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className={css.splitSection}>
+          <div>
+            <p className={css.kicker}>Lead categories</p>
+            <h2>Focused only on gutter revenue lines.</h2>
+            <p>
+              Gutter companies do not need a broad contractor directory. They need homeowners and
+              property managers asking for the gutter work they actually sell.
+            </p>
+          </div>
+          <div className={css.leadTypeGrid}>
+            {leadTypes.map(type => (
+              <span key={type}>{type}</span>
+            ))}
+          </div>
+        </section>
+
+        <section className={css.jobberSection}>
+          <div>
+            <p className={css.kicker}>Jobber-ready roadmap</p>
+            <h2>Lead delivery should fit the contractor workflow.</h2>
+            <p>
+              For Jobber users, the next platform advantage is pushing qualified Gutter Quotes
+              opportunities into their CRM so new homeowner demand is easier to contact, schedule,
+              and track.
+            </p>
+          </div>
+          <a href={packageMailto} className={css.secondaryAction}>
+            Ask about Jobber delivery
+          </a>
+        </section>
+
         <section className={css.ctaSection}>
           <div>
-            <p className={css.kicker}>Ready to test your market?</p>
-            <h2>Tell us your service area and monthly lead goal.</h2>
+            <p className={css.kicker}>Claim your launch conversation</p>
+            <h2>Tell us your service area, monthly lead goal, and how fast your team can respond.</h2>
           </div>
           <div className={css.ctaActions}>
             <NamedLink
