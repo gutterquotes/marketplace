@@ -25,11 +25,11 @@ export const trackConversionEvent = (eventName, params = {}) => {
   }
 
   if (window.fbq) {
-    const metaEventName = eventName === 'generate_lead' ? 'Lead' : 'CustomEvent';
-    window.fbq('track', metaEventName, {
-      event_name: eventName,
-      ...eventParams,
-    });
+    if (eventName === 'generate_lead') {
+      window.fbq('track', 'Lead', eventParams);
+    } else {
+      window.fbq('trackCustom', eventName, eventParams);
+    }
   }
 };
 

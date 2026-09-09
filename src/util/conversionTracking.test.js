@@ -32,7 +32,6 @@ describe('conversionTracking', () => {
       },
     });
     expect(window.fbq).toHaveBeenCalledWith('track', 'Lead', {
-      event_name: 'generate_lead',
       event_category: 'lead_generation',
       lead_type: 'homeowner_quote_started',
       zip_code: '28211',
@@ -47,8 +46,7 @@ describe('conversionTracking', () => {
       intent_type: 'package_email',
       plan: 'Growth Lead Bank',
     });
-    expect(window.fbq).toHaveBeenCalledWith('track', 'CustomEvent', {
-      event_name: 'pro_intent',
+    expect(window.fbq).toHaveBeenCalledWith('trackCustom', 'pro_intent', {
       event_category: 'lead_generation',
       intent_type: 'package_email',
       plan: 'Growth Lead Bank',

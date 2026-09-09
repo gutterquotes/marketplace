@@ -24,7 +24,7 @@ import './styles/marketplaceDefaults.css';
 // Configs and store setup
 import appSettings from './config/settings';
 import defaultConfig from './config/configDefault';
-import { LoggingAnalyticsHandler, GoogleAnalyticsHandler } from './analytics/handlers';
+import { BrowserAnalyticsHandler, LoggingAnalyticsHandler } from './analytics/handlers';
 import configureStore from './store';
 
 // Utils
@@ -96,7 +96,7 @@ const render = (store, shouldHydrate) => {
     });
 };
 
-const setupAnalyticsHandlers = googleAnalyticsId => {
+const setupAnalyticsHandlers = ({ googleAnalyticsId, googleAdsId, metaPixelId }) => {
   let handlers = [];
 
   // Log analytics page views and events in dev mode
@@ -111,8 +111,10 @@ const setupAnalyticsHandlers = googleAnalyticsId => {
         'Google Analytics 4 (GA4) should have measurement id that starts with "G-" prefix'
       );
     } else {
-      handlers.push(new GoogleAnalyticsHandler());
+      handlers.push(new BrowserAnalyticsHandler());
     }
+  } else if (googleAdsId || metaPixelId) {
+    handlers.push(new BrowserAnalyticsHandler());
   }
 
   return handlers;
@@ -142,7 +144,11 @@ if (typeof window !== 'undefined') {
   // Note: on localhost:3000, you need to use environment variable.
   const googleAnalyticsIdFromSSR = initialState?.hostedAssets?.googleAnalyticsId;
   const googleAnalyticsId = googleAnalyticsIdFromSSR || process.env.REACT_APP_GOOGLE_ANALYTICS_ID;
-  const analyticsHandlers = setupAnalyticsHandlers(googleAnalyticsId);
+  const analyticsHandlers = setupAnalyticsHandlers({
+    googleAnalyticsId,
+    googleAdsId: process.env.REACT_APP_GOOGLE_ADS_ID,
+    metaPixelId: process.env.REACT_APP_META_PIXEL_ID,
+  });
   const store = configureStore({ initialState, sdk, analyticsHandlers });
 
   require('./util/polyfills');

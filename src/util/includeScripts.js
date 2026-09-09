@@ -58,7 +58,7 @@ const canDeferStripeLibrary = (initialPathname, routeConfiguration) => {
  */
 export const IncludeScripts = props => {
   const { marketplaceRootURL: rootURL, maps, analytics, stripe } = props?.config || {};
-  const { googleAnalyticsId, plausibleDomains } = analytics;
+  const { googleAnalyticsId, googleAdsId, metaPixelId, plausibleDomains } = analytics;
 
   const routeConfiguration = useRouteConfiguration();
   // Note: Affects Mapbox only. Google Maps initialization is not yet ready to support asynchronous loading.
@@ -73,6 +73,8 @@ export const IncludeScripts = props => {
   // Add Google Analytics script if correct id exists (it should start with 'G-' prefix)
   // See: https://developers.google.com/analytics/devguides/collection/gtagjs
   const hasGoogleAnalyticsv4Id = googleAnalyticsId?.indexOf('G-') === 0;
+  const hasGoogleAdsId = googleAdsId?.indexOf('AW-') === 0;
+  const googleTagId = hasGoogleAnalyticsv4Id ? googleAnalyticsId : hasGoogleAdsId ? googleAdsId : null;
 
   // Collect relevant map libraries
   let stripeLibrary = [];
@@ -141,7 +143,7 @@ export const IncludeScripts = props => {
     );
   }
 
-  if (googleAnalyticsId && hasGoogleAnalyticsv4Id) {
+  if (googleTagId) {
     // Google Analytics: gtag.js
     // NOTE: This template is a single-page application (SPA).
     //       gtag.js sends initial page_view event after page load.
@@ -151,7 +153,7 @@ export const IncludeScripts = props => {
       <script
         key="gtag.js"
         async
-        src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}
         crossOrigin="anonymous"
       ></script>
     );
@@ -163,9 +165,46 @@ export const IncludeScripts = props => {
         dataLayer.push(arguments);
       };
       gtag('js', new Date());
-      gtag('config', googleAnalyticsId, {
-        cookie_flags: 'SameSite=None;Secure',
-      });
+      if (hasGoogleAnalyticsv4Id) {
+        gtag('config', googleAnalyticsId, {
+          cookie_flags: 'SameSite=None;Secure',
+        });
+      }
+      if (hasGoogleAdsId) {
+        gtag('config', googleAdsId, {
+          cookie_flags: 'SameSite=None;Secure',
+        });
+      }
+    }
+  }
+
+  if (metaPixelId) {
+    analyticsLibraries.push(
+      <script
+        key="meta-pixel"
+        async
+        src="https://connect.facebook.net/en_US/fbevents.js"
+        crossOrigin="anonymous"
+      ></script>
+    );
+
+    if (typeof window !== 'undefined') {
+      window.fbq =
+        window.fbq ||
+        function fbq() {
+          window.fbq.callMethod
+            ? window.fbq.callMethod.apply(window.fbq, arguments)
+            : window.fbq.queue.push(arguments);
+        };
+      if (!window._fbq) {
+        window._fbq = window.fbq;
+      }
+      window.fbq.push = window.fbq;
+      window.fbq.loaded = true;
+      window.fbq.version = '2.0';
+      window.fbq.queue = window.fbq.queue || [];
+      window.fbq('init', metaPixelId);
+      window.fbq('track', 'PageView');
     }
   }
 

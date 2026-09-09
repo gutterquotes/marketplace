@@ -35,3 +35,9 @@ services:
         sync: false
       - key: REACT_APP_STRIPE_PUBLISHABLE_KEY
         sync: false
+      - key: REACT_APP_GOOGLE_ANALYTICS_ID
+        sync: false
+      - key: REACT_APP_GOOGLE_ADS_ID
+        sync: false
+      - key: REACT_APP_META_PIXEL_ID
+        sync: false

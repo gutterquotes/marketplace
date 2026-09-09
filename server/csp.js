@@ -59,6 +59,11 @@ const defaultDirectives = {
     '*.g.doubleclick.net',
     '*.google.com',
 
+    // Meta Pixel
+    'connect.facebook.net',
+    '*.facebook.com',
+    '*.facebook.net',
+
     // Plausible analytics
     'plausible.io',
     '*.plausible.io',
@@ -107,6 +112,11 @@ const defaultDirectives = {
     '*.google.com',
     'google.com',
 
+    // Meta Pixel
+    'connect.facebook.net',
+    '*.facebook.com',
+    '*.facebook.net',
+
     // Youtube (static image)
     '*.ytimg.com',
 
@@ -123,6 +133,7 @@ const defaultDirectives = {
     '*.google-analytics.com',
     'www.googleadservices.com',
     '*.g.doubleclick.net',
+    'connect.facebook.net',
     'js.stripe.com',
     // Plausible analytics
     'plausible.io',

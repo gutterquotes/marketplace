@@ -5,7 +5,7 @@ export class LoggingAnalyticsHandler {
 }
 
 // Google Analytics 4 (GA4) using gtag.js script, which is included in util/includeScripts.js
-export class GoogleAnalyticsHandler {
+export class BrowserAnalyticsHandler {
   trackPageView(canonicalPath, previousPath) {
     // GA4 property. Manually send page_view events
     // https://developers.google.com/analytics/devguides/collection/gtagjs/single-page-applications
@@ -22,5 +22,15 @@ export class GoogleAnalyticsHandler {
         });
       }, 300);
     }
+
+    if (previousPath && window.fbq) {
+      window.setTimeout(() => {
+        window.fbq('track', 'PageView', {
+          page_path: canonicalPath,
+        });
+      }, 300);
+    }
   }
 }
+
+export const GoogleAnalyticsHandler = BrowserAnalyticsHandler;

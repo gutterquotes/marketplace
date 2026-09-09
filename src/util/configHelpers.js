@@ -155,6 +155,7 @@ const mergeAnalyticsConfig = (hostedAnalyticsConfig, defaultAnalyticsConfig) => 
   const { enabled, measurementId } = hostedAnalyticsConfig?.googleAnalytics || {};
   const googleAnalyticsId =
     enabled && measurementId ? measurementId : defaultAnalyticsConfig.googleAnalyticsId;
+  const { googleAdsId, metaPixelId } = defaultAnalyticsConfig;
 
   // With Plausible, we merge hosted analytics and default (built-in) analytics if any (Plausible supports multiple domains)
   // Hosted format is: "plausible": { "enabled": true, "domain": "example.com" }
@@ -167,7 +168,7 @@ const mergeAnalyticsConfig = (hostedAnalyticsConfig, defaultAnalyticsConfig) => 
   const plausibleDomains = joinStrings(plausibleDomainsHosted, plausibleDomainsDefault);
   const plausibleDomainsMaybe = plausibleDomains ? { plausibleDomains } : {};
 
-  return { googleAnalyticsId, ...plausibleDomainsMaybe };
+  return { googleAnalyticsId, googleAdsId, metaPixelId, ...plausibleDomainsMaybe };
 };
 
 ////////////////////
