@@ -34,6 +34,7 @@ const PrivacyPolicyPage = loadable(() => import(/* webpackChunkName: "PrivacyPol
 const ProfilePage = loadable(() => import(/* webpackChunkName: "ProfilePage" */ '../containers/ProfilePage/ProfilePage'));
 const ProfileSettingsPage = loadable(() => import(/* webpackChunkName: "ProfileSettingsPage" */ '../containers/ProfileSettingsPage/ProfileSettingsPage'));
 const QuoteStartPage = loadable(() => import(/* webpackChunkName: "QuoteStartPage" */ '../containers/QuoteStartPage/QuoteStartPage'));
+const QuoteThankYouPage = loadable(() => import(/* webpackChunkName: "QuoteThankYouPage" */ '../containers/QuoteThankYouPage/QuoteThankYouPage'));
 const GutterProPage = loadable(() => import(/* webpackChunkName: "GutterProPage" */ '../containers/GutterProPage/GutterProPage'));
 const GutterLeadPage = loadable(() => import(/* webpackChunkName: "GutterLeadPage" */ '../containers/GutterLeadPage/GutterLeadPage'));
 const GutterLeadPackagesPage = loadable(() => import(/* webpackChunkName: "GutterLeadPackagesPage" */ '../containers/GutterLeadPackagesPage/GutterLeadPackagesPage'));
@@ -95,6 +96,11 @@ const routeConfiguration = (layoutConfig, accessControlConfig) => {
       path: '/quote',
       name: 'QuoteStartPage',
       component: QuoteStartPage,
+    },
+    {
+      path: '/quote/thank-you',
+      name: 'QuoteThankYouPage',
+      component: QuoteThankYouPage,
     },
     {
       path: '/pros',

@@ -1,0 +1,207 @@
+.root {
+  --ink: #101312;
+  --muted: #666b68;
+  --brand: #ff4f00;
+  --brandDark: #d84200;
+  --line: #e7e7e7;
+  --paper: #f8f8f8;
+
+  min-height: 100vh;
+  background: #fff;
+  color: var(--ink);
+}
+
+.hero,
+.nextSteps,
+.addOns {
+  width: min(1040px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 78px 0 46px;
+}
+
+.kicker {
+  margin: 0;
+  color: var(--brand);
+  font-size: 12px;
+  font-weight: 880;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 760px;
+  margin: 12px 0 0;
+  color: var(--ink);
+  font-size: 64px;
+  font-weight: 880;
+  letter-spacing: 0;
+  line-height: 0.98;
+}
+
+.lead {
+  max-width: 720px;
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 21px;
+  line-height: 1.48;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0 22px;
+  font-size: 15px;
+  font-weight: 880;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+}
+
+.primaryAction {
+  background: var(--brand);
+  color: #fff;
+}
+
+.primaryAction:hover {
+  background: var(--brandDark);
+  color: #fff;
+}
+
+.secondaryAction {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+}
+
+.secondaryAction:hover {
+  border-color: #ffc0a3;
+  color: var(--brand);
+}
+
+.nextSteps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 18px 0 58px;
+}
+
+.nextSteps article,
+.addOnGrid article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  padding: 22px;
+}
+
+.nextSteps span {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 880;
+}
+
+.nextSteps p {
+  margin: 16px 0 0;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 760;
+  line-height: 1.46;
+}
+
+.addOns {
+  border-top: 1px solid var(--line);
+  padding: 52px 0 72px;
+}
+
+.addOns h2 {
+  max-width: 720px;
+  margin: 12px 0 0;
+  color: var(--ink);
+  font-size: 38px;
+  font-weight: 880;
+  letter-spacing: 0;
+  line-height: 1.08;
+}
+
+.addOnGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.addOnGrid h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 880;
+  line-height: 1.15;
+}
+
+.addOnGrid p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.48;
+}
+
+@media (max-width: 760px) {
+  .hero h1 {
+    font-size: 44px;
+  }
+
+  .lead {
+    font-size: 18px;
+  }
+
+  .nextSteps,
+  .addOnGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero,
+  .nextSteps,
+  .addOns {
+    width: min(100% - 24px, 1040px);
+  }
+
+  .hero {
+    padding-top: 54px;
+  }
+
+  .actions {
+    display: grid;
+  }
+
+  .primaryAction,
+  .secondaryAction {
+    width: 100%;
+  }
+
+  .addOns h2 {
+    font-size: 30px;
+  }
+}

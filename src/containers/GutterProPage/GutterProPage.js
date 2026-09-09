@@ -3,6 +3,7 @@ import React from 'react';
 import { NamedLink, Page, TopbarSimplified } from '../../components';
 import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
 import logoImage from '../../assets/gutter-quotes-logo.png';
+import { trackProIntent } from '../../util/conversionTracking';
 
 import css from './GutterProPage.module.css';
 
@@ -85,6 +86,11 @@ const launchPlans = [
 
 const GutterProPage = props => {
   const { scrollingDisabled } = props;
+  const trackProPageIntent = (intentType, plan) => () =>
+    trackProIntent(intentType, {
+      plan,
+      page_path: '/pros',
+    });
 
   return (
     <Page
@@ -121,16 +127,29 @@ const GutterProPage = props => {
                   name="SignupForUserTypePage"
                   params={{ userType: 'provider' }}
                   className={css.primaryAction}
+                  onClick={trackProPageIntent('pro_signup')}
                 >
                   Join as a gutter pro
                 </NamedLink>
-                <NamedLink name="GutterLeadPage" className={css.secondaryAction}>
+                <NamedLink
+                  name="GutterLeadPage"
+                  className={css.secondaryAction}
+                  onClick={trackProPageIntent('lead_page_click')}
+                >
                   Explore gutter leads
                 </NamedLink>
-                <NamedLink name="GutterLeadPackagesPage" className={css.secondaryAction}>
+                <NamedLink
+                  name="GutterLeadPackagesPage"
+                  className={css.secondaryAction}
+                  onClick={trackProPageIntent('package_page_click')}
+                >
                   View lead packages
                 </NamedLink>
-                <NamedLink name="ValueFilterCaseStudyPage" className={css.secondaryAction}>
+                <NamedLink
+                  name="ValueFilterCaseStudyPage"
+                  className={css.secondaryAction}
+                  onClick={trackProPageIntent('case_study_click')}
+                >
                   See ValueFilter results
                 </NamedLink>
               </div>
@@ -276,6 +295,7 @@ const GutterProPage = props => {
                 </ul>
                 <a
                   className={css.primaryAction}
+                  onClick={trackProPageIntent('pricing_email', plan.name)}
                   href={`mailto:mills@gutterquotes.com?subject=${encodeURIComponent(
                     `${plan.name} interest`
                   )}&body=${encodeURIComponent(
@@ -316,12 +336,14 @@ const GutterProPage = props => {
               name="SignupForUserTypePage"
               params={{ userType: 'provider' }}
               className={css.primaryAction}
+              onClick={trackProPageIntent('pro_signup')}
             >
               Start contractor signup
             </NamedLink>
             <a
               href="mailto:mills@gutterquotes.com?subject=Gutter%20Quotes%20Lead%20Pricing&body=I%20want%20to%20discuss%20Gutter%20Quotes%20lead%20pricing.%20Company%20name%2C%20service%20area%2C%20monthly%20lead%20goal%2C%20and%20phone%3A"
               className={css.secondaryAction}
+              onClick={trackProPageIntent('pricing_email', 'Footer form')}
             >
               Email about lead pricing
             </a>

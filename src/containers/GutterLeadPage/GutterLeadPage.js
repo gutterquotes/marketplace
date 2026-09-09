@@ -2,6 +2,7 @@ import React from 'react';
 
 import { NamedLink, Page, TopbarSimplified } from '../../components';
 import logoImage from '../../assets/gutter-quotes-logo.png';
+import { trackProIntent } from '../../util/conversionTracking';
 
 import css from './GutterLeadPage.module.css';
 
@@ -60,6 +61,10 @@ const packageMailto =
 
 const GutterLeadPage = props => {
   const { scrollingDisabled } = props;
+  const trackLeadPageIntent = intentType => () =>
+    trackProIntent(intentType, {
+      page_path: '/pros/gutter-leads',
+    });
 
   return (
     <Page
@@ -95,10 +100,15 @@ const GutterLeadPage = props => {
                   name="SignupForUserTypePage"
                   params={{ userType: 'provider' }}
                   className={css.primaryAction}
+                  onClick={trackLeadPageIntent('pro_signup')}
                 >
                   Start getting leads
                 </NamedLink>
-                <a href={packageMailto} className={css.secondaryAction}>
+                <a
+                  href={packageMailto}
+                  className={css.secondaryAction}
+                  onClick={trackLeadPageIntent('pricing_email')}
+                >
                   Discuss pricing
                 </a>
               </div>
@@ -111,7 +121,12 @@ const GutterLeadPage = props => {
                 ValueFilter is now tracking toward $300k+ in monthly revenue from Gutter Quotes
                 leads after exceeding $220k in month four.
               </p>
-              <NamedLink name="ValueFilterCaseStudyPage">Read the case study</NamedLink>
+              <NamedLink
+                name="ValueFilterCaseStudyPage"
+                onClick={trackLeadPageIntent('case_study_click')}
+              >
+                Read the case study
+              </NamedLink>
             </aside>
           </div>
         </section>
@@ -203,7 +218,11 @@ const GutterLeadPage = props => {
               and track.
             </p>
           </div>
-          <a href={packageMailto} className={css.secondaryAction}>
+          <a
+            href={packageMailto}
+            className={css.secondaryAction}
+            onClick={trackLeadPageIntent('jobber_delivery')}
+          >
             Ask about Jobber delivery
           </a>
         </section>
@@ -218,10 +237,15 @@ const GutterLeadPage = props => {
               name="SignupForUserTypePage"
               params={{ userType: 'provider' }}
               className={css.primaryAction}
+              onClick={trackLeadPageIntent('pro_signup')}
             >
               Create pro account
             </NamedLink>
-            <NamedLink name="GutterLeadPackagesPage" className={css.secondaryAction}>
+            <NamedLink
+              name="GutterLeadPackagesPage"
+              className={css.secondaryAction}
+              onClick={trackLeadPageIntent('package_page_click')}
+            >
               View all packages
             </NamedLink>
           </div>

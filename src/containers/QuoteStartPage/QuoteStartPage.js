@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Page, TopbarSimplified } from '../../components';
+import { trackConversionEvent, trackLeadEvent } from '../../util/conversionTracking';
 import { GUTTER_QUOTE_LISTING_TYPE, saveGutterQuoteDraft } from '../../util/gutterQuoteDraft';
 
 import css from './QuoteStartPage.module.css';
@@ -99,6 +100,13 @@ const QuoteStartPage = props => {
   }, ${homeHeight.toLowerCase()}, ${timeline.toLowerCase()}.`;
 
   const handleProjectToggle = project => {
+    trackConversionEvent('service_selected', {
+      lead_type: 'homeowner_quote',
+      service: project.serviceNeeded,
+      service_label: project.label,
+      page_path: '/quote',
+    });
+
     setSelectedProjects(currentProjects => {
       const isSelected = currentProjects.some(item => item.label === project.label);
       const isNotSure = project.label === notSureProjectLabel;
@@ -130,6 +138,17 @@ const QuoteStartPage = props => {
     .join('\n');
 
   const saveDraft = () => {
+    trackLeadEvent('homeowner_quote_started', {
+      service: primaryProject.serviceNeeded,
+      services: selectedServiceLabels.join(', '),
+      service_count: selectedServiceLabels.length,
+      zip_code: zipCode,
+      timeline: timelineToValue[timeline],
+      property_type: propertyTypeToValue[propertyType],
+      home_height: homeHeight,
+      page_path: '/quote',
+    });
+
     saveGutterQuoteDraft({
       title,
       description: draftDescription,

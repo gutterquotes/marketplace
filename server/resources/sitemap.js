@@ -183,6 +183,7 @@ const defaultPublicPaths = {
   locations: { url: '/locations' },
   signup: { url: '/signup' },
   login: { url: '/login' },
+  quoteThankYou: { url: '/quote/thank-you' },
   search: { url: '/s' },
   ...gutterServiceSlugs.reduce(
     (paths, slug) => ({

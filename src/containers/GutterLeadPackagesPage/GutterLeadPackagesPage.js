@@ -3,6 +3,7 @@ import React from 'react';
 import { NamedLink, Page, TopbarSimplified } from '../../components';
 import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
 import logoImage from '../../assets/gutter-quotes-logo.png';
+import { trackProIntent } from '../../util/conversionTracking';
 
 import css from './GutterLeadPackagesPage.module.css';
 
@@ -78,6 +79,11 @@ const packageMailto = plan =>
 
 const GutterLeadPackagesPage = props => {
   const { scrollingDisabled } = props;
+  const trackPackageIntent = (intentType, plan) => () =>
+    trackProIntent(intentType, {
+      plan,
+      page_path: '/pros/lead-packages',
+    });
 
   return (
     <Page
@@ -111,10 +117,18 @@ const GutterLeadPackagesPage = props => {
                 effective pricing while your team stays focused on jobs worth pursuing.
               </p>
               <div className={css.actions}>
-                <a className={css.primaryAction} href={packageMailto('Growth Lead Bank')}>
+                <a
+                  className={css.primaryAction}
+                  href={packageMailto('Growth Lead Bank')}
+                  onClick={trackPackageIntent('package_email', 'Growth Lead Bank')}
+                >
                   Discuss a package
                 </a>
-                <a className={css.secondaryAction} href={packageMailto('Pay as you go')}>
+                <a
+                  className={css.secondaryAction}
+                  href={packageMailto('Pay as you go')}
+                  onClick={trackPackageIntent('package_email', 'Pay as you go')}
+                >
                   Start at $75/lead
                 </a>
                 <NamedLink name="GutterLeadPage" className={css.secondaryAction}>
@@ -178,7 +192,11 @@ const GutterLeadPackagesPage = props => {
                 <li key={feature}>{feature}</li>
               ))}
             </ul>
-            <a className={css.primaryAction} href={packageMailto(payAsYouGoPlan.name)}>
+            <a
+              className={css.primaryAction}
+              href={packageMailto(payAsYouGoPlan.name)}
+              onClick={trackPackageIntent('package_email', payAsYouGoPlan.name)}
+            >
               Request pay as you go
             </a>
           </article>
@@ -200,7 +218,11 @@ const GutterLeadPackagesPage = props => {
                     <li key={feature}>{feature}</li>
                   ))}
                 </ul>
-                <a className={css.primaryAction} href={packageMailto(plan.name)}>
+                <a
+                  className={css.primaryAction}
+                  href={packageMailto(plan.name)}
+                  onClick={trackPackageIntent('package_email', plan.name)}
+                >
                   Request this package
                 </a>
               </article>
@@ -248,7 +270,11 @@ const GutterLeadPackagesPage = props => {
           <div className={css.customCard}>
             <strong>Custom package</strong>
             <span>Volume-based rate</span>
-            <a className={css.primaryAction} href={packageMailto('Custom volume')}>
+            <a
+              className={css.primaryAction}
+              href={packageMailto('Custom volume')}
+              onClick={trackPackageIntent('package_email', 'Custom volume')}
+            >
               Build a custom plan
             </a>
           </div>
