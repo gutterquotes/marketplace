@@ -2,6 +2,7 @@ import React from 'react';
 
 import { NamedLink } from '../../components';
 import logoImage from '../../assets/gutter-quotes-logo.png';
+import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
 
 import css from './FallbackPage.module.css';
 
@@ -86,14 +87,7 @@ const FallbackPage = () => {
           Get leads in your area
         </NamedLink>
       </section>
-      <footer className={css.footer}>
-        <span>© 2026 Gutter Quotes</span>
-        <nav aria-label="Footer">
-          <NamedLink name="TermsOfServicePage">Terms</NamedLink>
-          <NamedLink name="PrivacyPolicyPage">Privacy</NamedLink>
-          <NamedLink name="ContactPage">Contact</NamedLink>
-        </nav>
-      </footer>
+      <GutterQuotesFooter />
     </main>
   );
 };
