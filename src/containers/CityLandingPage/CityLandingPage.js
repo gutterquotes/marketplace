@@ -2,6 +2,7 @@ import React from 'react';
 
 import { NamedLink, NamedRedirect, Page, TopbarSimplified } from '../../components';
 import logoImage from '../../assets/gutter-quotes-logo.png';
+import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
 
 import { findCityBySlug, southeastCities } from './cityData';
 import { gutterServices } from '../ServiceLandingPage/serviceData';
@@ -56,6 +57,7 @@ const CityLandingPage = props => {
             </ul>
           </section>
         </main>
+        <GutterQuotesFooter />
       </Page>
     );
   }
@@ -161,6 +163,7 @@ const CityLandingPage = props => {
           </ul>
         </section>
       </main>
+      <GutterQuotesFooter />
     </Page>
   );
 };

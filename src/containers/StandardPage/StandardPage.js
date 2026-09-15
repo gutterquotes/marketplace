@@ -2,6 +2,7 @@ import React from 'react';
 
 import { NamedLink, NamedRedirect, Page, TopbarSimplified } from '../../components';
 import logoImage from '../../assets/gutter-quotes-logo.png';
+import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
 
 import { legalNotice, standardPages } from './standardPageData';
 import css from './StandardPage.module.css';
@@ -49,6 +50,7 @@ const StandardPage = props => {
           {isLegalPage ? <p className={css.notice}>{legalNotice}</p> : null}
         </section>
       </main>
+      <GutterQuotesFooter />
     </Page>
   );
 };

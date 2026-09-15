@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Page, TopbarSimplified } from '../../components';
+import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
 import { trackConversionEvent, trackLeadEvent } from '../../util/conversionTracking';
 import { GUTTER_QUOTE_LISTING_TYPE, saveGutterQuoteDraft } from '../../util/gutterQuoteDraft';
 
@@ -291,6 +292,7 @@ const QuoteStartPage = props => {
           </div>
         </section>
       </main>
+      <GutterQuotesFooter />
     </Page>
   );
 };

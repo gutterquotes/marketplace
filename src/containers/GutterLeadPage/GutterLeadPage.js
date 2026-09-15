@@ -2,6 +2,7 @@ import React from 'react';
 
 import { NamedLink, Page, TopbarSimplified } from '../../components';
 import logoImage from '../../assets/gutter-quotes-logo.png';
+import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
 import { trackProIntent } from '../../util/conversionTracking';
 
 import css from './GutterLeadPage.module.css';
@@ -251,6 +252,7 @@ const GutterLeadPage = props => {
           </div>
         </section>
       </main>
+      <GutterQuotesFooter />
     </Page>
   );
 };

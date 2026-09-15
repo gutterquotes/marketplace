@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { NamedLink, Page, TopbarSimplified } from '../../components';
+import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
 import { trackConversionEvent } from '../../util/conversionTracking';
 
 import css from './QuoteThankYouPage.module.css';
@@ -85,6 +86,7 @@ const QuoteThankYouPage = props => {
           </div>
         </section>
       </main>
+      <GutterQuotesFooter />
     </Page>
   );
 };
