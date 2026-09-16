@@ -181,6 +181,7 @@ const defaultPublicPaths = {
   refundPolicy: { url: '/refund-policy' },
   accessibility: { url: '/accessibility' },
   locations: { url: '/locations' },
+  reviews: { url: '/reviews' },
   signup: { url: '/signup' },
   login: { url: '/login' },
   quoteThankYou: { url: '/quote/thank-you' },

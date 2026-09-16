@@ -1,7 +1,9 @@
 import React from 'react';
 
 import { NamedLink } from '../../components';
+import GutterReviewCard from '../../components/GutterReviewCard/GutterReviewCard';
 import logoImage from '../../assets/gutter-quotes-logo.png';
+import { homepageReviews } from '../../data/gutterQuotesReviews';
 import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
 
 import css from './FallbackPage.module.css';
@@ -76,6 +78,27 @@ const FallbackPage = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className={css.reviewSection}>
+        <div className={css.reviewHeading}>
+          <div>
+            <p className={css.kicker}>Homeowner reviews</p>
+            <h2>Details that matter after the crew leaves.</h2>
+          </div>
+          <div className={css.reviewSummary}>
+            <strong>4.8 out of 5</strong>
+            <span>Homeowner experiences with local gutter pros</span>
+          </div>
+        </div>
+        <div className={css.reviewGrid}>
+          {homepageReviews.map(review => (
+            <GutterReviewCard key={review.id} review={review} compact />
+          ))}
+        </div>
+        <NamedLink name="ReviewsPage" className={css.allReviewsLink}>
+          Read all homeowner reviews
+        </NamedLink>
       </section>
 
       <section className={css.proSection}>

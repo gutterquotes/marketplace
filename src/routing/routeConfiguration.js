@@ -40,6 +40,7 @@ const GutterLeadPage = loadable(() => import(/* webpackChunkName: "GutterLeadPag
 const GutterLeadPackagesPage = loadable(() => import(/* webpackChunkName: "GutterLeadPackagesPage" */ '../containers/GutterLeadPackagesPage/GutterLeadPackagesPage'));
 const ValueFilterCaseStudyPage = loadable(() => import(/* webpackChunkName: "ValueFilterCaseStudyPage" */ '../containers/ValueFilterCaseStudyPage/ValueFilterCaseStudyPage'));
 const RequestQuotePage = loadable(() => import(/* webpackChunkName: "RequestQuotePage" */ '../containers/RequestQuotePage/RequestQuotePage'));
+const ReviewsPage = loadable(() => import(/* webpackChunkName: "ReviewsPage" */ '../containers/ReviewsPage/ReviewsPage'));
 const SearchPageWithMap = loadable(() => import(/* webpackChunkName: "SearchPageWithMap" */ /* webpackPrefetch: true */  '../containers/SearchPage/SearchPageWithMap'));
 const SearchPageWithGrid = loadable(() => import(/* webpackChunkName: "SearchPageWithGrid" */ /* webpackPrefetch: true */  '../containers/SearchPage/SearchPageWithGrid'));
 const ServiceLandingPage = loadable(() => import(/* webpackChunkName: "ServiceLandingPage" */ '../containers/ServiceLandingPage/ServiceLandingPage'));
@@ -101,6 +102,11 @@ const routeConfiguration = (layoutConfig, accessControlConfig) => {
       path: '/quote/thank-you',
       name: 'QuoteThankYouPage',
       component: QuoteThankYouPage,
+    },
+    {
+      path: '/reviews',
+      name: 'ReviewsPage',
+      component: ReviewsPage,
     },
     {
       path: '/pros',

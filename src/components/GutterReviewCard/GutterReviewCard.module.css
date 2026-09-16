@@ -1,0 +1,79 @@
+.root {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background: #fff;
+  padding: 22px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ff4f00;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+.ratingText {
+  color: #5d6360;
+  font-size: 12px;
+  font-weight: 820;
+}
+
+.root h3 {
+  margin: 16px 0 0;
+  color: #111413;
+  font-size: 20px;
+  font-weight: 860;
+  letter-spacing: 0;
+  line-height: 1.15;
+}
+
+.root blockquote {
+  margin: 12px 0 0;
+  color: #454946;
+  font-size: 15px;
+  line-height: 1.58;
+}
+
+.reviewer {
+  display: flex;
+  margin-top: auto;
+  padding-top: 18px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  color: #111413;
+  font-size: 13px;
+}
+
+.reviewer span {
+  color: #686d69;
+  text-align: right;
+}
+
+.meta {
+  display: grid;
+  gap: 5px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #eeeeee;
+  color: #686d69;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.compact {
+  padding: 20px;
+}
+
+.compact h3 {
+  font-size: 18px;
+}
+
+.compact blockquote {
+  font-size: 14px;
+}

@@ -19,6 +19,7 @@
 
 .topbar,
 .heroGrid,
+.reviewSection,
 .proSection {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
@@ -89,6 +90,7 @@
 }
 
 .heroCopy h1,
+.reviewHeading h2,
 .proSection h2 {
   margin: 0;
   color: var(--gqInk);
@@ -194,6 +196,57 @@
   line-height: 1.2;
 }
 
+.reviewSection {
+  padding: 54px 0 60px;
+}
+
+.reviewHeading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 26px;
+}
+
+.reviewHeading h2 {
+  max-width: 650px;
+  font-size: 38px;
+  line-height: 1.06;
+}
+
+.reviewSummary {
+  display: grid;
+  gap: 4px;
+  color: var(--gqMuted);
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.reviewSummary strong {
+  color: var(--gqInk);
+  font-size: 18px;
+}
+
+.reviewGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.allReviewsLink {
+  display: inline-flex;
+  margin-top: 22px;
+  color: var(--gqAccentDark);
+  font-size: 14px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.allReviewsLink:hover {
+  color: var(--gqAccent);
+}
+
 .proSection {
   display: flex;
   gap: 28px;
@@ -267,11 +320,16 @@
   .proSection {
     display: grid;
   }
+
+  .reviewGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 540px) {
   .topbar,
   .heroGrid,
+  .reviewSection,
   .proSection {
     width: min(100% - 24px, 1120px);
   }
@@ -308,6 +366,23 @@
 
   .secondaryAction {
     width: 100%;
+  }
+
+  .reviewHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .reviewHeading h2 {
+    font-size: 30px;
+  }
+
+  .reviewSummary {
+    text-align: left;
+  }
+
+  .reviewGrid {
+    grid-template-columns: 1fr;
   }
 
   .footer {
