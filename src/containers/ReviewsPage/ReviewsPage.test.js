@@ -25,14 +25,14 @@ describe('ReviewsPage', () => {
   it('renders curated reviews and filters them by service', () => {
     render(<ReviewsPage scrollingDisabled={false} />);
 
-    expect(screen.getByText('What homeowners noticed after the quote.')).toBeInTheDocument();
-    expect(screen.getByText('The leak over our dining room is gone')).toBeInTheDocument();
+    expect(screen.getByText('One request. Less time calling around.')).toBeInTheDocument();
+    expect(screen.getByText('A repair instead of a full replacement')).toBeInTheDocument();
     expect(screen.getAllByRole('article')).toHaveLength(18);
 
     fireEvent.click(screen.getByRole('button', { name: 'Gutter guards' }));
 
     expect(screen.getAllByRole('article')).toHaveLength(2);
-    expect(screen.getByText('Better flow without a guard upsell')).toBeInTheDocument();
-    expect(screen.queryByText('The leak over our dining room is gone')).not.toBeInTheDocument();
+    expect(screen.getByText('We skipped the expensive guard package')).toBeInTheDocument();
+    expect(screen.queryByText('A repair instead of a full replacement')).not.toBeInTheDocument();
   });
 });

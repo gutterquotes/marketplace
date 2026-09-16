@@ -36,10 +36,10 @@ const ReviewsPage = ({ scrollingDisabled }) => {
         <section className={css.hero}>
           <div>
             <p className={css.kicker}>Homeowner reviews</p>
-            <h1>What homeowners noticed after the quote.</h1>
+            <h1>One request. Less time calling around.</h1>
             <p className={css.lead}>
-              Real project details matter more than perfect praise. Read what homeowners said about
-              the estimate, the crew, the cleanup, and how the gutters performed afterward.
+              See how homeowners compared prices, avoided work they did not need, and found a crew
+              without spending days chasing callbacks.
             </p>
           </div>
           <aside className={css.summary}>

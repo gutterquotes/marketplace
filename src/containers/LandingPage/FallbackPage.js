@@ -84,11 +84,11 @@ const FallbackPage = () => {
         <div className={css.reviewHeading}>
           <div>
             <p className={css.kicker}>Homeowner reviews</p>
-            <h2>Details that matter after the crew leaves.</h2>
+            <h2>Less calling around. Better quotes.</h2>
           </div>
           <div className={css.reviewSummary}>
             <strong>4.8 out of 5</strong>
-            <span>Homeowner experiences with local gutter pros</span>
+            <span>Homeowners saved time comparing local gutter pros</span>
           </div>
         </div>
         <div className={css.reviewGrid}>

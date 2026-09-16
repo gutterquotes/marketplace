@@ -31,7 +31,7 @@ describe('LandingPage', () => {
       expect(getByText('Free for homeowners')).toBeInTheDocument();
       expect(getByText('No obligation')).toBeInTheDocument();
       expect(getByText('Need exclusive, high-intent homeowner gutter leads?')).toBeInTheDocument();
-      expect(getByText('Details that matter after the crew leaves.')).toBeInTheDocument();
+      expect(getByText('Less calling around. Better quotes.')).toBeInTheDocument();
       expect(getByRole('link', { name: 'Read all homeowner reviews' })).toHaveAttribute(
         'href',
         '/reviews'
