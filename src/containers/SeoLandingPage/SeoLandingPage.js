@@ -135,6 +135,7 @@ const SeoLandingPage = props => {
     .map(group => group.pages[0])
     .slice(0, 5);
   const schema = createSeoGuideSchema({ page, marketplaceRootURL: config.marketplaceRootURL });
+  const isNearMePage = page.groupSlug === 'near-me';
 
   return (
     <Page
@@ -202,6 +203,42 @@ const SeoLandingPage = props => {
             <li>Does the quote match your home height, roofline, drainage path, and timing?</li>
           </ul>
         </section>
+
+        {isNearMePage ? (
+          <section className={css.workflowSection}>
+            <div className={css.sectionHeading}>
+              <p className={css.kicker}>A simpler local search</p>
+              <h2>From project details to productive conversations.</h2>
+              <p>
+                Give local specialists enough information to understand the home, recommend the
+                right system, and prepare for a useful first conversation.
+              </p>
+            </div>
+            <ol className={css.steps}>
+              <li>
+                <span>1</span>
+                <div>
+                  <h3>Describe the home and the problem</h3>
+                  <p>Share the ZIP code, service needed, home height, timing, notes, and photos once.</p>
+                </div>
+              </li>
+              <li>
+                <span>2</span>
+                <div>
+                  <h3>Hear from relevant gutter pros</h3>
+                  <p>Contractors can review the same project brief before starting the conversation.</p>
+                </div>
+              </li>
+              <li>
+                <span>3</span>
+                <div>
+                  <h3>Compare complete recommendations</h3>
+                  <p>Review scope, materials, drainage plan, schedule, workmanship, and warranty.</p>
+                </div>
+              </li>
+            </ol>
+          </section>
+        ) : null}
 
         <section className={css.linkSection}>
           <div>

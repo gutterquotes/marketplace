@@ -11,12 +11,19 @@ const costPages = [
 ];
 
 const nearMePages = [
+  ['gutter-quotes-near-me', 'Gutter Quotes Near Me', 'Request local gutter quotes with one clear project brief instead of repeating the same details on multiple calls.', 'ZIP code, project type, home height, roofline details, photos, preferred timing, and contractor availability'],
+  ['gutter-contractors-near-me', 'Gutter Contractors Near Me', 'Connect with local gutter specialists for installation, replacement, repair, guards, downspouts, and drainage.', 'gutter specialty, service area, project scope, workmanship, communication, availability, and proposal detail'],
+  ['gutter-installation-near-me', 'Gutter Installation Near Me', 'Find local gutter installation pros who can size the system, plan downspouts, and prepare a complete proposal for your home.', 'roof area, gutter profile, material, home height, downspout capacity, fascia condition, and removal needs'],
   ['gutter-installers-near-me', 'Gutter Installers Near Me', 'Find local gutter installers who can review your home details and respond with relevant quote options.', 'installation type, ZIP code, roofline details, project timing, and preferred material'],
   ['gutter-companies-near-me', 'Gutter Companies Near Me', 'Compare gutter companies around your area without calling every contractor one at a time.', 'service area, specialties, availability, project photos, and quote process'],
+  ['local-gutter-company', 'Local Gutter Company', 'Find a gutter company serving your area and share the project details needed for a productive first conversation.', 'service coverage, installation experience, materials, scheduling, warranties, references, and communication'],
+  ['gutter-replacement-near-me', 'Gutter Replacement Near Me', 'Find local pros to inspect an aging or damaged gutter system and quote a properly sized replacement.', 'existing gutter condition, fascia, roofline length, material, gutter size, downspouts, removal, and cleanup'],
   ['gutter-repair-near-me', 'Gutter Repair Near Me', 'Connect with gutter repair pros for leaks, sagging runs, bad pitch, loose hangers, and damaged downspouts.', 'issue type, affected areas, home height, urgency, and photos of the problem'],
   ['gutter-cleaning-near-me', 'Gutter Cleaning Near Me', 'Find gutter cleaning help for seasonal debris, clogged downspouts, overflowing gutters, and roofline buildup.', 'cleaning frequency, tree coverage, stories, access, and guard removal needs'],
   ['gutter-guard-installers-near-me', 'Gutter Guard Installers Near Me', 'Compare gutter guard installers for leaf protection, pine needle coverage, and lower-maintenance gutters.', 'guard style, gutter condition, roof type, debris type, and warranty preferences'],
   ['seamless-gutter-contractors-near-me', 'Seamless Gutter Contractors Near Me', 'Find seamless gutter contractors who can fabricate custom-fit gutter runs for your home.', 'linear footage, color, material, downspout layout, and existing gutter removal'],
+  ['rain-gutter-installers-near-me', 'Rain Gutter Installers Near Me', 'Find nearby rain gutter installers for a new system, replacement, downspout planning, and roof-water control.', 'roofline measurements, rainfall, gutter size, material, downspout placement, drainage, and installation timing'],
+  ['downspout-installation-near-me', 'Downspout Installation Near Me', 'Connect with local pros who can add or replace downspouts and route roof water away from the home.', 'roof runoff, outlet size, downspout count, discharge location, extensions, underground drains, and foundation concerns'],
 ];
 
 const problemPages = [

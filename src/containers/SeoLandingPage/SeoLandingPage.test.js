@@ -34,7 +34,8 @@ describe('SeoLandingPage', () => {
   });
 
   it('includes all planned guide pages', () => {
-    expect(seoPages).toHaveLength(210);
+    expect(seoPages).toHaveLength(217);
+    expect(findSeoPageBySlug('gutter-quotes-near-me').title).toBe('Gutter Quotes Near Me');
     expect(findSeoPageBySlug('gutter-guard-installers-near-me').title).toBe(
       'Gutter Guard Installers Near Me'
     );
@@ -47,6 +48,14 @@ describe('SeoLandingPage', () => {
     expect(findSeoPageBySlug('yard-drainage-contractors-raleigh-nc').title).toBe(
       'Yard Drainage Contractors Raleigh NC'
     );
+  });
+
+  it('renders a useful local-search workflow on near-me pages', () => {
+    render(<SeoLandingPage params={{ seoSlug: 'gutter-quotes-near-me' }} scrollingDisabled={false} />);
+
+    expect(screen.getByRole('heading', { name: 'Gutter Quotes Near Me' })).toBeInTheDocument();
+    expect(screen.getByText('Describe the home and the problem')).toBeInTheDocument();
+    expect(screen.getByText('Compare complete recommendations')).toBeInTheDocument();
   });
 
   it('renders a city drainage guide page', () => {

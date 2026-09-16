@@ -10,7 +10,7 @@ const footerGroups = [
     title: 'Homeowners',
     links: [
       { label: 'Start a quote request', name: 'QuoteStartPage' },
-      { label: 'Browse active requests', name: 'SearchPage' },
+      { label: 'Gutter quotes near me', name: 'SeoLandingPage', params: { seoSlug: 'gutter-quotes-near-me' } },
       { label: 'Service areas', name: 'LocationsPage' },
       { label: 'Homeowner reviews', name: 'ReviewsPage' },
       { label: 'Seamless gutters', name: 'ServiceLandingPage', params: { serviceSlug: 'seamless-gutter-installation' } },
