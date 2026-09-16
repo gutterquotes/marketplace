@@ -16,16 +16,6 @@
   padding: 72px 0 56px;
 }
 
-.logoLink {
-  display: inline-flex;
-  margin-bottom: 40px;
-}
-
-.logo {
-  width: 210px;
-  height: auto;
-}
-
 .kicker {
   margin: 0 0 14px;
   color: #ff4f00;

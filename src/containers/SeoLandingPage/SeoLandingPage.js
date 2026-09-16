@@ -3,7 +3,6 @@ import React from 'react';
 import { NamedLink, NamedRedirect, Page, TopbarSimplified } from '../../components';
 import { useConfiguration } from '../../context/configurationContext';
 import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
-import logoImage from '../../assets/gutter-quotes-logo.png';
 
 import { findSeoPageBySlug, seoPageGroups, seoPages } from './seoPageData';
 import css from './SeoLandingPage.module.css';
@@ -147,9 +146,6 @@ const SeoLandingPage = props => {
       <TopbarSimplified />
       <main className={css.root}>
         <section className={css.hero}>
-          <NamedLink name="LandingPage" className={css.logoLink}>
-            <img src={logoImage} alt="Gutter Quotes" className={css.logo} />
-          </NamedLink>
           <p className={css.kicker}>{page.intent}</p>
           <h1>{page.title}</h1>
           <p className={css.lead}>{page.summary}</p>
