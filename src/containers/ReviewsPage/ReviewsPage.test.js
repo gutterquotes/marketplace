@@ -26,13 +26,12 @@ describe('ReviewsPage', () => {
     render(<ReviewsPage scrollingDisabled={false} />);
 
     expect(screen.getByText('One request. Less time calling around.')).toBeInTheDocument();
-    expect(screen.getByText('A repair instead of a full replacement')).toBeInTheDocument();
-    expect(screen.getAllByRole('article')).toHaveLength(18);
+    expect(screen.getByText('We could compare the real total')).toBeInTheDocument();
+    expect(screen.getAllByRole('article')).toHaveLength(12);
 
     fireEvent.click(screen.getByRole('button', { name: 'Gutter guards' }));
 
-    expect(screen.getAllByRole('article')).toHaveLength(2);
-    expect(screen.getByText('We skipped the expensive guard package')).toBeInTheDocument();
-    expect(screen.queryByText('A repair instead of a full replacement')).not.toBeInTheDocument();
+    expect(screen.queryAllByRole('article')).toHaveLength(0);
+    expect(screen.queryByText('We could compare the real total')).not.toBeInTheDocument();
   });
 });

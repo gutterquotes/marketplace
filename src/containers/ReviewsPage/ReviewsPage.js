@@ -38,8 +38,8 @@ const ReviewsPage = ({ scrollingDisabled }) => {
             <p className={css.kicker}>Homeowner reviews</p>
             <h1>One request. Less time calling around.</h1>
             <p className={css.lead}>
-              See how homeowners compared prices, avoided work they did not need, and found a crew
-              without spending days chasing callbacks.
+              See how homeowners compared qualified local pros, understood their options, and found
+              the right crew without spending days chasing callbacks.
             </p>
           </div>
           <aside className={css.summary}>

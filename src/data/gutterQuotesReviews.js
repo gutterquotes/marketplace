@@ -24,18 +24,6 @@ export const gutterQuotesReviews = [
     pro: 'Half Round Guttering',
   },
   {
-    id: 6,
-    name: 'Preston H.',
-    city: 'Charlotte',
-    state: 'NC',
-    rating: 5,
-    title: 'Easy to compare the prices',
-    review:
-      "The quotes were different enough that I'm glad we compared them. One included work we didn't need. The company we chose kept the scope simple, showed up when they said they would, and cleaned up well. It saved us money and a lot of back-and-forth.",
-    services: ['Gutter installation'],
-    pro: 'Half Round Guttering',
-  },
-  {
     id: 9,
     name: 'Adelaide Q.',
     city: 'New Bern',
@@ -57,18 +45,6 @@ export const gutterQuotesReviews = [
     review:
       "The cheapest estimate left out several things that showed up in the other two. Having them side by side made that obvious. We chose the more complete quote and didn't get hit with extras halfway through the job. That was worth a lot to us.",
     services: ['Gutter installation', 'Drainage'],
-    pro: 'Guttering Inc.',
-  },
-  {
-    id: 16,
-    name: 'Julian M.',
-    city: 'Wilmington',
-    state: 'NC',
-    rating: 5,
-    title: 'A repair instead of a full replacement',
-    review:
-      "I assumed we were going to need all new gutters. The contractor said only one run was bad and fixed that section. It cost less than I had prepared for, and the leak over the dining room hasn't come back after several hard rains.",
-    services: ['Gutter repair', 'Gutter installation', 'Drainage'],
     pro: 'Guttering Inc.',
   },
   {
@@ -96,18 +72,6 @@ export const gutterQuotesReviews = [
     pro: 'Guttering Inc.',
   },
   {
-    id: 21,
-    name: 'Rhea P.',
-    city: 'Charleston',
-    state: 'SC',
-    rating: 5,
-    title: 'The price stayed close to the quote',
-    review:
-      "We already knew we wanted copper and didn't need a long sales presentation. The request brought us a few options, and ValueFilter gave the clearest price. What we paid was very close to the quote, which shouldn't be unusual but definitely is.",
-    services: ['Gutter installation', 'Drainage'],
-    pro: 'ValueFilter Gutter',
-  },
-  {
     id: 23,
     name: 'Dana W.',
     city: 'Atlanta',
@@ -129,18 +93,6 @@ export const gutterQuotesReviews = [
     review:
       "One corner didn't look right to me. The installer agreed and redid it that afternoon. No debate and no change order. I'm giving four stars until we've had a full summer of storms, but the first few rains have been fine.",
     services: ['Gutter installation', 'Gutter repair'],
-    pro: 'ValueFilter Gutter',
-  },
-  {
-    id: 28,
-    name: 'Andre F.',
-    city: 'Bluffton',
-    state: 'SC',
-    rating: 5,
-    title: 'We skipped the expensive guard package',
-    review:
-      "I thought we needed the most expensive gutter guards. After looking at the options, we went with larger outlets and a simpler guard setup. It cost less and has handled several downpours without overflowing. Comparing the quotes probably kept us from overspending.",
-    services: ['Gutter installation', 'Gutter guards', 'Drainage'],
     pro: 'ValueFilter Gutter',
   },
   {
@@ -191,33 +143,9 @@ export const gutterQuotesReviews = [
     services: ['Gutter installation', 'Gutter repair'],
     pro: 'Charleston Guttering',
   },
-  {
-    id: 34,
-    name: 'Ruth Ann K.',
-    city: 'Chapin',
-    state: 'SC',
-    rating: 5,
-    title: 'The right fix was not the most expensive one',
-    review:
-      "I expected a big drainage project because of our slope. The contractor showed us a smaller fix using new downspout locations. It was less money and has worked through two hard lake storms. Glad we got more than one opinion.",
-    services: ['Gutter installation', 'Drainage'],
-    pro: 'Chapin Gutter',
-  },
-  {
-    id: 35,
-    name: 'Daryl S.',
-    city: 'Chapin',
-    state: 'SC',
-    rating: 5,
-    title: 'No pressure to add things we did not need',
-    review:
-      "The owner showed me what needed replacing and what could stay. We talked about guards, but he didn't push them. The quote was easy to understand, the crew was scheduled that same week, and we spent less than we expected.",
-    services: ['Gutter installation', 'Gutter guards'],
-    pro: 'Chapin Gutter',
-  },
 ];
 
-export const homepageReviewIds = [1, 6, 16, 28, 30, 35];
+export const homepageReviewIds = [1, 2, 11, 18, 30, 33];
 
 export const homepageReviews = homepageReviewIds.map(id =>
   gutterQuotesReviews.find(review => review.id === id)
