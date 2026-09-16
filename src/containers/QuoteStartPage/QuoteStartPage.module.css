@@ -141,7 +141,8 @@
 
 .twoColumn input,
 .twoColumn select,
-.messageField textarea {
+.messageField textarea,
+.passwordField input {
   width: 100%;
   min-width: 0;
   border: 1px solid var(--gqLine);
@@ -160,6 +161,74 @@
 
 .messageField {
   margin-top: 18px;
+}
+
+.accountSection {
+  margin-top: 26px;
+  padding-top: 2px;
+  border-top: 1px solid var(--gqLine);
+}
+
+.passwordField {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.passwordField > span {
+  color: var(--gqMuted);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.passwordField input {
+  height: 52px;
+}
+
+.passwordField small {
+  color: var(--gqMuted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.consentField {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 18px;
+  color: var(--gqMuted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.consentField input {
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+  flex: 0 0 auto;
+}
+
+.consentField a,
+.existingAccount a {
+  color: var(--gqAccentDark);
+  font-weight: 800;
+}
+
+.error {
+  margin: 14px 0 0;
+  color: #a32020;
+  font-size: 14px;
+  font-weight: 760;
+  line-height: 1.4;
+}
+
+.existingAccount {
+  margin: 14px 0 0;
+  color: var(--gqMuted);
+  font-size: 13px;
+  text-align: center;
 }
 
 .messageField textarea {
@@ -183,11 +252,19 @@
   line-height: 1;
   text-decoration: none;
   box-shadow: 0 14px 28px rgba(255, 79, 0, 0.2);
+  border: 0;
+  cursor: pointer;
 }
 
 .primaryAction:hover {
   background: var(--gqAccentDark);
   color: #fff;
+}
+
+.primaryAction:disabled {
+  background: #b8bbb9;
+  box-shadow: none;
+  cursor: not-allowed;
 }
 
 .microcopy {

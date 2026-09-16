@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-import { Page, TopbarSimplified } from '../../components';
+import { NamedLink, Page, TopbarSimplified } from '../../components';
+import { signup } from '../../ducks/auth.duck';
+import { isSignupEmailTakenError } from '../../util/errors';
 import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
 import { trackConversionEvent, trackLeadEvent } from '../../util/conversionTracking';
 import { GUTTER_QUOTE_LISTING_TYPE, saveGutterQuoteDraft } from '../../util/gutterQuoteDraft';
@@ -82,12 +86,23 @@ const propertyTypeToValue = {
 
 const QuoteStartPage = props => {
   const { scrollingDisabled } = props;
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const isAuthenticated = useSelector(state => state.auth?.isAuthenticated);
+  const signupInProgress = useSelector(state => state.auth?.signupInProgress);
+  const signupError = useSelector(state => state.auth?.signupError);
   const [selectedProjects, setSelectedProjects] = useState([projectTypes[0]]);
   const [zipCode, setZipCode] = useState('28211');
   const [timeline, setTimeline] = useState('This month');
   const [propertyType, setPropertyType] = useState('Single-family home');
   const [homeHeight, setHomeHeight] = useState('Two stories');
   const [notes, setNotes] = useState(projectTypes[0].defaultNotes);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   const primaryProject = selectedProjects[0] || projectTypes[0];
   const selectedServiceLabels = selectedProjects.map(project => project.label);
@@ -172,6 +187,46 @@ const QuoteStartPage = props => {
     });
   };
 
+  const handleSubmit = async event => {
+    event.preventDefault();
+    saveDraft();
+
+    if (!isAuthenticated) {
+      try {
+        await dispatch(
+          signup({
+            email: email.trim(),
+            password,
+            firstName: firstName.trim(),
+            lastName: lastName.trim(),
+            publicData: { userType: 'customer' },
+            privateData: { homeZip: zipCode.trim() },
+            protectedData: { phoneNumber: phone.trim() },
+          })
+        );
+      } catch (e) {
+        return;
+      }
+    }
+
+    history.push(`/l/new?listingType=${GUTTER_QUOTE_LISTING_TYPE}`);
+  };
+
+  const accountFieldsComplete =
+    isAuthenticated ||
+    (firstName.trim() &&
+      lastName.trim() &&
+      email.trim() &&
+      phone.trim() &&
+      password.length >= 8 &&
+      termsAccepted);
+  const canSubmit = /^\d{5}(?:-\d{4})?$/.test(zipCode.trim()) && accountFieldsComplete;
+  const signupErrorMessage = signupError
+    ? isSignupEmailTakenError(signupError)
+      ? 'An account already uses this email. Sign in, then return to your saved request.'
+      : 'We could not create your account. Check your information and try again.'
+    : null;
+
   return (
     <Page
       title="Start a gutter quote request | Gutter Quotes"
@@ -181,7 +236,7 @@ const QuoteStartPage = props => {
       <TopbarSimplified />
       <main className={css.root}>
         <section className={css.formShell}>
-          <div className={css.formPanel}>
+          <form className={css.formPanel} onSubmit={handleSubmit}>
             <div className={css.formHeader}>
             <p className={css.kicker}>Free gutter quote request</p>
             <h1>Tell us what your home needs.</h1>
@@ -279,17 +334,98 @@ const QuoteStartPage = props => {
               />
             </label>
 
-            <a
-              href={`/l/new?listingType=${GUTTER_QUOTE_LISTING_TYPE}`}
-              onClick={saveDraft}
+            {!isAuthenticated ? (
+              <section className={css.accountSection}>
+                <div className={css.fieldGroup}>
+                  <h2>Your contact information</h2>
+                  <p className={css.stepHint}>
+                    We create your free homeowner account when you submit this request.
+                  </p>
+                </div>
+                <div className={css.twoColumn}>
+                  <label>
+                    <span>First name</span>
+                    <input
+                      value={firstName}
+                      onChange={e => setFirstName(e.target.value)}
+                      autoComplete="given-name"
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Last name</span>
+                    <input
+                      value={lastName}
+                      onChange={e => setLastName(e.target.value)}
+                      autoComplete="family-name"
+                      required
+                    />
+                  </label>
+                </div>
+                <div className={css.twoColumn}>
+                  <label>
+                    <span>Email</span>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
+                      autoComplete="email"
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Phone</span>
+                    <input
+                      type="tel"
+                      value={phone}
+                      onChange={e => setPhone(e.target.value)}
+                      autoComplete="tel"
+                      required
+                    />
+                  </label>
+                </div>
+                <label className={css.passwordField}>
+                  <span>Password</span>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    autoComplete="new-password"
+                    minLength="8"
+                    required
+                  />
+                  <small>At least 8 characters. Use this to check responses from pros.</small>
+                </label>
+                <label className={css.consentField}>
+                  <input
+                    type="checkbox"
+                    checked={termsAccepted}
+                    onChange={e => setTermsAccepted(e.target.checked)}
+                    required
+                  />
+                  <span>
+                    I agree to the <NamedLink name="TermsOfServicePage">Terms of Service</NamedLink>{' '}
+                    and <NamedLink name="PrivacyPolicyPage">Privacy Policy</NamedLink>.
+                  </span>
+                </label>
+                {signupErrorMessage ? <p className={css.error}>{signupErrorMessage}</p> : null}
+                <p className={css.existingAccount}>
+                  Already have an account? <NamedLink name="LoginPage">Sign in</NamedLink>
+                </p>
+              </section>
+            ) : null}
+
+            <button
+              type="submit"
               className={css.primaryAction}
+              disabled={!canSubmit || signupInProgress}
             >
-              Continue free request
-            </a>
+              {signupInProgress ? 'Creating your request...' : 'Submit free request'}
+            </button>
             <p className={css.microcopy}>
-              Your exact address and contact details stay private until the next step.
+              Your contact details stay private and are never shown publicly.
             </p>
-          </div>
+          </form>
         </section>
       </main>
       <GutterQuotesFooter />

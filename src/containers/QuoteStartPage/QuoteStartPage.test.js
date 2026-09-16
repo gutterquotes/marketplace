@@ -6,6 +6,7 @@ import { renderWithProviders as render, testingLibrary } from '../../util/testHe
 import QuoteStartPage from './QuoteStartPage';
 
 const { fireEvent, screen } = testingLibrary;
+const authenticatedState = { auth: { isAuthenticated: true, signupInProgress: false } };
 
 describe('QuoteStartPage', () => {
   beforeAll(() => {
@@ -23,7 +24,7 @@ describe('QuoteStartPage', () => {
   });
 
   it('updates the project brief from homeowner inputs', () => {
-    render(<QuoteStartPage scrollingDisabled={false} />);
+    render(<QuoteStartPage scrollingDisabled={false} />, { initialState: authenticatedState });
 
     expect(screen.getByText('Tell us what your home needs.')).toBeInTheDocument();
 
@@ -34,10 +35,10 @@ describe('QuoteStartPage', () => {
     });
 
     expect(
-      screen.getByText('Your exact address and contact details stay private until the next step.')
+      screen.getByText('Your contact details stay private and are never shown publicly.')
     ).toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole('link', { name: 'Continue free request' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Submit free request' }));
     const savedDraft = JSON.parse(window.localStorage.getItem('gutterQuotes.requestDraft.v1'));
     expect(savedDraft).toMatchObject({
       title: 'Seamless gutter installation + Gutter repair near 30301',
@@ -53,7 +54,7 @@ describe('QuoteStartPage', () => {
   });
 
   it('lets homeowners select multiple gutter services and keep not sure yet exclusive', () => {
-    render(<QuoteStartPage scrollingDisabled={false} />);
+    render(<QuoteStartPage scrollingDisabled={false} />, { initialState: authenticatedState });
 
     const installation = screen.getByRole('button', { name: 'Seamless gutter installation' });
     const guards = screen.getByRole('button', { name: 'Gutter guards' });
@@ -77,11 +78,11 @@ describe('QuoteStartPage', () => {
   });
 
   it('lets homeowners add permanent under-eave lighting to a gutter request', () => {
-    render(<QuoteStartPage scrollingDisabled={false} />);
+    render(<QuoteStartPage scrollingDisabled={false} />, { initialState: authenticatedState });
 
     const lighting = screen.getByRole('button', { name: 'Permanent under-eave lighting' });
     fireEvent.click(lighting);
-    fireEvent.click(screen.getByRole('link', { name: 'Continue free request' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Submit free request' }));
 
     const savedDraft = JSON.parse(window.localStorage.getItem('gutterQuotes.requestDraft.v1'));
     expect(savedDraft).toMatchObject({
@@ -92,5 +93,17 @@ describe('QuoteStartPage', () => {
         selectedServices: ['Seamless gutter installation', 'Permanent under-eave lighting'],
       },
     });
+  });
+
+  it('collects account details inside the homeowner request form', () => {
+    render(<QuoteStartPage scrollingDisabled={false} />);
+
+    expect(screen.getByText('Your contact information')).toBeInTheDocument();
+    expect(screen.getByLabelText('First name')).toBeRequired();
+    expect(screen.getByLabelText('Last name')).toBeRequired();
+    expect(screen.getByLabelText('Email')).toBeRequired();
+    expect(screen.getByLabelText('Phone')).toBeRequired();
+    expect(screen.getByLabelText(/Password/)).toHaveAttribute('minLength', '8');
+    expect(screen.getByRole('button', { name: 'Submit free request' })).toBeDisabled();
   });
 });
