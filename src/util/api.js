@@ -151,3 +151,6 @@ export const createUserWithIdp = body => {
 export const deleteUserAccount = body => {
   return post('/api/delete-account', body);
 };
+
+// Public homeowner intake; the server keeps contact data private.
+export const submitHomeownerQuote = body => post('/api/homeowner-quotes', body);

@@ -1,109 +1,86 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-
 import { renderWithProviders as render, testingLibrary } from '../../util/testHelpers';
-
+import { submitHomeownerQuote } from '../../util/api';
 import QuoteStartPage from './QuoteStartPage';
 
-const { fireEvent, screen } = testingLibrary;
-const authenticatedState = { auth: { isAuthenticated: true, signupInProgress: false } };
+jest.mock('../../util/api', () => ({
+  ...jest.requireActual('../../util/api'),
+  submitHomeownerQuote: jest.fn(),
+}));
+const { fireEvent, screen, waitFor } = testingLibrary;
+const fill = () => {
+  for (const [label, value] of Object.entries({
+    'First name': 'Test',
+    'Last name': 'Homeowner',
+    Email: 'test@example.com',
+    Phone: '2025550100',
+    'ZIP code': '30301',
+  }))
+    fireEvent.change(screen.getByLabelText(label), { target: { value } });
+  fireEvent.click(screen.getByRole('checkbox'));
+};
 
-describe('QuoteStartPage', () => {
-  beforeAll(() => {
-    window.matchMedia =
-      window.matchMedia ||
-      function matchMedia() {
-        return {
-          matches: false,
-          addListener: () => {},
-          removeListener: () => {},
-          addEventListener: () => {},
-          removeEventListener: () => {},
-        };
-      };
-  });
-
-  it('updates the project brief from homeowner inputs', () => {
-    render(<QuoteStartPage scrollingDisabled={false} />, { initialState: authenticatedState });
-
-    expect(screen.getByText('Tell us what your home needs.')).toBeInTheDocument();
-
-    fireEvent.click(screen.getByRole('button', { name: 'Gutter repair' }));
-    fireEvent.change(screen.getByLabelText('ZIP code'), { target: { value: '30301' } });
-    fireEvent.change(screen.getByLabelText('Timeline'), {
-      target: { value: 'Emergency repair' },
+describe('QuoteStartPage guest intake', () => {
+  beforeEach(() => {
+    window.matchMedia = () => ({
+      matches: false,
+      addListener() {},
+      removeListener() {},
+      addEventListener() {},
+      removeEventListener() {},
     });
-
-    expect(
-      screen.getByText('Your contact details stay private and are never shown publicly.')
-    ).toBeInTheDocument();
-
-    fireEvent.click(screen.getByRole('button', { name: 'Submit free request' }));
-    const savedDraft = JSON.parse(window.localStorage.getItem('gutterQuotes.requestDraft.v1'));
-    expect(savedDraft).toMatchObject({
-      title: 'Seamless gutter installation + Gutter repair near 30301',
-      listingType: 'post-request',
-      publicData: {
-        serviceNeeded: 'installation',
-        serviceNeededList: ['installation', 'repair'],
-        selectedServices: ['Seamless gutter installation', 'Gutter repair'],
-        projectZip: '30301',
-        timeline: 'emergency',
-      },
+    Object.defineProperty(window.crypto, 'randomUUID', {
+      configurable: true,
+      value: () => '12345678-1234-4123-8123-123456789abc',
     });
   });
 
-  it('lets homeowners select multiple gutter services and keep not sure yet exclusive', () => {
-    render(<QuoteStartPage scrollingDisabled={false} />, { initialState: authenticatedState });
-
-    const installation = screen.getByRole('button', { name: 'Seamless gutter installation' });
-    const guards = screen.getByRole('button', { name: 'Gutter guards' });
-    const notSure = screen.getByRole('button', { name: 'Not sure yet' });
-
-    expect(screen.getByText(/Select all that apply/)).toBeInTheDocument();
-    expect(installation).toHaveAttribute('aria-pressed', 'true');
-
-    fireEvent.click(guards);
-    expect(installation).toHaveAttribute('aria-pressed', 'true');
-    expect(guards).toHaveAttribute('aria-pressed', 'true');
-
-    fireEvent.click(notSure);
-    expect(installation).toHaveAttribute('aria-pressed', 'false');
-    expect(guards).toHaveAttribute('aria-pressed', 'false');
-    expect(notSure).toHaveAttribute('aria-pressed', 'true');
-
-    fireEvent.click(guards);
-    expect(notSure).toHaveAttribute('aria-pressed', 'false');
-    expect(guards).toHaveAttribute('aria-pressed', 'true');
-  });
-
-  it('lets homeowners add permanent under-eave lighting to a gutter request', () => {
-    render(<QuoteStartPage scrollingDisabled={false} />, { initialState: authenticatedState });
-
-    const lighting = screen.getByRole('button', { name: 'Permanent under-eave lighting' });
-    fireEvent.click(lighting);
-    fireEvent.click(screen.getByRole('button', { name: 'Submit free request' }));
-
-    const savedDraft = JSON.parse(window.localStorage.getItem('gutterQuotes.requestDraft.v1'));
-    expect(savedDraft).toMatchObject({
-      title: 'Seamless gutter installation + Permanent under-eave lighting near 28211',
-      publicData: {
-        serviceNeeded: 'installation',
-        serviceNeededList: ['installation', 'under-eave-lighting'],
-        selectedServices: ['Seamless gutter installation', 'Permanent under-eave lighting'],
-      },
-    });
-  });
-
-  it('collects account details inside the homeowner request form', () => {
+  it('collects contact information without a password or account', async () => {
+    submitHomeownerQuote.mockResolvedValue({ ok: true });
     render(<QuoteStartPage scrollingDisabled={false} />);
+    expect(screen.queryByLabelText(/Password/)).not.toBeInTheDocument();
+    expect(screen.queryByText('Sign in')).not.toBeInTheDocument();
+    expect(screen.getByLabelText('ZIP code')).toHaveValue('');
+    fill();
+    fireEvent.click(screen.getByRole('button', { name: 'Gutter repair' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Submit free request' }));
+    await waitFor(() => expect(submitHomeownerQuote).toHaveBeenCalledTimes(1));
+    expect(submitHomeownerQuote.mock.calls[0][0]).toMatchObject({
+      firstName: 'Test',
+      email: 'test@example.com',
+      zipCode: '30301',
+      services: ['installation', 'repair'],
+      termsAccepted: true,
+    });
+    expect(submitHomeownerQuote.mock.calls[0][0]).not.toHaveProperty('password');
+  });
 
-    expect(screen.getByText('Your contact information')).toBeInTheDocument();
-    expect(screen.getByLabelText('First name')).toBeRequired();
-    expect(screen.getByLabelText('Last name')).toBeRequired();
-    expect(screen.getByLabelText('Email')).toBeRequired();
-    expect(screen.getByLabelText('Phone')).toBeRequired();
-    expect(screen.getByLabelText(/Password/)).toHaveAttribute('minLength', '8');
-    expect(screen.getByRole('button', { name: 'Submit free request' })).toBeDisabled();
+  it('preserves information and the request reference when retrying a failure', async () => {
+    submitHomeownerQuote.mockRejectedValue(new Error('Network error'));
+    render(<QuoteStartPage scrollingDisabled={false} />);
+    fill();
+    fireEvent.click(screen.getByRole('button', { name: 'Submit free request' }));
+    await screen.findByRole('alert');
+    expect(screen.getByLabelText('Email')).toHaveValue('test@example.com');
+    fireEvent.click(screen.getByRole('button', { name: 'Submit free request' }));
+    await waitFor(() => expect(submitHomeownerQuote).toHaveBeenCalledTimes(2));
+    expect(submitHomeownerQuote.mock.calls[0][0].requestId).toBe(
+      submitHomeownerQuote.mock.calls[1][0].requestId
+    );
+  });
+
+  it('keeps not sure exclusive and allows multiple services', () => {
+    render(<QuoteStartPage scrollingDisabled={false} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Gutter guards' }));
+    expect(screen.getByRole('button', { name: 'Seamless gutter installation' })).toHaveAttribute(
+      'aria-pressed',
+      'true'
+    );
+    fireEvent.click(screen.getByRole('button', { name: 'Not sure yet' }));
+    expect(screen.getByRole('button', { name: 'Gutter guards' })).toHaveAttribute(
+      'aria-pressed',
+      'false'
+    );
   });
 });
