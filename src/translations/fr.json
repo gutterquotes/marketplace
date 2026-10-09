@@ -1,4 +1,5 @@
 {
+  "GutterQuotesFooter.preferredSource": "Ajouter comme source préférée sur Google",
   "AddressLinkMaybe.viewOnGoogleMaps": "Voir sur Google Maps",
   "AuthenticationPage.confirmSignupInfoText": "Veuillez vérifier que vos informations sont correctes.",
   "AuthenticationPage.confirmSignupWithIdpTitle": "S'inscrire avec {idp}",

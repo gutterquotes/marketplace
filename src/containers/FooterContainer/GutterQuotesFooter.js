@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import { NamedLink } from '../../components';
 import logoImage from '../../assets/gutter-quotes-logo.png';
@@ -72,6 +73,14 @@ const GutterQuotesFooter = () => {
             <NamedLink name="CityLandingPage" params={{ citySlug: 'nashville-tn' }}>
               Nashville
             </NamedLink>
+          </div>
+          <div className={css.marketLinks}>
+            <a href="https://www.google.com/preferences/source?q=gutterquotes.com">
+              <FormattedMessage
+                id="GutterQuotesFooter.preferredSource"
+                defaultMessage="Add as a preferred source on Google"
+              />
+            </a>
           </div>
         </div>
 
