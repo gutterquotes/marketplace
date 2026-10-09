@@ -1,8 +1,12 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 import { NamedLink } from '../../components';
 import logoImage from '../../assets/gutter-quotes-logo.png';
+import preferredSourceEn from '../../assets/google-preferred-source-en.png';
+import preferredSourceDe from '../../assets/google-preferred-source-de.png';
+import preferredSourceEs from '../../assets/google-preferred-source-es.png';
+import preferredSourceFr from '../../assets/google-preferred-source-fr.png';
 
 import css from './GutterQuotesFooter.module.css';
 
@@ -50,6 +54,14 @@ const footerGroups = [
 ];
 
 const GutterQuotesFooter = () => {
+  const intl = useIntl();
+  const preferredSourceImages = {
+    en: preferredSourceEn,
+    de: preferredSourceDe,
+    es: preferredSourceEs,
+    fr: preferredSourceFr,
+  };
+  const preferredSourceImage = preferredSourceImages[intl.locale.split('-')[0]] || preferredSourceEn;
   const currentYear = new Date().getFullYear();
 
   return (
@@ -74,14 +86,19 @@ const GutterQuotesFooter = () => {
               Nashville
             </NamedLink>
           </div>
-          <div className={css.marketLinks}>
-            <a href="https://www.google.com/preferences/source?q=gutterquotes.com">
-              <FormattedMessage
-                id="GutterQuotesFooter.preferredSource"
-                defaultMessage="Add as a preferred source on Google"
-              />
-            </a>
-          </div>
+          <a
+            className={css.preferredSource}
+            href="https://www.google.com/preferences/source?q=gutterquotes.com"
+          >
+            <img
+              className={css.preferredSourceImage}
+              src={preferredSourceImage}
+              alt={intl.formatMessage({
+                id: 'GutterQuotesFooter.preferredSource',
+                defaultMessage: 'Add as a preferred source on Google',
+              })}
+            />
+          </a>
         </div>
 
         <nav className={css.nav} aria-label="Footer navigation">

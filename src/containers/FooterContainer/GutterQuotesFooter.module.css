@@ -145,3 +145,22 @@
     grid-template-columns: 1fr;
   }
 }
+
+.preferredSource {
+  display: inline-block;
+  max-width: 100%;
+  margin-top: 20px;
+  border-radius: 16px;
+}
+
+.preferredSource:focus-visible {
+  outline: 3px solid var(--gqAccent);
+  outline-offset: 4px;
+}
+
+.preferredSourceImage {
+  display: block;
+  width: 280px;
+  max-width: 100%;
+  height: auto;
+}
