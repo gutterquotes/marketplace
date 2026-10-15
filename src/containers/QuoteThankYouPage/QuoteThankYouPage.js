@@ -1,4 +1,6 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { useIntl } from 'react-intl';
 
 import { NamedLink, Page, TopbarSimplified } from '../../components';
 import GutterQuotesFooter from '../FooterContainer/GutterQuotesFooter';
@@ -29,6 +31,10 @@ const addOns = [
 
 const QuoteThankYouPage = props => {
   const { scrollingDisabled } = props;
+  const { search } = useLocation();
+  const guestSubmitted = new URLSearchParams(search).get('submitted') === '1';
+  const intl = useIntl();
+  const m = key => intl.formatMessage({ id: `QuoteThankYouPage.${key}` });
 
   const handleAddDetailsClick = () => {
     trackConversionEvent('quote_thank_you_action', {
@@ -46,16 +52,29 @@ const QuoteThankYouPage = props => {
       <TopbarSimplified />
       <main className={css.root}>
         <section className={css.hero}>
-          <p className={css.kicker}>Request started</p>
+          <p className={css.kicker}>{guestSubmitted ? m('received') : 'Request started'}</p>
           <h1>Your gutter request is in motion.</h1>
           <p className={css.lead}>
-            You have taken the important first step. The clearer your request is, the easier it is
-            for the right gutter pros to understand the job and respond with useful next steps.
+            {guestSubmitted ? (
+              m('confirmation')
+            ) : (
+              <>
+                You have taken the important first step. The clearer your request is, the easier it
+                is for the right gutter pros to understand the job and respond with useful next
+                steps.
+              </>
+            )}
           </p>
           <div className={css.actions}>
-            <NamedLink name="ManageListingsPage" className={css.primaryAction} onClick={handleAddDetailsClick}>
-              Add photos or details
-            </NamedLink>
+            {!guestSubmitted && (
+              <NamedLink
+                name="ManageListingsPage"
+                className={css.primaryAction}
+                onClick={handleAddDetailsClick}
+              >
+                Add photos or details
+              </NamedLink>
+            )}
             <NamedLink name="LandingPage" className={css.secondaryAction}>
               Back to home
             </NamedLink>
@@ -63,12 +82,14 @@ const QuoteThankYouPage = props => {
         </section>
 
         <section className={css.nextSteps} aria-label="What happens next">
-          {nextSteps.map((step, index) => (
-            <article key={step}>
-              <span>{index + 1}</span>
-              <p>{step}</p>
-            </article>
-          ))}
+          {(guestSubmitted ? [m('step1'), m('step2'), m('step3')] : nextSteps).map(
+            (step, index) => (
+              <article key={step}>
+                <span>{index + 1}</span>
+                <p>{step}</p>
+              </article>
+            )
+          )}
         </section>
 
         <section className={css.addOns}>

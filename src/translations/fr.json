@@ -1533,5 +1533,13 @@
   "UserNav.accountSettings": "Réglages",
   "UserNav.profileSettings": "Profil",
   "UserNav.screenreader.userNav": "Navigation du profil utilisateur",
-  "UserNav.yourListings": "Mes annonces"
+  "UserNav.yourListings": "Mes annonces",
+  "QuoteStartPage.contactHint": "No account or password needed. Tell us how to reach you about your project.",
+  "QuoteStartPage.submitting": "Sending your request…",
+  "QuoteStartPage.submitError": "We could not confirm your request. Your details are still here; please try again.",
+  "QuoteThankYouPage.received": "Request received",
+  "QuoteThankYouPage.confirmation": "Thank you. Your request has been saved. We will contact you using the details you provided. No account or password is needed.",
+  "QuoteThankYouPage.step1": "We review your project details to understand the gutter work you need.",
+  "QuoteThankYouPage.step2": "Watch your phone and email for follow-up about your request.",
+  "QuoteThankYouPage.step3": "Need to add something? Email leads@gutterquotes.com with your name and project ZIP code."
 }
